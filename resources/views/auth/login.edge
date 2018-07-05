@@ -6,10 +6,15 @@
         <div class="columns is-mobile is-centered">
           <div class="column is-half is-narrow">
             <form method="POST" action="/login">
+            @if(error)
+              <div class="notification is-danger">
+                  {{ error }}
+              </div>
+            @endif
              <div class="field">
                <div class="control">
                   <label for="username" class="label">Email Address</label>
-                   <input type="text" name="username" class="input is-large" placeholder="Email Address" />
+                   <input type="text" name="email" class="input is-large" placeholder="Email Address" value="{{ old('email', '') }}" />
                </div>
              </div>
              <div class="field">
@@ -27,7 +32,6 @@
                    Login
                  </span>
               </button>
-
             </form>
           </div>
         </div>

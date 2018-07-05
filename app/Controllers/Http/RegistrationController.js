@@ -8,14 +8,21 @@ class RegistrationController {
     return view.render('auth.register')
   }
 
-  async register({request, params}) {
+  async register({request, params, view}) {
+
     const rules = {
       email: 'required|email|unique:users,email',
-      password: 'required',
-      username: 'required|string',
+      password: 'required|min:8|confirmed',
     }
 
     const validation = await validate(request.all(), rules)
+
+    if (validation.fails()) {
+      console.log(validation.messages())
+      return view.render('auth.register', {messages: validation.messages()})
+    } else {
+      return "Registration success"
+    }
   }
 
 }

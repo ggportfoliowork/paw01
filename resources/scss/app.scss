@@ -6,9 +6,9 @@
 
 body {
   background-color: $body-bg;
+}
+
+body, p, label, input::placeholder, button {
   font-family: 'Oxygen', 'sans-serif' !important;
 }
 
-p, label, input::placeholder, button {
-  font-family: 'Oxygen', 'sans-serif' !important;
-}

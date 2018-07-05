@@ -23,8 +23,26 @@ Route.post('login', 'UserController.login')
 Route.get('register', 'RegistrationController.showRegisterForm')
 Route.post('register', 'RegistrationController.register')
 
+// App SPA
 Route
   .group(() => {
+    Route.get('*', 'AppControllers/AppController.show')
+  })
+  .domain('app')
+  .middleware(['auth'])
+
+// Admin SPA
+Route
+  .group(() => {
+    Route.get('*', 'AdminControllers/AdminAppController.show')
+  })
+  .domain('admin')
+  .middleware(['auth'])
+
+// API
+Route
+  .group(() => {
+
       Route.get('users/:id', 'UserController.show')
       Route.get('pets', 'PetsController.index')
   })

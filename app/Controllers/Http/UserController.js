@@ -5,9 +5,14 @@
  */
 class UserController {
 
-  async login ({ request, auth }) {
-    const { username, password } = request.all()
-    await auth.attempt(username, password)
+  async login ({ request, auth, view }) {
+    const { email, password } = request.all()
+    try {
+      return request.auth.attempt(email, password)
+    } catch (e) {
+      return view.render('auth.login', {error: "Invalid username/password"})
+    }
+
   }
 
   showLoginForm({view}) {
