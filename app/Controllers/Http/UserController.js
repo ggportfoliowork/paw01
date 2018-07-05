@@ -6,12 +6,12 @@
 class UserController {
 
   async login ({ request, auth, view }) {
-    const { email, password } = request.all()
+    const { email, password, remember } = request.all()
 
     console.log(email, password)
 
     try {
-      return request.auth.attempt(email, password)
+      return request.auth.attempt(email, password).remember(remember)
     } catch (e) {
       return view.render('auth.login', {error: "Invalid username/password"})
     }
