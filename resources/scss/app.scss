@@ -2,7 +2,13 @@
 @import "fontawesome";
 @import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
 
+@import "../../node_modules/bulma/css/bulma.min.css";
+
 body {
   background-color: $body-bg;
+  font-family: 'Oxygen', 'sans-serif' !important;
+}
+
+p, label, input::placeholder, button {
   font-family: 'Oxygen', 'sans-serif' !important;
 }

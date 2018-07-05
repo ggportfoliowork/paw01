@@ -1,5 +1,8 @@
 'use strict'
 
+/**
+ * User Controller
+ */
 class UserController {
 
   async login ({ request, auth }) {

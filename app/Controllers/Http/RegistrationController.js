@@ -3,6 +3,7 @@
 const { validate } = use('Validator')
 
 class RegistrationController {
+
   showRegisterForm({view}) {
     return view.render('auth.register')
   }
