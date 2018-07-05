@@ -1,6 +1,7 @@
 'use strict'
 
 const { validate } = use('Validator')
+const UserCreator = use('App/Services/UserServices/UserCreator');
 
 class RegistrationController {
 
@@ -18,10 +19,17 @@ class RegistrationController {
     const validation = await validate(request.all(), rules)
 
     if (validation.fails()) {
-      console.log(validation.messages())
-      return view.render('auth.register', {messages: validation.messages()})
+      let errorMessages = {messages: validation.messages()}
+      return view.render('auth.register', errorMessages)
     } else {
-      return "Registration success"
+      const userCreator = new UserCreator()
+      let user = userCreator.create(request.all())
+      if(user) {
+        return view.render('auth.login', {recentlyRegistered: 'Your account was created.  Please login.'})
+      } else {
+        let errorMessages = {messages: ["There was an error creating your account."]}
+        return view.render('auth.register', errorMessages)
+      }
     }
   }
 

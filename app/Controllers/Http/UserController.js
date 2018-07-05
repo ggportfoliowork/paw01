@@ -7,6 +7,9 @@ class UserController {
 
   async login ({ request, auth, view }) {
     const { email, password } = request.all()
+
+    console.log(email, password)
+
     try {
       return request.auth.attempt(email, password)
     } catch (e) {

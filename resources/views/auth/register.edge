@@ -9,8 +9,8 @@
 
                    @if(messages)
                     <div class="notification is-danger">
-                        @each(error in errorMessages)
-                          <p>{{ error.messages }}</p>
+                        @each(error in messages)
+                          <p>{{ error.message }}</p>
                         @endeach
                     </div>
                   @endif
@@ -19,7 +19,6 @@
                     <div class="control">
                       <label for="email" class="label">Email</label>
                       <input type="text" class="input is-large" name="email" value="{{ old('email', '') }}" placeholder="Email Address" />
-                      {{ elIf('<span>$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
                     </div>
                    </div>
 
@@ -27,7 +26,6 @@
                     <div class="control">
                       <label for="password" class="label">Password</label>
                       <input type="password" class="input is-large" name="password" placeholder="******" />
-                      {{ elIf('<span>$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
                     </div>
                   </div>
 
@@ -35,7 +33,6 @@
                     <div class="control">
                       <label for="password" class="label">Confirm Password</label>
                       <input type="password" name="password_confirmation" class="input is-large" placeholder="******" />
-                      {{ elIf('<span>$self</span>', getErrorFor('password_confirmation'), hasErrorFor('password_confirmation')) }}
                     </div>
                    </div>
 
