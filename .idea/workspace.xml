@@ -2,41 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c9bd956-c919-4255-a3a4-ffc42d38f841" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/public-nav.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/RegistrationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/RegistrationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/public.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/public.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.eot" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.woff" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-brands-400.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-light-300.eot" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-light-300.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-light-300.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-light-300.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-light-300.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-light-300.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-light-300.woff" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-light-300.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-light-300.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-light-300.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-regular-400.eot" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-regular-400.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-regular-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-regular-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-regular-400.woff" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-regular-400.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-regular-400.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-regular-400.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.eot" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.woff" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-solid-900.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/webfonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/resources/webfonts/fa-regular-400.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,24 +16,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RegistrationController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/RegistrationController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="UserController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/UserController.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -122,11 +70,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.edge" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.edge" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/auth/register.edge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="117" selection-start-line="27" selection-start-column="117" selection-end-line="27" selection-end-column="117" />
+            <state relative-caret-position="435">
+              <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".editorconfig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.editorconfig">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -164,7 +135,6 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/app.edge" />
         <option value="$PROJECT_DIR$/resources/scss/_vars.scss" />
         <option value="$PROJECT_DIR$/resources/scss/fontawesome.scss" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/resources/scss/public.scss" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/UserController.js" />
@@ -175,6 +145,7 @@
         <option value="$PROJECT_DIR$/resources/scss/app.scss" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.edge" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.edge" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -327,12 +298,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530791191023</updated>
-      <workItem from="1530791192406" duration="8103000" />
+      <workItem from="1530791192406" duration="8227000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8103000" />
+    <option name="totallyTimeSpent" value="8227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="58" width="1914" height="965" extended-state="6" />
@@ -368,13 +339,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/database/factory.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/app.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -465,13 +429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="55860" selection-start-line="4" selection-start-column="55860" selection-end-line="4" selection-end-column="55860" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -574,8 +531,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.edge">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="117" selection-start-line="27" selection-start-column="117" selection-end-line="27" selection-end-column="117" />
+        <state relative-caret-position="435">
+          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.editorconfig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
         </state>
       </provider>
     </entry>
