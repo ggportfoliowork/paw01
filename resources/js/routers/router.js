@@ -89,10 +89,10 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   mode: 'history',
-  routes,
   base: '/app/',
   linkActiveClass: 'active',
-  router: true
+  router: true,
+  routes
 })
 
 export default router

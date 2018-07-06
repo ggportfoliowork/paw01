@@ -5,6 +5,8 @@ import moment from 'moment'
 import lodash from 'lodash'
 import VueRouter from 'vue-router'
 
+import App from './scaffold/App'
+
 // library
 import EventBus from './lib/EventBus'
 import HttpClient from './lib/HttpClient'
@@ -34,5 +36,4 @@ new Vue({
   created() {
     let vm = this
   },
-  el: '#app-container',
-})
+}).$mount('#app-container')

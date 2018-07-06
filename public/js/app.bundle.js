@@ -2049,10 +2049,14 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
 
 
 exports.default = {
-    created: function created() {},
+    created: function created() {
+        console.log("MOUNTED");
+    },
 
     components: {},
     computed: {},
@@ -2215,7 +2219,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -38000,7 +38004,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("router-view")
+  return _c(
+    "div",
+    [
+      _c("router-link", { attrs: { to: { name: "create-pet" } } }, [
+        _vm._v("ADD A PET")
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52755,6 +52767,10 @@ var _vueRouter = __webpack_require__(/*! vue-router */ "./node_modules/vue-route
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
+var _App = __webpack_require__(/*! ./scaffold/App */ "./resources/js/scaffold/App.vue");
+
+var _App2 = _interopRequireDefault(_App);
+
 var _EventBus = __webpack_require__(/*! ./lib/EventBus */ "./resources/js/lib/EventBus.js");
 
 var _EventBus2 = _interopRequireDefault(_EventBus);
@@ -52777,8 +52793,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 // library
-_vue2.default.use(_vuex2.default); // npm imports
-
+// npm imports
+_vue2.default.use(_vuex2.default);
 _vue2.default.use(_vueRouter2.default);
 
 // vue globals
@@ -52796,10 +52812,8 @@ new _vue2.default({
   mounted: function mounted() {},
   created: function created() {
     var vm = this;
-  },
-
-  el: '#app-container'
-});
+  }
+}).$mount('#app-container');
 
 /***/ }),
 
@@ -53622,10 +53636,10 @@ _vue2.default.use(_vueRouter2.default);
 
 var router = new _vueRouter2.default({
   mode: 'history',
-  routes: routes,
   base: '/app/',
   linkActiveClass: 'active',
-  router: true
+  router: true,
+  routes: routes
 });
 
 exports.default = router;
