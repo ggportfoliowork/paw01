@@ -25,7 +25,7 @@ module.exports = {
   | are signed and encrypted.
   |
   */
-  cookieName: 'adonis-session',
+  cookieName: 'paw001-session',
 
   /*
   |--------------------------------------------------------------------------
@@ -36,7 +36,7 @@ module.exports = {
   | removed when browser closes.
   |
   */
-  clearWithBrowser: true,
+  clearWithBrowser: false,
 
   /*
   |--------------------------------------------------------------------------

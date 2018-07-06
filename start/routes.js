@@ -17,18 +17,34 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
+Route
+  .group(() => {
+    Route.on('/').render('welcome')
+    Route.get('login', 'UserController.showLoginForm')
+    Route.post('login', 'UserController.login')
+    Route.get('register', 'RegistrationController.showRegisterForm')
+    Route.post('register', 'RegistrationController.register')
+  })
+  .middleware(['isNotAuthed'])
+
 Route.get('login', 'UserController.showLoginForm')
+  .middleware(['isNotAuthed'])
 Route.post('login', 'UserController.login')
+  .middleware(['isNotAuthed'])
 
 Route.get('register', 'RegistrationController.showRegisterForm')
+  .middleware(['isNotAuthed'])
 Route.post('register', 'RegistrationController.register')
+  .middleware(['isNotAuthed'])
 
 // App SPA
 Route
   .group(() => {
-    Route.get('*', 'AppControllers/AppController.show')
+    Route.get('/', 'AppControllers/AppController.show')
+    Route.post('logout', 'UserController.logout')
+    Route.any('*', 'AppControllers/AppController.show')
   })
-  .domain('app')
+  .prefix('app')
   .middleware(['auth'])
 
 // Admin SPA
@@ -36,7 +52,7 @@ Route
   .group(() => {
     Route.get('*', 'AdminControllers/AdminAppController.show')
   })
-  .domain('admin')
+  .prefix('admin')
   .middleware(['auth'])
 
 // API

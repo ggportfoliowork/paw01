@@ -1,3 +1,7 @@
+@import "../../node_modules/bulma/sass/utilities/initial-variables";
+@import "../../node_modules/bulma/sass/utilities/functions";
+
+
 // Body
 $body-bg: #f5f8fa;
 
@@ -24,3 +28,10 @@ $brand-warning-dark: darken($brand-warning, 25%);
 $brand-danger: #bf5329;
 $brand-danger-light: lighten($brand-danger, 25%);
 $brand-danger-dark: darken($brand-danger, 25%);
+
+
+$navbar-height: 4.25rem;
+
+$input-radius: 0px;
+
+

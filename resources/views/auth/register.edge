@@ -1,11 +1,13 @@
 @layout('layouts.public')
 
 @section('content')
- <div class="container has-text-centered">
+<section class="hero is-success is-fullheight">
+  <div class="hero-body">
+   <div class="container has-text-centered">
       <div class="content">
         <div class="columns is-mobile is-centered">
             <div class="column is-half is-narrow">
-              <form method="POST" action="/register">
+              <form method="POST" action="/register" autocomplete="off">
 
                    @if(messages)
                     <div class="notification is-danger">
@@ -38,13 +40,15 @@
 
                   {{ csrfField() }}
 
-                  <button type="submit" class="button is-success">
+                  <button type="submit" id="register-btn" class="button is-default">
                     Sign Up
                   </button>
 
               </form>
             </div>
           </div>
+        </div>
       </div>
-</div>
+    </div>
+  </section>
 @endsection

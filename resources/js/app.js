@@ -1,1 +1,3 @@
-import Vue from 'vue'
+'use strict'
+
+console.log(window.User)

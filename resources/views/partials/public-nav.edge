@@ -1,12 +1,9 @@
 <nav class="navbar is-fixed-top">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <span class="icon">
-        <i class="fas fa-paw"></i>
-      </span>
-      <span>
+      <h3 class="title">
         PawTrackers
-      </span>
+      </h1>
     </a>
     <div class="navbar-burger burger" data-target="pawNav">
       <span></span>
@@ -15,29 +12,11 @@
     </div>
   </div>
   <div id="pawNav" class="navbar-menu">
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <p class="control">
-            <a class="button is-default" href="/login">
-              <span class="icon">
-                <i class="fal fa-sign-in"></i>
-              </span>
-              <span>
-                Login
-              </span>
-            </a>
-          </p>
-          <p class="control">
-            <a class="button is-primary" href="/register">
-              <span class="icon">
-                <i class="fas fa-paw"></i>
-              </span>
-              <span>Register</span>
-            </a>
-          </p>
-        </div>
-      </div>
+      @if(auth.user)
+        @!include('partials.user-menu')
+      @else
+        @!include('partials.guest-menu')
+      @endif
     </div>
   </div>
 </nav>

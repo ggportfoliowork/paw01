@@ -4,8 +4,15 @@
      <meta charset="UTF-8" />
       <title>Adonis Project</title>
       {{ style('css/app.bundle') }}
+      <script type="text/javascript">
+        window.User = {
+          "uid": "{{ auth.user.id }}",
+          "username": "{{ auth.user.username }}",
+        }
+      </script>
   </head>
-  <body>
+  <body class="has-navbar-fixed-top">
+    @!include('partials.public-nav')
     @!section('content')
     {{ script('js/app.bundle') }}
   </body>

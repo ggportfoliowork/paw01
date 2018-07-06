@@ -2,13 +2,26 @@
 @import "fontawesome";
 @import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
 
-@import "../../node_modules/bulma/css/bulma.min.css";
+@import "bulma";
 
 body {
   background-color: $body-bg;
 }
 
-body, p, label, input::placeholder, button {
+body, p, label, input::placeholder, input, textarea, select, option, button {
   font-family: 'Oxygen', 'sans-serif' !important;
 }
 
+.navbar-item > h3 {
+  color: $success;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.paw-hero {
+  background-image:url(../imgs/public-bg.jpeg) !important;
+  background-size: cover !important;
+  background-color: transparent !important;
+}

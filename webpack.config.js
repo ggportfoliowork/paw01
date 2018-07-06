@@ -1,3 +1,4 @@
+const path = require('path')
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -5,7 +6,13 @@ module.exports = {
   entry: ["./resources/js/app.js", "./resources/scss/app.scss"],
   output: {
     path: __dirname + "/public",
+    publicPath: '',
     filename: "./js/app.bundle.js"
+  },
+  resolve: {
+    alias: {
+      bulma$: path.resolve(__dirname, 'node_modules/bulma/bulma.sass')
+    }
   },
   devtool: "source-map",
   module: {
@@ -28,8 +35,12 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader?limit=100000'
+        test: /\.(jpeg|jpg|png)$/,
+        loader: 'url-loader?limit=100000&name=/imgs/[hash].[ext]'
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000&name=/webfonts/[hash].[ext]'
       }
     ],
   },

@@ -1,0 +1,19 @@
+<div class="navbar-end">
+  <div class="navbar-item">
+    <div class="field is-grouped">
+      <p class="control">
+        <form method="POST" action="/app/logout">
+          {{ csrfField() }}
+          <button type="submit" class="button is-default">
+            <span class="icon">
+              <i class="fal fa-power-off"></i>
+            </span>
+            <span>
+              Logout
+            </span>
+          </button>
+        </form>
+      </p>
+    </div>
+  </div>
+</div>

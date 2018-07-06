@@ -10,6 +10,7 @@ class UserSchema extends Schema {
       table.boolean('has_viewed_joyride').notNullable().defaultsTo(0)
       table.boolean('notifications_email').notNullable().defaultsTo(1)
       table.boolean('notifications_sms').notNullable().defaultsTo(1)
+      table.boolean('account_is_active').notNullable().defaultsTo(1)
       table.string('email', 128).notNullable().unique()
       table.string('password', 60).notNullable()
       table.timestamps()

@@ -5,17 +5,16 @@
  */
 class UserController {
 
-  async login ({ request, auth, view }) {
+  async login ({ request, auth, view, response}) {
 
     const { email, password } = request.all()
+    const authAttempt = await auth.attempt(email, password)
 
-    try {
-      await auth
-            .attempt(email, password)
-    } catch (e) {
-        return view.render('auth.login', {error: "Invalid username/password"})
+    if(authAttempt) {
+      response.redirect('app')
+    } else {
+      return view.render('auth.login', {error: "Your username/password was incorrect."})
     }
-
   }
 
   showLoginForm({view}) {
@@ -27,6 +26,11 @@ class UserController {
       return 'You cannot see someone else\'s profile'
     }
     return auth.user
+  }
+
+  async logout({view, auth, response}) {
+    await auth.logout()
+    return response.redirect('/')
   }
 
 }
