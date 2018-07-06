@@ -8,6 +8,10 @@
         window.User = {
           "uid": "{{ auth.user.id }}",
           "username": "{{ auth.user.username }}",
+          "token": {
+                      "type": "{{ token.type }}",
+                      "token": "{{ token.token }}"
+          }
         }
       </script>
   </head>

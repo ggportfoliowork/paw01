@@ -10,6 +10,11 @@ body {
   background-color: $body-bg;
 }
 
+#app-container {
+  height: 100vh;
+  margin-top: 4.25rem;
+}
+
 body, p, label, input::placeholder, input, textarea, select, option, button {
   font-family: 'Oxygen', 'sans-serif' !important;
 }

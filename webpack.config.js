@@ -1,5 +1,6 @@
 const path = require('path')
-let ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -11,18 +12,19 @@ module.exports = {
   },
   resolve: {
     alias: {
-      bulma$: path.resolve(__dirname, 'node_modules/bulma/bulma.sass')
-    }
+      bulma$: path.resolve(__dirname, 'node_modules/bulma/bulma.sass'),
+      vue$: 'vue/dist/vue.js'
+    },
+    extensions: ['*', '.js', '.vue', '.json']
   },
   devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        exclude: [/node_modules/],
+        loader: 'babel-loader',
+        options: { presets: ['env'] }
       },
       {
         test: /\.(sass|scss)$/,
@@ -41,6 +43,10 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000&name=/webfonts/[hash].[ext]'
+      },
+      {
+        test: /\.vue$/,
+        use: 'vue-loader'
       }
     ],
   },
@@ -53,5 +59,6 @@ module.exports = {
       filename: './css/app.bundle.css',
       allChunks: true,
     }),
+    new VueLoaderPlugin()
   ],
 }
