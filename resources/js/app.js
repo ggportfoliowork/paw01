@@ -13,6 +13,7 @@ import HttpClient from './lib/HttpClient'
 import appStore from './stores/app-store'
 import appRouter from './routers/app-router'
 
+
 Vue.use(Vuex)
 Vue.use(VueRouter)
 
@@ -25,15 +26,11 @@ Vue.prototype.$smoothScroll = () => {
   window.scroll({top: 0, left: 0, behavior: 'smooth'});
 }
 
-
 new Vue({
   router: appRouter,
   store: appStore,
-  components: {
-
-  },
   mounted() {
-      
+      console.log("MOUNTED")
   },
   created() {
     let vm = this
@@ -42,13 +39,5 @@ new Vue({
       vm.$smoothScroll()
       next()
     })
-  },
-  methods: {
-
-  },
-  data() {
-    return {
-
-    }
   },
 }).$mount('#app')

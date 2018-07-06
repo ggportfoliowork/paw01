@@ -22,7 +22,7 @@
 
         },
         mounted() {
-          console.log("I AM MOUNTED")
+          console.log("DASHBOARD MOUNTED")
         },
         props: [],
         watch: {},
