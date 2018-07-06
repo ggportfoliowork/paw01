@@ -19,22 +19,12 @@ Route.on('/').render('welcome')
 
 Route
   .group(() => {
-    Route.on('/').render('welcome')
+    Route.get('/', 'PublicAppController@showHomePage')
     Route.get('login', 'UserController.showLoginForm')
     Route.post('login', 'UserController.login')
     Route.get('register', 'RegistrationController.showRegisterForm')
     Route.post('register', 'RegistrationController.register')
   })
-  .middleware(['isNotAuthed'])
-
-Route.get('login', 'UserController.showLoginForm')
-  .middleware(['isNotAuthed'])
-Route.post('login', 'UserController.login')
-  .middleware(['isNotAuthed'])
-
-Route.get('register', 'RegistrationController.showRegisterForm')
-  .middleware(['isNotAuthed'])
-Route.post('register', 'RegistrationController.register')
   .middleware(['isNotAuthed'])
 
 // App SPA

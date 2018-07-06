@@ -1,6 +1,8 @@
 @import "vars";
 @import "fontawesome";
+@import url('https://fonts.googleapis.com/css?family=Baloo+Paaji');
 @import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
+
 
 @import "bulma";
 
@@ -13,7 +15,8 @@ body, p, label, input::placeholder, input, textarea, select, option, button {
 }
 
 .navbar-item > h3 {
-  color: $success;
+  color: $primary;
+  font-family: "Baloo Paaji", 'sans-serif', 'sans' !important;
 }
 
 input:-webkit-autofill {
