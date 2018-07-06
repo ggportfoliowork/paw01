@@ -8,11 +8,11 @@ class UserController {
   async login ({ request, auth, view, response}) {
 
     const { email, password } = request.all()
-    const authAttempt = await auth.attempt(email, password)
 
-    if(authAttempt) {
+    try {
+      await auth.attempt(email, password)
       response.redirect('app')
-    } else {
+    } catch(e) {
       return view.render('auth.login', {error: "Your username/password was incorrect."})
     }
   }
