@@ -1,7 +1,5 @@
 <template>
-  <div>
-    View Pet
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>

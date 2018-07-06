@@ -1,5 +1,7 @@
 <template>
-  <router-view></router-view>
+  <div>
+    <h1>View Pet</h1>
+  </div>
 </template>
 
 <script>

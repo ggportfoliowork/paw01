@@ -16,8 +16,6 @@ import router from './routers/router'
 Vue.use(Vuex)
 Vue.use(VueRouter)
 
-
-
 // vue globals
 Vue.prototype._ = lodash
 Vue.prototype.$moment = moment
@@ -31,8 +29,7 @@ new Vue({
   router,
   appStore,
   mounted() {
-      console.log("MOUNTED")
-      console.log(this.$route)
+
   },
   created() {
     let vm = this
