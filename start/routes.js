@@ -53,4 +53,4 @@ Route
       Route.get('pets', 'PetsController.index')
   })
   .prefix('api/v1')
-  .middleware(['auth'])
+  .middleware(['auth:jwt'])

@@ -10,6 +10,7 @@ class UserController {
     const { email, password } = request.all()
 
     try {
+      auth.authenticator('session')
       await auth.attempt(email, password)
       response.redirect('app')
     } catch(e) {
