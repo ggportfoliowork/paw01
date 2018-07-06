@@ -13,8 +13,6 @@ import HttpClient from './lib/HttpClient'
 import appStore from './stores/app-store'
 import appRouter from './routers/app-router'
 
-import App from './scaffold/App'
-
 Vue.use(Vuex)
 Vue.use(VueRouter)
 
@@ -35,7 +33,7 @@ new Vue({
 
   },
   mounted() {
-      console.log(this.$route)
+      
   },
   created() {
     let vm = this
@@ -53,5 +51,4 @@ new Vue({
 
     }
   },
-  render: h => h(App)
-})
+}).$mount('#app')
