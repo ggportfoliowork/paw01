@@ -37,14 +37,6 @@ Route
   .prefix('app')
   .middleware(['auth'])
 
-// Admin SPA
-Route
-  .group(() => {
-    Route.get('*', 'AdminControllers/AdminAppController.show')
-  })
-  .prefix('admin')
-  .middleware(['auth'])
-
 // API
 Route
   .group(() => {

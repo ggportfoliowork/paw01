@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
 
-import App from '../scaffold/App'
-
 import DashboardPage from '../pages/App/Dashboard/DashboardPage'
 
 import PetsRouter from '../pages/App/Pets/PetsRouter'
@@ -13,25 +11,22 @@ import CreatePetsPage from '../pages/App/Pets/CreatePetsPage'
 
 const routes = [
   {
-    path: '/app',
-    component: App,
+    path: '/',
+    redirect: '/dashboard',
     name: 'root',
-    meta: {
-      breadcrumb: 'Dashboard'
+    component: {
+      template: '<router-view/>',
     },
     children: [
       {
-        path: '',
-        name: 'dashboard',
-        component: DashboardPage,
-        meta: {
-          breadcrumb: ''
-        }
-      },
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: DashboardPage
+      }
     ]
   },
   {
-    path: '/app/pets',
+    path: '/pets',
     component: PetsRouter,
     name: 'root-pets',
     meta: {
@@ -81,7 +76,7 @@ Vue.use(VueRouter)
 const appRouter = new VueRouter({
   mode: 'history',
   routes,
-  base: window.location.pathName,
+  base: '/app/',
   linkActiveClass: 'active',
   router: true
 })

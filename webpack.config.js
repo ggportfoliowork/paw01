@@ -13,7 +13,7 @@ module.exports = {
   resolve: {
     alias: {
       bulma$: path.resolve(__dirname, 'node_modules/bulma/bulma.sass'),
-      vue$: 'vue/dist/vue.esm.js'
+      vue$: 'vue/dist/vue.js'
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
