@@ -81,4 +81,4 @@ const appRouter = new VueRouter({
   router: true
 })
 
-export default appRouter
+module.exports = appRouter

@@ -40,4 +40,4 @@ new Vue({
       next()
     })
   },
-}).$mount('#app')
+}).$mount('#app-container')

@@ -52584,7 +52584,7 @@ new _vue2.default({
       next();
     });
   }
-}).$mount('#app');
+}).$mount('#app-container');
 
 /***/ }),
 
@@ -53206,10 +53206,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.js");
 
 var _vue2 = _interopRequireDefault(_vue);
@@ -53305,7 +53301,7 @@ var appRouter = new _vueRouter2.default({
   router: true
 });
 
-exports.default = appRouter;
+module.exports = appRouter;
 
 /***/ }),
 
