@@ -11,11 +11,12 @@ import HttpClient from './lib/HttpClient'
 
 // vue setup
 import appStore from './stores/app-store'
-import appRouter from './routers/app-router'
-
+import router from './routers/router'
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
+
+
 
 // vue globals
 Vue.prototype._ = lodash
@@ -27,17 +28,14 @@ Vue.prototype.$smoothScroll = () => {
 }
 
 new Vue({
-  router: appRouter,
-  store: appStore,
+  router,
+  appStore,
   mounted() {
       console.log("MOUNTED")
+      console.log(this.$route)
   },
   created() {
     let vm = this
-
-    this.$router.beforeEach((to, from, next) => {
-      vm.$smoothScroll()
-      next()
-    })
   },
-}).$mount('#app-container')
+  el: '#app-container',
+})

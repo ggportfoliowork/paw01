@@ -11,19 +11,9 @@ import CreatePetsPage from '../pages/App/Pets/CreatePetsPage'
 
 const routes = [
   {
-    path: '/',
-    redirect: '/dashboard',
-    name: 'root',
-    component: {
-      template: '<router-view/>',
-    },
-    children: [
-      {
-        path: 'dashboard',
-        name: 'dashboard',
-        component: DashboardPage
-      }
-    ]
+      path: '/app',
+      name: 'dashboard',
+      component: DashboardPage
   },
   {
     path: '/pets',
@@ -73,7 +63,7 @@ const routes = [
 
 Vue.use(VueRouter)
 
-const appRouter = new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes,
   base: '/app/',
@@ -81,4 +71,4 @@ const appRouter = new VueRouter({
   router: true
 })
 
-module.exports = appRouter
+export default router
