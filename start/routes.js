@@ -20,10 +20,10 @@ Route.on('/').render('welcome')
 Route
   .group(() => {
     Route.get('/', 'PublicAppController@showHomePage')
-    Route.get('login', 'UserController.showLoginForm')
-    Route.post('login', 'UserController.login')
-    Route.get('register', 'RegistrationController.showRegisterForm')
-    Route.post('register', 'RegistrationController.register')
+    Route.get('login', 'AuthControllers/LoginController.showLoginForm')
+    Route.post('login', 'AuthControllers/LoginController.login')
+    Route.get('register', 'AuthControllers/RegistrationController.showRegisterForm')
+    Route.post('register', 'AuthControllers/RegistrationController.register')
   })
   .middleware(['isNotAuthed'])
 
@@ -31,7 +31,7 @@ Route
 Route
   .group(() => {
     Route.get('/', 'AppControllers/AppController.show')
-    Route.post('logout', 'UserController.logout')
+    Route.post('logout', 'AuthControllers/LoginController.logout')
     Route.any('*', 'AppControllers/AppController.show')
   })
   .prefix('app')
@@ -48,9 +48,10 @@ Route
 // API
 Route
   .group(() => {
-
-      Route.get('users/:id', 'UserController.show')
-      Route.get('pets', 'PetsController.index')
+      Route.get('pets', 'ApiControllers/PetsController.index')
+      Route.post('pets', 'ApiControllers/PetsController.store')
+      Route.put('pets/:petId', 'ApiControllers/PetsController.update')
+      Route.delete('pets/:petId', 'ApiControllers/PetsController.destroy')
   })
   .prefix('api/v1')
   .middleware(['auth:jwt'])

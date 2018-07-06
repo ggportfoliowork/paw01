@@ -1,16 +1,15 @@
 'use strict'
 
 /**
- * User Controller
+ * LoginController
  */
-class UserController {
+class LoginController {
 
   async login ({ request, auth, view, response}) {
 
     const { email, password } = request.all()
 
     try {
-      auth.authenticator('session')
       await auth.attempt(email, password)
       response.redirect('app')
     } catch(e) {
@@ -22,13 +21,6 @@ class UserController {
     return view.render('auth.login')
   }
 
-  show ({ auth, params }) {
-    if (auth.user.id !== Number(params.id)) {
-      return 'You cannot see someone else\'s profile'
-    }
-    return auth.user
-  }
-
   async logout({view, auth, response}) {
     await auth.logout()
     return response.redirect('/')
@@ -36,4 +28,4 @@ class UserController {
 
 }
 
-module.exports = UserController
+module.exports = LoginController
