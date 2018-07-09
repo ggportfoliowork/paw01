@@ -20,6 +20,8 @@ Route
     Route.get('/', 'PublicAppController.showHomePage')
     Route.get('login', 'AuthControllers/LoginController.showLoginForm')
     Route.post('login', 'AuthControllers/LoginController.login')
+    Route.get('login/facebook', 'LoginController.redirect')
+    Route.get('facebook/callback', 'LoginController.callback')
     Route.get('register', 'AuthControllers/RegistrationController.showRegisterForm')
     Route.post('register', 'AuthControllers/RegistrationController.register')
   })

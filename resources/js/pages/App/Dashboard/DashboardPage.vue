@@ -10,7 +10,7 @@
           </header>
           <div class="timeline-item is-primary">
             <div class="timeline-marker is-icon">
-              <i class="fa fa-exchange"></i>
+              <i class="fal fa-paw"></i>
             </div>
             <div class="timeline-marker"></div>
             <div class="timeline-content">
@@ -20,7 +20,7 @@
           </div>
           <div class="timeline-item is-primary">
             <div class="timeline-marker is-icon">
-              <i class="fa fa-exchange"></i>
+              <i class="fal fa-paw"></i>
             </div>
             <div class="timeline-content">
               <p class="heading">February 2016</p>

@@ -4113,8 +4113,10 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+//
+//
 //
 //
 //
@@ -4122,20 +4124,20 @@ Object.defineProperty(exports, "__esModule", {
 
 
 exports.default = {
-    created: function created() {},
+  created: function created() {},
 
-    components: {},
-    computed: {},
-    data: function data() {
-        return {};
-    },
+  components: {},
+  computed: {},
+  data: function data() {
+    return {};
+  },
 
-    directives: {},
-    methods: {},
-    mounted: function mounted() {},
 
-    props: [],
-    watch: {}
+  methods: {},
+  mounted: function mounted() {},
+
+  props: [],
+  watch: {}
 };
 
 /***/ }),
@@ -4151,8 +4153,10 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+//
+//
 //
 //
 //
@@ -4160,20 +4164,20 @@ Object.defineProperty(exports, "__esModule", {
 
 
 exports.default = {
-    created: function created() {},
+  created: function created() {},
 
-    components: {},
-    computed: {},
-    data: function data() {
-        return {};
-    },
+  components: {},
+  computed: {},
+  data: function data() {
+    return {};
+  },
 
-    directives: {},
-    methods: {},
-    mounted: function mounted() {},
 
-    props: [],
-    watch: {}
+  methods: {},
+  mounted: function mounted() {},
+
+  props: [],
+  watch: {}
 };
 
 /***/ }),
@@ -4189,8 +4193,10 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+//
+//
 //
 //
 //
@@ -4198,20 +4204,20 @@ Object.defineProperty(exports, "__esModule", {
 
 
 exports.default = {
-    created: function created() {},
+  created: function created() {},
 
-    components: {},
-    computed: {},
-    data: function data() {
-        return {};
-    },
+  components: {},
+  computed: {},
+  data: function data() {
+    return {};
+  },
 
-    directives: {},
-    methods: {},
-    mounted: function mounted() {},
+  directives: {},
+  methods: {},
+  mounted: function mounted() {},
 
-    props: [],
-    watch: {}
+  props: [],
+  watch: {}
 };
 
 /***/ }),
@@ -4227,8 +4233,10 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+//
+//
 //
 //
 //
@@ -4236,20 +4244,20 @@ Object.defineProperty(exports, "__esModule", {
 
 
 exports.default = {
-    created: function created() {},
+  created: function created() {},
 
-    components: {},
-    computed: {},
-    data: function data() {
-        return {};
-    },
+  components: {},
+  computed: {},
+  data: function data() {
+    return {};
+  },
 
-    directives: {},
-    methods: {},
-    mounted: function mounted() {},
+  directives: {},
+  methods: {},
+  mounted: function mounted() {},
 
-    props: [],
-    watch: {}
+  props: [],
+  watch: {}
 };
 
 /***/ }),
@@ -4265,7 +4273,7 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 //
 //
@@ -4274,20 +4282,20 @@ Object.defineProperty(exports, "__esModule", {
 
 
 exports.default = {
-    created: function created() {},
+  created: function created() {},
 
-    components: {},
-    computed: {},
-    data: function data() {
-        return {};
-    },
+  components: {},
+  computed: {},
+  data: function data() {
+    return {};
+  },
 
-    directives: {},
-    methods: {},
-    mounted: function mounted() {},
+  directives: {},
+  methods: {},
+  mounted: function mounted() {},
 
-    props: [],
-    watch: {}
+  props: [],
+  watch: {}
 };
 
 /***/ }),
@@ -4303,7 +4311,7 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 //
 //
@@ -4312,20 +4320,20 @@ Object.defineProperty(exports, "__esModule", {
 
 
 exports.default = {
-    created: function created() {},
+  created: function created() {},
 
-    components: {},
-    computed: {},
-    data: function data() {
-        return {};
-    },
+  components: {},
+  computed: {},
+  data: function data() {
+    return {};
+  },
 
-    directives: {},
-    methods: {},
-    mounted: function mounted() {},
+  directives: {},
+  methods: {},
+  mounted: function mounted() {},
 
-    props: [],
-    watch: {}
+  props: [],
+  watch: {}
 };
 
 /***/ }),
@@ -6503,7 +6511,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -6522,7 +6530,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -6541,7 +6549,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -6560,7 +6568,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -87682,7 +87690,7 @@ var render = function() {
       }
     },
     [
-      _c("span", [_c("h2", [_vm._v("Upload Photo")])]),
+      _c("span"),
       _vm._v(" "),
       _c(
         "span",
@@ -87753,7 +87761,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "timeline-item is-primary" }, [
             _c("div", { staticClass: "timeline-marker is-icon" }, [
-              _c("i", { staticClass: "fa fa-exchange" })
+              _c("i", { staticClass: "fal fa-paw" })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "timeline-marker" }),
@@ -87769,7 +87777,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "timeline-item is-primary" }, [
             _c("div", { staticClass: "timeline-marker is-icon" }, [
-              _c("i", { staticClass: "fa fa-exchange" })
+              _c("i", { staticClass: "fal fa-paw" })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "timeline-content" }, [
@@ -88035,9 +88043,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("Add a Track")])])
+  }
+]
 render._withStripped = true
 
 
@@ -88059,9 +88074,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("Edit Track")])])
+  }
+]
 render._withStripped = true
 
 
@@ -88083,9 +88105,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("My Tracks")])])
+  }
+]
 render._withStripped = true
 
 
@@ -88107,9 +88136,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("View Track")])])
+  }
+]
 render._withStripped = true
 
 
@@ -88131,7 +88167,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("router-view")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -88155,7 +88191,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("router-view")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -108791,7 +108827,7 @@ var routes = [{
         breadcrumb: ''
       }
     }, {
-      path: '',
+      path: 'create',
       component: _CreateTracksPage2.default,
       name: 'tracks.create',
       meta: {

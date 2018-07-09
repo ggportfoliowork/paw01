@@ -113,7 +113,7 @@ const routes = [
               }
             },
             {
-              path: '',
+              path: 'create',
               component: CreateTracksPage,
               name: 'tracks.create',
               meta: {

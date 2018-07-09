@@ -1,26 +1,28 @@
 <template>
-
+  <div>
+    <h1>Add a Track</h1>
+  </div>
 </template>
 
 <script>
 
-    export default {
-        created() {
+  export default {
+    created() {
 
-        },
-        components: {},
-        computed: {},
-        data() {
-            return {}
-        },
-        directives: {},
-        methods: {},
-        mounted() {
+    },
+    components: {},
+    computed: {},
+    data() {
+      return {}
+    },
 
-        },
-        props: [],
-        watch: {},
-    }
+    methods: {},
+    mounted() {
+
+    },
+    props: [],
+    watch: {},
+  }
 
 
 </script>

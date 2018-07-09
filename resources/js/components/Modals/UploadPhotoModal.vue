@@ -6,7 +6,7 @@
     :title="title"
     top="4%">
     <span>
-      <h2>Upload Photo</h2>
+
     </span>
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogVisible = false">Cancel</el-button>
