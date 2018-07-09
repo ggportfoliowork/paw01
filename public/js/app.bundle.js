@@ -88347,7 +88347,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "navbar-brand" }, [
       _c("a", { staticClass: "navbar-item", attrs: { href: "/" } }, [
-        _c("h3", { staticClass: "title" })
+        _c("h3", { staticClass: "title" }, [
+          _vm._v("\n          PawTrackers\n        ")
+        ])
       ]),
       _vm._v(" "),
       _c(
