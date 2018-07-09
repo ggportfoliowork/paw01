@@ -1,22 +1,24 @@
 <nav class="navbar is-fixed-top">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      <h3 class="title">
-        PawTrackers
-      </h1>
-    </a>
-    <div class="navbar-burger burger" data-target="pawNav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <div id="pawNav" class="navbar-menu">
-      @if(auth.user)
-        @!include('partials.user-menu')
-      @else
-        @!include('partials.guest-menu')
-      @endif
-    </div>
+  <div class="container">
+     <div class="navbar-brand">
+         <a class="navbar-item" href="/">
+           <h3 class="title">
+             PawTrackers
+           </h1>
+         </a>
+         <div class="navbar-burger burger" data-target="pawNav">
+           <span></span>
+           <span></span>
+           <span></span>
+         </div>
+       </div>
+       <div id="pawNav" class="navbar-menu">
+           @if(auth.user)
+             @!include('partials.user-menu')
+           @else
+             @!include('partials.guest-menu')
+           @endif
+       </div>
+     </div>
   </div>
 </nav>

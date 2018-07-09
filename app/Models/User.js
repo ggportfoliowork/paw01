@@ -7,6 +7,16 @@ const Profile = use('App/Models/Profile')
 class User extends Model {
 
   /**
+   * Hidden Fields
+   * @returns {string[]}
+   */
+  static get hidden () {
+    return ['password']
+  }
+
+
+
+  /**
    * Model boot
    */
   static boot () {

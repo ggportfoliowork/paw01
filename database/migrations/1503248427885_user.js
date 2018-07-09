@@ -12,6 +12,8 @@ class UserSchema extends Schema {
       table.boolean('notifications_sms').notNullable().defaultsTo(1)
       table.boolean('account_is_active').notNullable().defaultsTo(1)
       table.string('email', 128).notNullable().unique()
+      table.string('token', 255).nullable()
+      table.string('login_source', 128).nullable()
       table.string('password', 60).notNullable()
       table.timestamps()
     })

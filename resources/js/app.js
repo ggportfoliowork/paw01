@@ -22,7 +22,7 @@ require('vue-tour/dist/vue-tour.css')
 // theme
 import '../pawtrackers-theme-2.3.6'
 
-import QuickAddAppointmentForm from './components/Forms/Appointment/QuickAddAppointmentForm'
+import UserNavMenu from './scaffold/UserNavMenu'
 
 Vue.use(Vuex)
 Vue.use(VueTour)
@@ -43,10 +43,10 @@ new Vue({
   router,
   store,
   mounted() {
-    this.$store.dispatch('SET_USER', window.User)
+    this.$store.dispatch('SET_USER')
   },
   components: {
-    'Qa': QuickAddAppointmentForm
+    UserNavMenu
   },
   created() {
     let vm = this
@@ -61,15 +61,15 @@ new Vue({
       steps: [
         {
           target: '#step-1',
-          content: `Discover <strong>Vue Tour</strong>!`,
+          content: `A test tour object.`,
         },
         {
           target: '#step-2',
-          content: 'An awesome plugin made with Vue.js!',
+          content: 'Another test tour object with longer text for the DOM.',
         },
         {
           target: '#step-3',
-          content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
+          content: 'An even longer test tour object to prepare the vue tour for the longest text lorem ipsum see if it wraps around the eniter page DOM and see what the formatting is like on a super long string inside of a tour object.',
           params: {
             placement: 'bottom'
           }
@@ -96,9 +96,7 @@ new Vue({
   },
   watch: {
     user(val) {
-      if(val.has_viewed_joyride) {
-        val.has_viewed_joyride = parseInt(val.has_viewed_joyride)
-      }
+
     }
   }
-}).$mount('#app-container')
+}).$mount('#app')

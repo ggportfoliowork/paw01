@@ -2,34 +2,22 @@
 <html lang="en">
   <head>
      <meta charset="UTF-8" />
+     <meta name="csrf_token" content="{{ csrfToken }}" />
       <title>PawTrackers - Pet Dietary, Health & Chronic Disease Management</title>
       {{ style('css/app.bundle') }}
       <script type="text/javascript">
         window.User = {
-          "uid": "{{ auth.user.id }}",
-          "username": "{{ auth.user.username }}",
           "token": {
-                      "type": "{{ token.type }}",
-                      "token": "{{ token.token }}"
-          },
-          "has_viewed_joyride": "{{ auth.user.has_viewed_joyride }}",
-          "profile": {
-            "name_first": "{{ userProfile.name_first }}",
-            "name_last": "{{ userProfile.name_last }}",
-            "contact_phone_type": "{{ userProfile.contact_phone_type }}",
-            "contact_phone_value": "{{ userProfile.contact_phone_value}}",
-            "address_street_1": "{{ userProfile.address_street_1 }}",
-            "address_street_2": "{{ userProfile.address_street_2 }}",
-            "address_city": "{{ userProfile.address_city }}",
-            "address_state": "{{ userProfile.address_state }}",
-            "address_postal_code": "{{ userProfile.address_postal_code }}"
+                      type: '{{ token.type }}',
+                      token: '{{ token.token }}'
           }
         }
       </script>
   </head>
   <body class="has-navbar-fixed-top">
-    @!include('partials.public-nav')
-    @!section('content')
+    <div id="app">
+        <router-view></router-view>
+    </div>
     {{ script('js/app.bundle') }}
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', function () {

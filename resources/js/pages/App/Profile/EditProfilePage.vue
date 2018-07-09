@@ -3,7 +3,7 @@
     <el-col :sm="24" id="step-2">
         <h1 class="title">Edit My Profile</h1>
         <el-card type="box">
-          <create-or-edit-profile-form :form="userProfile"></create-or-edit-profile-form>
+          <create-or-edit-profile-form :form="userProfile" :submitting="submitting"></create-or-edit-profile-form>
         </el-card>
     </el-col>
   </el-row>
@@ -33,14 +33,19 @@
           }
         },
         data() {
-            return {}
+            return {
+              submitting: false,
+              errors: {}
+            }
         },
 
         methods: {
           submitProfileForm() {
-            this.$http.put('users/'+this.user.uid+'/profile', this.userProfile)
+            this.submitting = true
+            this.$http.put('users/'+this.user.id+'/profile', this.userProfile)
               .then(response => {
                 console.log(response)
+                this.submitting = false
             })
           }
         },
