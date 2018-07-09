@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="24">
     <el-col :md="7">
-      <quick-add-appointment-form></quick-add-appointment-form>
+      <profile-card></profile-card>
     </el-col>
     <el-col :md="17" id="step-2">
       <div>
@@ -13,14 +13,14 @@
 
 <script>
 
-  import QuickAddAppointmentForm from '../../../components/Forms/Appointment/QuickAddAppointmentForm'
+  import ProfileCard from '../../../components/Cards/ProfileCard'
 
   export default {
     created() {
 
     },
     components: {
-      QuickAddAppointmentForm
+      ProfileCard
     },
     computed: {
       user() {

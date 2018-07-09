@@ -3368,6 +3368,87 @@ function mergeFn (a, b) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Cards/ProfileCard.vue?vue&type=script&lang=js":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Cards/ProfileCard.vue?vue&type=script&lang=js ***!
+  \*************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  name: 'ProfileCard',
+  created: function created() {},
+
+  components: {},
+  computed: {
+    user: function user() {
+      return this.$store.state.user;
+    },
+    userName: function userName() {
+      if (this.user) return this.user.username;
+
+      return null;
+    }
+  },
+  data: function data() {
+    return {
+      form: {
+        appointment_type: null,
+        appointment_datetime: new Date()
+      }
+    };
+  },
+
+  methods: {
+    goToProfile: function goToProfile() {
+      this.$router.push({ name: 'profiles.edit' });
+    }
+  },
+  mounted: function mounted() {},
+
+  props: [],
+  watch: {}
+};
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Appointment/QuickAddAppointmentForm.vue?vue&type=script&lang=js":
 /*!*************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Appointment/QuickAddAppointmentForm.vue?vue&type=script&lang=js ***!
@@ -3518,11 +3599,62 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   name: 'CreateOrEditProfileForm',
   created: function created() {},
   mounted: function mounted() {},
+
+  computed: {
+    availableStates: {
+      get: function get() {
+        return this.$store.state.available_states;
+      }
+    }
+  },
   data: function data() {
     return {};
   },
@@ -3530,37 +3662,14 @@ exports.default = {
   methods: {
     submitProfileForm: function submitProfileForm() {
       this.$bus.$emit('submit-profile');
-    },
-    formatToPhone: function formatToPhone(event) {
-      if (this.isModifierKey(event)) {
-        return;
+    }
+  },
+  watch: {
+    form: function form(val) {
+      if (val.date_of_birth && val.date_of_birth !== null) {
+        val.date_of_birth = this.$moment(val.date_of_birth).format('YYYY-MM-DD');
+        console.log(val.date_of_birth);
       }
-      var target = event.target;
-      var input = event.target.value.replace(/\D/g, '').substring(0, 10);
-      var zip = input.substring(0, 3);
-      var middle = input.substring(3, 6);
-      var last = input.substring(6, 10);
-
-      if (input.length > 6) {
-        target.value = '(' + zip + ') ' + middle + ' - ' + last;
-      } else if (input.length > 3) {
-        target.value = '(' + zip + ') ' + middle;
-      } else if (input.length > 0) {
-        target.value = '(' + zip;
-      }
-    },
-    enforceFormat: function enforceFormat(event) {
-      if (!this.isNumericInput(event) && !this.isModifierKey(event)) {
-        event.preventDefault();
-      }
-    },
-    isNumericInput: function isNumericInput(event) {
-      var key = event.keyCode;
-      return key >= 48 && key <= 57 || key >= 96 && key <= 105;
-    },
-    isModifierKey: function isModifierKey(event) {
-      var key = event.keyCode;
-      return event.shiftKey === true || key === 35 || key === 36 || key === 8 || key === 9 || key === 13 || key === 46 || key > 36 && key < 41 || (event.ctrlKey === true || event.metaKey === true) && (key === 65 || key === 67 || key === 86 || key === 88 || key === 90);
     }
   },
   props: ['form']
@@ -3582,9 +3691,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _QuickAddAppointmentForm = __webpack_require__(/*! ../../../components/Forms/Appointment/QuickAddAppointmentForm */ "./resources/js/components/Forms/Appointment/QuickAddAppointmentForm.vue");
+var _ProfileCard = __webpack_require__(/*! ../../../components/Cards/ProfileCard */ "./resources/js/components/Cards/ProfileCard.vue");
 
-var _QuickAddAppointmentForm2 = _interopRequireDefault(_QuickAddAppointmentForm);
+var _ProfileCard2 = _interopRequireDefault(_ProfileCard);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3592,7 +3701,7 @@ exports.default = {
   created: function created() {},
 
   components: {
-    QuickAddAppointmentForm: _QuickAddAppointmentForm2.default
+    ProfileCard: _ProfileCard2.default
   },
   computed: {
     user: function user() {
@@ -5734,6 +5843,25 @@ for (var i = 0; i < DOMIterables.length; i++) {
   if (proto && !proto[TO_STRING_TAG]) hide(proto, TO_STRING_TAG, NAME);
   Iterators[NAME] = Iterators.Array;
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Cards/ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css":
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Cards/ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
 
 
 /***/ }),
@@ -85100,6 +85228,36 @@ var index = (function () {
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Cards/ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Cards/ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Cards/ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Appointment/QuickAddAppointmentForm.vue?vue&type=style&index=0&id=c6865df8&scoped=true&lang=css":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Appointment/QuickAddAppointmentForm.vue?vue&type=style&index=0&id=c6865df8&scoped=true&lang=css ***!
@@ -86070,6 +86228,78 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Cards/ProfileCard.vue?vue&type=template&id=5402aa32&scoped=true":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Cards/ProfileCard.vue?vue&type=template&id=5402aa32&scoped=true ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "el-card",
+    { staticClass: "box-card" },
+    [
+      _c(
+        "div",
+        { staticClass: "clearfix", attrs: { slot: "header" }, slot: "header" },
+        [
+          _c("span", [
+            _c("span", { staticClass: "icon" }, [
+              _c("i", { staticClass: "fal fa-user-circle" })
+            ]),
+            _vm._v(" "),
+            _c("span", [_vm._v("\n        Profile\n      ")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "el-button",
+            {
+              staticStyle: { float: "right", padding: "3px 0" },
+              attrs: { type: "text", id: "step-1", icon: "el-icon-edit" },
+              on: { click: _vm.goToProfile }
+            },
+            [_vm._v("\n      Update\n    ")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-row",
+        { attrs: { gutter: 14 } },
+        [
+          _c("el-col", { attrs: { sm: 24, md: 8 } }, [
+            _c("img", {
+              staticClass: "rounded",
+              attrs: { src: "http://placehold.it/180x180", id: "step-3" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("el-col", { attrs: { sm: 24, md: 16 } }, [
+            _vm._v("\n      " + _vm._s(_vm.userName) + "\n    ")
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Appointment/QuickAddAppointmentForm.vue?vue&type=template&id=c6865df8&scoped=true":
 /*!*******************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Appointment/QuickAddAppointmentForm.vue?vue&type=template&id=c6865df8&scoped=true ***!
@@ -86183,6 +86413,18 @@ var render = function() {
             [
               _c(
                 "el-row",
+                [
+                  _c("el-col", { attrs: { span: 24 } }, [
+                    _c("h3", { staticClass: "title" }, [
+                      _vm._v("General Details")
+                    ])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-row",
                 { attrs: { gutter: 14 } },
                 [
                   _c(
@@ -86239,61 +86481,23 @@ var render = function() {
                     [
                       _c(
                         "el-form-item",
-                        { attrs: { label: "Phone" } },
+                        { attrs: { label: "Birthday" } },
                         [
-                          _c(
-                            "el-input",
-                            {
-                              staticClass: "input-with-select",
-                              attrs: { placeholder: "Please input" },
-                              model: {
-                                value: _vm.form.contact_phone_value,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.form, "contact_phone_value", $$v)
-                                },
-                                expression: "form.contact_phone_value"
-                              }
+                          _c("el-date-picker", {
+                            attrs: {
+                              type: "date",
+                              placeholder: "Pick a date",
+                              format: "M/d/yyyy",
+                              "value-format": "yyyy-M-d"
                             },
-                            [
-                              _c(
-                                "el-select",
-                                {
-                                  staticStyle: { width: "95px" },
-                                  attrs: {
-                                    slot: "prepend",
-                                    placeholder: "Select phone type"
-                                  },
-                                  slot: "prepend",
-                                  model: {
-                                    value: _vm.form.contact_phone_type,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.form,
-                                        "contact_phone_type",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "form.contact_phone_type"
-                                  }
-                                },
-                                [
-                                  _c("el-option", {
-                                    attrs: { label: "Mobile", value: "1" }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("el-option", {
-                                    attrs: { label: "Home", value: "2" }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("el-option", {
-                                    attrs: { label: "Work", value: "3" }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
+                            model: {
+                              value: _vm.form.date_of_birth,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "date_of_birth", $$v)
+                              },
+                              expression: "form.date_of_birth"
+                            }
+                          })
                         ],
                         1
                       )
@@ -86312,61 +86516,243 @@ var render = function() {
                     "el-col",
                     { attrs: { sm: 24 } },
                     [
+                      _c("h3", { staticClass: "title" }, [
+                        _vm._v("Contact Details")
+                      ]),
+                      _vm._v(" "),
                       _c(
-                        "el-form-item",
-                        { attrs: { label: "Phone" } },
+                        "el-row",
+                        { attrs: { gutter: 14 } },
                         [
                           _c(
-                            "el-input",
-                            {
-                              staticClass: "input-with-select",
-                              attrs: {
-                                type: "text",
-                                id: "phoneMask",
-                                placeholder: "Please input"
-                              },
-                              model: {
-                                value: _vm.form.contact_phone_value,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.form, "contact_phone_value", $$v)
-                                },
-                                expression: "form.contact_phone_value"
-                              }
-                            },
+                            "el-col",
+                            { attrs: { sm: 24, md: 16 } },
                             [
                               _c(
-                                "el-select",
-                                {
-                                  staticStyle: { width: "200px" },
-                                  attrs: {
-                                    slot: "prepend",
-                                    placeholder: "Select phone type"
-                                  },
-                                  slot: "prepend",
-                                  model: {
-                                    value: _vm.form.contact_phone_type,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.form,
-                                        "contact_phone_type",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "form.contact_phone_type"
-                                  }
-                                },
+                                "el-row",
                                 [
-                                  _c("el-option", {
-                                    attrs: { label: "Mobile", value: "1" }
-                                  }),
+                                  _c(
+                                    "el-col",
+                                    { attrs: { sm: 24 } },
+                                    [
+                                      _c(
+                                        "el-form-item",
+                                        { attrs: { label: "Street Address" } },
+                                        [
+                                          _c("el-input", {
+                                            model: {
+                                              value: _vm.form.address_street_1,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "address_street_1",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "form.address_street_1"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                { attrs: { gutter: 14 } },
+                                [
+                                  _c(
+                                    "el-col",
+                                    { attrs: { sm: 24, md: 8 } },
+                                    [
+                                      _c(
+                                        "el-form-item",
+                                        { attrs: { label: "City" } },
+                                        [
+                                          _c("el-input", {
+                                            model: {
+                                              value: _vm.form.address_city,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "address_city",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "form.address_city"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
                                   _vm._v(" "),
-                                  _c("el-option", {
-                                    attrs: { label: "Home", value: "2" }
-                                  }),
+                                  _c(
+                                    "el-col",
+                                    { attrs: { sm: 24, md: 6 } },
+                                    [
+                                      _c(
+                                        "el-form-item",
+                                        { attrs: { label: "State" } },
+                                        [
+                                          _c(
+                                            "el-select",
+                                            {
+                                              attrs: {
+                                                placeholder: "Select state"
+                                              },
+                                              model: {
+                                                value: _vm.form.address_state,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "address_state",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.address_state"
+                                              }
+                                            },
+                                            _vm._l(
+                                              _vm.availableStates,
+                                              function(value, key) {
+                                                return _c("el-option", {
+                                                  key: key,
+                                                  attrs: {
+                                                    value: value.key,
+                                                    label: value.value
+                                                  }
+                                                })
+                                              }
+                                            )
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
                                   _vm._v(" "),
-                                  _c("el-option", {
-                                    attrs: { label: "Work", value: "3" }
-                                  })
+                                  _c(
+                                    "el-col",
+                                    { attrs: { sm: 24, md: 10 } },
+                                    [
+                                      _c(
+                                        "el-form-item",
+                                        { attrs: { label: "Postal Code" } },
+                                        [
+                                          _c("el-input", {
+                                            model: {
+                                              value:
+                                                _vm.form.address_postal_code,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.form,
+                                                  "address_postal_code",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "form.address_postal_code"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-row",
+                        { attrs: { gutter: 14 } },
+                        [
+                          _c(
+                            "el-col",
+                            { attrs: { sm: 24, md: 8 } },
+                            [
+                              _c(
+                                "el-form-item",
+                                { attrs: { label: "Phone" } },
+                                [
+                                  _c(
+                                    "el-input",
+                                    {
+                                      staticClass: "input-with-select",
+                                      attrs: { placeholder: "Please input" },
+                                      model: {
+                                        value: _vm.form.contact_phone_value,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form,
+                                            "contact_phone_value",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "form.contact_phone_value"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "el-select",
+                                        {
+                                          staticStyle: { width: "95px" },
+                                          attrs: {
+                                            slot: "prepend",
+                                            placeholder: "Select phone type"
+                                          },
+                                          slot: "prepend",
+                                          model: {
+                                            value: _vm.form.contact_phone_type,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                _vm.form,
+                                                "contact_phone_type",
+                                                $$v
+                                              )
+                                            },
+                                            expression:
+                                              "form.contact_phone_type"
+                                          }
+                                        },
+                                        [
+                                          _c("el-option", {
+                                            attrs: {
+                                              label: "Mobile",
+                                              value: "1"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("el-option", {
+                                            attrs: { label: "Home", value: "2" }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("el-option", {
+                                            attrs: { label: "Work", value: "3" }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               )
@@ -86446,7 +86832,7 @@ var render = function() {
     "el-row",
     { attrs: { gutter: 24 } },
     [
-      _c("el-col", { attrs: { md: 7 } }, [_c("quick-add-appointment-form")], 1),
+      _c("el-col", { attrs: { md: 7 } }, [_c("profile-card")], 1),
       _vm._v(" "),
       _c("el-col", { attrs: { md: 17, id: "step-2" } }, [
         _c("div", [
@@ -105289,13 +105675,99 @@ new _vue2.default({
     }
   },
   watch: {
-    user: function user(val) {
-      if (val.has_viewed_joyride) {
-        val.has_viewed_joyride = parseInt(val.has_viewed_joyride);
-      }
-    }
+    user: function user(val) {}
   }
 }).$mount('#app-container');
+
+/***/ }),
+
+/***/ "./resources/js/components/Cards/ProfileCard.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/Cards/ProfileCard.vue ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProfileCard_vue_vue_type_template_id_5402aa32_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfileCard.vue?vue&type=template&id=5402aa32&scoped=true */ "./resources/js/components/Cards/ProfileCard.vue?vue&type=template&id=5402aa32&scoped=true");
+/* harmony import */ var _ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileCard.vue?vue&type=script&lang=js */ "./resources/js/components/Cards/ProfileCard.vue?vue&type=script&lang=js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _ProfileCard_vue_vue_type_style_index_0_id_5402aa32_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css */ "./resources/js/components/Cards/ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProfileCard_vue_vue_type_template_id_5402aa32_scoped_true__WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProfileCard_vue_vue_type_template_id_5402aa32_scoped_true__WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "5402aa32",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Cards/ProfileCard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Cards/ProfileCard.vue?vue&type=script&lang=js":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/Cards/ProfileCard.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileCard.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Cards/ProfileCard.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Cards/ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/Cards/ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_style_index_0_id_5402aa32_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Cards/ProfileCard.vue?vue&type=style&index=0&id=5402aa32&scoped=true&lang=css");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_style_index_0_id_5402aa32_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_style_index_0_id_5402aa32_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_style_index_0_id_5402aa32_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_style_index_0_id_5402aa32_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_style_index_0_id_5402aa32_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Cards/ProfileCard.vue?vue&type=template&id=5402aa32&scoped=true":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/Cards/ProfileCard.vue?vue&type=template&id=5402aa32&scoped=true ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_template_id_5402aa32_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileCard.vue?vue&type=template&id=5402aa32&scoped=true */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Cards/ProfileCard.vue?vue&type=template&id=5402aa32&scoped=true");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_template_id_5402aa32_scoped_true__WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCard_vue_vue_type_template_id_5402aa32_scoped_true__WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -106391,7 +106863,7 @@ exports.default = appRouter;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.js");
@@ -106409,25 +106881,176 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _vue2.default.use(_vuex2.default);
 
 var appStore = new _vuex2.default.Store({
-    state: {
-        user: null
+  state: {
+    user: null,
+    available_states: [{
+      key: 'AL',
+      value: 'Alabama'
+    }, {
+      key: 'AK',
+      value: 'Alaska'
+    }, {
+      key: 'AZ',
+      value: 'Arizona'
+    }, {
+      key: 'AR',
+      value: 'Arkansas'
+    }, {
+      key: 'CA',
+      value: 'California'
+    }, {
+      key: 'CO',
+      value: 'Colorado'
+    }, {
+      key: 'CT',
+      value: 'Connecticut'
+    }, {
+      key: 'DE',
+      value: 'Deleware'
+    }, {
+      key: 'DC',
+      value: 'District Of Columbia'
+    }, {
+      key: 'FL',
+      value: 'Florida'
+    }, {
+      key: 'GA',
+      value: 'Georgia'
+    }, {
+      key: 'HI',
+      value: 'Hawaii'
+    }, {
+      key: 'ID',
+      value: 'Idaho'
+    }, {
+      key: 'IL',
+      value: 'Illinois'
+    }, {
+      key: 'IN',
+      value: 'Indiana'
+    }, {
+      key: 'IA',
+      value: 'Iowa'
+    }, {
+      key: 'KS',
+      value: 'Kansas'
+    }, {
+      key: 'KY',
+      value: 'Kentucky'
+    }, {
+      key: 'LA',
+      value: 'Louisiana'
+    }, {
+      key: 'ME',
+      value: 'Maine'
+    }, {
+      key: 'MD',
+      value: 'Maryland'
+    }, {
+      key: 'MA',
+      value: 'Massachusetts'
+    }, {
+      key: 'MS',
+      value: 'Mississippi'
+    }, {
+      key: 'MI',
+      value: 'Michigan'
+    }, {
+      key: 'MN',
+      value: 'Minnesota'
+    }, {
+      key: 'MO',
+      value: 'Missouri'
+    }, {
+      key: 'MT',
+      value: 'Montana'
+    }, {
+      key: 'NH',
+      value: 'New Hampshire'
+    }, {
+      key: 'NJ',
+      value: 'New Jersey'
+    }, {
+      key: 'NM',
+      value: 'New Mexico'
+    }, {
+      key: 'NY',
+      value: 'New York'
+    }, {
+      key: 'NC',
+      value: 'North Carolina'
+    }, {
+      key: 'ND',
+      value: 'North Dakota'
+    }, {
+      key: 'OH',
+      value: 'Ohio'
+    }, {
+      key: 'OK',
+      value: 'Oklahoma'
+    }, {
+      key: 'OR',
+      value: 'Oregon'
+    }, {
+      key: 'PA',
+      value: 'Pennsylvania'
+    }, {
+      key: 'RI',
+      value: 'Rhode Island'
+    }, {
+      key: 'SC',
+      value: 'South Carolina'
+    }, {
+      key: 'SD',
+      value: 'South Dakota'
+    }, {
+      key: 'TN',
+      value: 'Tennessee'
+    }, {
+      key: 'TX',
+      value: 'Texas'
+    }, {
+      key: 'UT',
+      value: 'Utah'
+    }, {
+      key: 'VT',
+      value: 'Vermont'
+    }, {
+      key: 'VA',
+      value: 'Virginia'
+    }, {
+      key: 'WA',
+      value: 'Washington'
+    }, {
+      key: 'WV',
+      value: 'West Virginia'
+    }, {
+      key: 'WI',
+      value: 'Wisconsin'
+    }, {
+      key: 'WY',
+      value: 'Wyoming'
+    }]
+  },
+  getters: {
+    user: function user(state) {
+      return state.user;
     },
-    getters: {
-        user: function user(state) {
-            return state.user;
-        }
-    },
-    mutations: {
-        setCurrentUser: function setCurrentUser(state, user) {
-            state.user = _.assign({}, state.user, user);
-        }
-    },
-    actions: {
-        SET_USER: function SET_USER(context, user) {
-            context.commit('setCurrentUser', user);
-        },
-        REFRESH_USER_TOKEN: function REFRESH_USER_TOKEN(state, user) {}
+    available_states: function available_states(state) {
+      return state.available_states;
     }
+  },
+  mutations: {
+    setCurrentUser: function setCurrentUser(state, user) {
+      state.user = _.assign({}, state.user, user);
+    }
+  },
+  actions: {
+    SET_USER: function SET_USER(context, user) {
+      context.commit('setCurrentUser', user);
+    },
+    REFRESH_USER_TOKEN: function REFRESH_USER_TOKEN(state, user) {}
+  }
 });
 
 exports.default = appStore;

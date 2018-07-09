@@ -1,9 +1,10 @@
 'use strict'
 
-const User = use('App/Models/User')
 const UserUpdater = use('App/Services/UserServices/UserUpdater');
 
-
+/**
+ *
+ */
 class UsersController {
   async index({request, auth, response}) {
 

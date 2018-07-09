@@ -16,6 +16,7 @@
           "profile": {
             "name_first": "{{ userProfile.name_first }}",
             "name_last": "{{ userProfile.name_last }}",
+            "date_of_birth": "{{ userProfile.date_of_birth }}",
             "contact_phone_type": "{{ userProfile.contact_phone_type }}",
             "contact_phone_value": "{{ userProfile.contact_phone_value}}",
             "address_street_1": "{{ userProfile.address_street_1 }}",
@@ -29,7 +30,9 @@
   </head>
   <body class="has-navbar-fixed-top">
     @!include('partials.public-nav')
-    @!section('content')
+    <div class="container">
+      @!section('content')
+    </div>
     {{ script('js/app.bundle') }}
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', function () {

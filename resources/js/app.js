@@ -96,9 +96,7 @@ new Vue({
   },
   watch: {
     user(val) {
-      if(val.has_viewed_joyride) {
-        val.has_viewed_joyride = parseInt(val.has_viewed_joyride)
-      }
+      
     }
   }
 }).$mount('#app-container')
