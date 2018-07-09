@@ -2,7 +2,7 @@
 
 class PublicAppController {
 
-  showHomePage({request, auth, view, response}) {
+  showHomePage({request, auth, view}) {
     return view.render('welcome')
   }
 

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
      <meta charset="UTF-8" />
-      <title>Adonis Project</title>
+      <title>PawTrackers - Pet Dietary, Health & Chronic Disease Management</title>
       {{ style('css/app.bundle') }}
       <script type="text/javascript">
         window.User = {
@@ -11,6 +11,18 @@
           "token": {
                       "type": "{{ token.type }}",
                       "token": "{{ token.token }}"
+          },
+          "has_viewed_joyride": "{{ auth.user.has_viewed_joyride }}",
+          "profile": {
+            "name_first": "{{ userProfile.name_first }}",
+            "name_last": "{{ userProfile.name_last }}",
+            "contact_phone_type": "{{ userProfile.contact_phone_type }}",
+            "contact_phone_value": "{{ userProfile.contact_phone_value}}",
+            "address_street_1": "{{ userProfile.address_street_1 }}",
+            "address_street_2": "{{ userProfile.address_street_2 }}",
+            "address_city": "{{ userProfile.address_city }}",
+            "address_state": "{{ userProfile.address_state }}",
+            "address_postal_code": "{{ userProfile.address_postal_code }}"
           }
         }
       </script>
@@ -19,5 +31,22 @@
     @!include('partials.public-nav')
     @!section('content')
     {{ script('js/app.bundle') }}
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        if ($navbarBurgers.length > 0) {
+          $navbarBurgers.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+              var target = $el.dataset.target;
+              var $target = document.getElementById(target);
+
+              // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+              $el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+            });
+          });
+        }
+        });
+    </script>
   </body>
 </html>

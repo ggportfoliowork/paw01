@@ -19,10 +19,10 @@ const appStore = new Vuex.Store({
       },
   },
   actions: {
-      setUser(context, user) {
+      SET_USER(context, user) {
           context.commit('setCurrentUser', user)
       },
-      refreshUserToken(state, user) {
+      REFRESH_USER_TOKEN(state, user) {
 
       }
   }

@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
 
-import App from '../scaffold/App'
-
 import DashboardPage from '../pages/App/Dashboard/DashboardPage'
+import EditProfilePage from '../pages/App/Profile/EditProfilePage'
 
 import PetsRouter from '../pages/App/Pets/PetsRouter'
 import PetInfoPage from '../pages/App/Pets/PetInfoPage'
@@ -16,25 +15,23 @@ const routes = [
   {
       path: '/',
       name: 'root',
-      component: App,
+      component: DashboardPage,
       meta: {
         breadcrumb: 'Dashboard'
-      },
-      children: [
-        {
-          path: '',
-          component: DashboardPage,
-          name: 'dashboard',
-          meta: {
-            breadcrumb: ''
-          }
-        }
-      ]
+      }
+  },
+  {
+    path: '/profile',
+    name: 'profiles.edit',
+    component: EditProfilePage,
+    meta: {
+      breadcrumb: 'Edit Profile'
+    }
   },
   {
     path: '/pets',
     component: PetsRouter,
-    name: 'root-pets',
+    name: 'root.pets',
     meta: {
       breadcrumb: 'Pets'
     },
@@ -42,14 +39,14 @@ const routes = [
       {
         path: '',
         component: IndexPetsPage,
-        name: '',
+        name: 'pets.index',
         meta: {
           breadcrumb: ''
         }
       },
       {
         path: 'create',
-        name: 'create-pet',
+        name: 'pets.create',
         component: CreatePetsPage,
         meta: {
           breadcrumb: 'Add a Pet'
@@ -57,7 +54,7 @@ const routes = [
       },
       {
         path: ':petId',
-        name: 'view-pet-root',
+        name: 'pets.view',
         component: ViewPetsPage,
         meta: {
           breadcrumb: 'View Pet'
@@ -65,7 +62,7 @@ const routes = [
         children: [
           {
             path: '',
-            name: 'view-pet',
+            name: 'pets.view',
             component: PetInfoPage,
             meta: {
               breadcrumb: 'View Pet'
@@ -73,7 +70,7 @@ const routes = [
           },
           {
             path: 'edit',
-            name: 'edit-pet',
+            name: 'pets.edit',
             component: EditPetsPage,
             meta: {
               breadcrumb: 'Edit Pet'
@@ -87,12 +84,13 @@ const routes = [
 
 Vue.use(VueRouter)
 
-const router = new VueRouter({
+const appRouter = new VueRouter({
   mode: 'history',
+  relative: true,
   base: '/app/',
   linkActiveClass: 'active',
   router: true,
   routes
 })
 
-export default router
+export default appRouter

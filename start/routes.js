@@ -15,11 +15,9 @@
 
 const Route = use('Route')
 
-Route.on('/').render('welcome')
-
 Route
   .group(() => {
-    Route.get('/', 'PublicAppController@showHomePage')
+    Route.get('/', 'PublicAppController.showHomePage')
     Route.get('login', 'AuthControllers/LoginController.showLoginForm')
     Route.post('login', 'AuthControllers/LoginController.login')
     Route.get('register', 'AuthControllers/RegistrationController.showRegisterForm')
@@ -40,6 +38,12 @@ Route
 // API
 Route
   .group(() => {
+      Route.get('users', 'ApiControllers/UsersController.index')
+      Route.post('users', 'ApiControllers/UsersController.store')
+      Route.put('users/:userId', 'ApiControllers/UsersController.update')
+      Route.put('users/:userId/profile', 'ApiControllers/UsersController.updateUserProfile')
+      Route.delete('users/:userId', 'ApiControllers/UsersController.destroy')
+
       Route.get('pets', 'ApiControllers/PetsController.index')
       Route.post('pets', 'ApiControllers/PetsController.store')
       Route.put('pets/:petId', 'ApiControllers/PetsController.update')

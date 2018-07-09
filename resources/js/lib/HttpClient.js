@@ -3,7 +3,7 @@ import axios from 'axios'
 const APP_URL = process.env.APP_URL
 
 export const HttpClient = axios.create({
-  baseURL: "".concat('api/v1/'),
+  baseURL: "".concat('/api/v1/'),
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',

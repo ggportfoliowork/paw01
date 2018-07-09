@@ -2,6 +2,7 @@
 
 const Hash = use('Hash')
 const Model = use('Model')
+const Profile = use('App/Models/Profile')
 
 class User extends Model {
 
@@ -16,6 +17,25 @@ class User extends Model {
       if (userInstance.dirty.password) {
         userInstance.password = await Hash.make(userInstance.password)
       }
+    })
+
+    this.addHook('afterCreate', async (userInstance) => {
+        try {
+          await Profile.create({
+            'user_id': userInstance.id,
+            'name_first': null,
+            'name_last': null,
+            'contact_phone_type': null,
+            'contact_phone_value': null,
+            'address_street_1': null,
+            'address_street_2': null,
+            'address_state': null,
+            'address_city': null,
+            'address_postal_code': null
+          })
+        } catch(e) {
+          console.error("ERROR ", e)
+        }
     })
   }
 

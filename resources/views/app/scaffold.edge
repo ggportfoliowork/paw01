@@ -2,6 +2,9 @@
 
 @section('content')
   <div id="app-container">
-      <router-view></router-view>
+      <section class="section">
+        <router-view></router-view>
+      </section>
+      <v-tour name="pawsTour" :steps="steps" :callbacks="myCallbacks"></v-tour>
   </div>
 @endsection

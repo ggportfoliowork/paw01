@@ -1,10 +1,41 @@
+<div class="navbar-start">
+  <div class="navbar-item">
+    <a class="button is-text" href="/app">
+      <span class="icon">
+        <i class="fal fa-home"></i>
+      </span>
+      <span>
+        Dashboard
+      </span>
+    </a>
+  </div>
+  <div class="navbar-item">
+    <a class="button is-text" href="/app/pets">
+     <span class="icon">
+       <i class="fal fa-paw"></i>
+     </span>
+     <span>
+         Pets
+     </span>
+    </a>
+  </div>
+  <div class="navbar-item">
+      <a class="button is-text" href="/app/tracks">
+         <span class="icon">
+           <i class="fal fa-map-marked-alt"></i>
+         </span>
+         <span>
+             Tracks
+         </span>
+      </a>
+    </div>
+</div>
+
 <div class="navbar-end">
   <div class="navbar-item">
-    <div class="field is-grouped">
-      <p class="control">
         <form method="POST" action="/app/logout">
           {{ csrfField() }}
-          <button type="submit" class="button is-default">
+          <button type="submit" class="button is-text">
             <span class="icon">
               <i class="fal fa-power-off"></i>
             </span>
@@ -13,7 +44,5 @@
             </span>
           </button>
         </form>
-      </p>
-    </div>
   </div>
 </div>
