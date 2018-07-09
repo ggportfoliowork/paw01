@@ -38,16 +38,21 @@ Route
 // API
 Route
   .group(() => {
+
+      // User routes
       Route.get('users', 'ApiControllers/UsersController.index')
       Route.post('users', 'ApiControllers/UsersController.store')
+      Route.get('users/profile', 'ApiControllers/UsersController.show')
       Route.put('users/:userId', 'ApiControllers/UsersController.update')
       Route.put('users/:userId/profile', 'ApiControllers/UsersController.updateUserProfile')
       Route.delete('users/:userId', 'ApiControllers/UsersController.destroy')
 
+      // Pet routes
       Route.get('pets', 'ApiControllers/PetsController.index')
       Route.post('pets', 'ApiControllers/PetsController.store')
       Route.put('pets/:petId', 'ApiControllers/PetsController.update')
       Route.delete('pets/:petId', 'ApiControllers/PetsController.destroy')
+
   })
   .prefix('api/v1')
   .middleware(['auth:jwt'])

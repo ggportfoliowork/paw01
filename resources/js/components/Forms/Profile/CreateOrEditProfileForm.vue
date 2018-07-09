@@ -2,7 +2,16 @@
   <el-form v-model="form" label-position="top">
     <el-row>
       <el-col :sm="24" :md="8">
-        <h1>TEXT AND PHOTO UPLOAD</h1>
+        <nav class="level">
+          <div class="level-item has-text-centered">
+            <div class="photo-container">
+              <img src="http://placehold.it/180x180" class="rounded" />
+            </div><br /><br />
+            <el-button type="primary" @click="displayUploadPhotoDialog">
+              <i class="el-icon-picture"></i> Upload a Photo
+            </el-button>
+          </div>
+        </nav>
       </el-col>
       <el-col :sm="24" :md="16">
         <el-row>
@@ -73,9 +82,9 @@
                 <el-form-item label="Phone">
                   <el-input placeholder="Please input" v-model="form.contact_phone_value" class="input-with-select">
                     <el-select style="width:95px;" v-model="form.contact_phone_type" slot="prepend" placeholder="Select phone type">
-                      <el-option label="Mobile" value="1"></el-option>
-                      <el-option label="Home" value="2"></el-option>
-                      <el-option label="Work" value="3"></el-option>
+                      <el-option label="Mobile" :value="1"></el-option>
+                      <el-option label="Home" :value="2"></el-option>
+                      <el-option label="Work" :value="3"></el-option>
                     </el-select>
                   </el-input>
                 </el-form-item>
@@ -87,7 +96,7 @@
         <el-row>
           <el-col :sm="24">
             <el-form-item>
-              <el-button type="primary" @click="submitProfileForm">Save</el-button>
+              <el-button type="primary" @click="submitProfileForm" :loading="submitting">Save</el-button>
             </el-form-item>
           </el-col>
         </el-row>
@@ -121,15 +130,13 @@
       submitProfileForm() {
         this.$bus.$emit('submit-profile')
       },
-    },
-    watch: {
-      form(val) {
-        if(val.date_of_birth && val.date_of_birth !== null) {
-          val.date_of_birth = this.$moment(val.date_of_birth).format('YYYY-MM-DD')
-          console.log(val.date_of_birth)
-        }
+      displayUploadPhotoDialog() {
+        this.$bus.$emit('show-dialog-photo-upload')
       }
     },
-    props: ['form']
+    watch: {
+
+    },
+    props: ['form', 'submitting', 'errors']
   }
 </script>

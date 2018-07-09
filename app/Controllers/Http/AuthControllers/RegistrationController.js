@@ -3,12 +3,27 @@
 const { validate } = use('Validator')
 const UserCreator = use('App/Services/UserServices/UserCreator');
 
+/**
+ * Registration Controller
+ */
 class RegistrationController {
 
+  /**
+   * Display the registration form
+   * @param view
+   * @returns {*}
+   */
   showRegisterForm({view}) {
     return view.render('auth.register')
   }
 
+  /**
+   * Register a user from the web portal
+   * @param request
+   * @param params
+   * @param view
+   * @returns {Promise<*>}
+   */
   async register({request, params, view}) {
 
     const rules = {
