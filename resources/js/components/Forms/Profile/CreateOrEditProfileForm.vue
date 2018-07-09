@@ -60,7 +60,7 @@
 
     },
     mounted() {
-      
+
     },
     data() {
       return {
