@@ -2,23 +2,26 @@
   <el-form v-model="form" label-position="top">
     <el-row>
       <el-col :sm="24" :md="8">
-        <nav class="level">
-          <div class="level-item has-text-centered">
-            <div class="photo-container">
-              <img src="http://placehold.it/180x180" class="rounded" />
-            </div><br /><br />
+        <el-row>
+          <el-col :span="24">
+            <nav class="level">
+              <div class="level-item has-text-centered">
+                <div class="photo-container">
+                  <img :src="$store.state.profilePhoto" class="rounded" style="height:180px;width:180px;" />
+                </div>
+              </div>
+            </nav>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24" class="has-text-centered" style="margin-top:10px;">
             <el-button type="primary" @click="displayUploadPhotoDialog">
               <i class="el-icon-picture"></i> Upload a Photo
             </el-button>
-          </div>
-        </nav>
-      </el-col>
-      <el-col :sm="24" :md="16">
-        <el-row>
-          <el-col :span="24">
-            <h3 class="title">General Details</h3>
           </el-col>
         </el-row>
+      </el-col>
+      <el-col :sm="24" :md="16">
         <el-row :gutter="14">
             <el-col :sm="24" :md="8">
               <el-form-item label="First Name">
@@ -43,7 +46,6 @@
         </el-row>
         <el-row :gutter="14">
           <el-col :sm="24">
-            <h3 class="title">Contact Details</h3>
             <el-row :gutter="14">
               <el-col :sm="24" :md="16">
                 <el-row>
@@ -115,11 +117,14 @@
 
     },
     computed: {
+      user() {
+        return this.$store.state.user
+      },
       availableStates: {
         get() {
           return this.$store.state.available_states
         }
-      }
+      },
     },
     data() {
       return {

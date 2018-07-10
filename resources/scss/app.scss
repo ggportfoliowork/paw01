@@ -49,14 +49,18 @@ input:-webkit-autofill {
   text-decoration: none !important;
 }
 
+.navbar {
+  -webkit-box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+}
+
 img.rounded {
   border-radius: 50%;
 }
 
-legend {
-  padding: 0.2em 0.5em;
-  border:1px solid $info;
-  color:black;
-  font-size:90%;
-  text-align:right;
+.el-card__body > .el-row > .el-col > h1.title {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px 0px 10px 0px;
 }
+
+

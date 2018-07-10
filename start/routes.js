@@ -55,6 +55,9 @@ Route
       Route.put('pets/:petId', 'ApiControllers/PetsController.update')
       Route.delete('pets/:petId', 'ApiControllers/PetsController.destroy')
 
+      Route.post('photos', 'ApiControllers/PhotosController.store')
+      Route.post('photos/crop', 'ApiControllers/PhotosController.storeCrop')
+
   })
   .prefix('api/v1')
   .middleware(['auth:jwt'])

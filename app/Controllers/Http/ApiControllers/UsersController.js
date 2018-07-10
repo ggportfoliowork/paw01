@@ -17,12 +17,13 @@ class UsersController {
    * @returns {Promise<void>}
    */
   async show({request, auth, response}) {
-    const users = await User
+    const user = await User
                           .query()
                           .with('profile')
+                          .with('profile_photos')
                           .where('id', auth.user.id)
-                          .fetch()
-    return response.json({success: true, message: '', data: users.first()})
+                          .firstOrFail()
+    return response.json({success: true, message: '', data: user})
   }
 
   /**

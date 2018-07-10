@@ -70,11 +70,19 @@ class User extends Model {
   }
 
   /**
-   * User Profile
+   * A user has one profile
    * @returns {HasOne}
    */
   profile() {
     return this.hasOne('App/Models/Profile')
+  }
+
+  /**
+   * A user has one profile photo
+   * @returns {HasOne}
+   */
+  profile_photos() {
+    return this.hasOne('App/Models/ProfilePhoto')
   }
 
 }

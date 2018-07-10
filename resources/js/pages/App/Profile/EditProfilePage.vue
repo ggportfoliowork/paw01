@@ -1,8 +1,12 @@
 <template>
   <el-row :gutter="24">
     <el-col :sm="24" id="step-2">
-        <h1 class="title">Edit My Profile</h1>
         <el-card type="box">
+          <el-row style="margin-bottom:10px;">
+            <el-col :span="24">
+              <h1 class="title">Edit My Profile</h1>
+            </el-col>
+          </el-row>
           <create-or-edit-profile-form :form="userProfile" :submitting="submitting"></create-or-edit-profile-form>
         </el-card>
     </el-col>
