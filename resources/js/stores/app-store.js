@@ -206,7 +206,8 @@ const appStore = new Vuex.Store({
           key: 'WY',
           value: 'Wyoming'
         },
-      ]
+      ],
+      profilePhoto: '/profile-pics/default.jpg'
   },
   getters: {
       user: state => {
@@ -214,20 +215,33 @@ const appStore = new Vuex.Store({
       },
       available_states: state => {
         return state.available_states
+      },
+      profilePhoto: state => {
+        return state.profilePhoto
       }
   },
   mutations: {
     setCurrentUser(state, user) {
+        if(user.profile_photos && user.profile_photos !== null) {
+          state.profilePhoto = '/profile-pics/'+user.profile_photos.file_name
+        } else {
+          state.profilePhoto = '/profile-pics/default.jpg'
+        }
         state.user = _.assign({}, state.user, user)
     },
+    setProfilePhoto(state, profilePhoto) {
+        state.profilePhoto = profilePhoto
+    }
   },
   actions: {
       SET_USER(context, user) {
         HttpClient.get('users/profile')
           .then(response => {
-
               context.commit('setCurrentUser', response.data.data)
           })
+      },
+      SET_USER_PROFILE_PHOTO(context, profilePhoto) {
+        context.commit('setProfilePhoto', '/profile-pics/'+profilePhoto)
       },
       REFRESH_USER_TOKEN(state, user) {
 

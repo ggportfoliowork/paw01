@@ -19,7 +19,7 @@
     </div>
     <el-row :gutter="14">
       <el-col :sm="24" :md="8">
-        <img class="rounded" src="http://placehold.it/180x180" id="step-3" />
+        <img class="rounded" :src="$store.state.profilePhoto" id="step-3" />
       </el-col>
       <el-col :sm="24" :md="16">
         {{ userName }}

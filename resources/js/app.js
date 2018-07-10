@@ -4,9 +4,11 @@ import Vuex from 'vuex'
 import moment from 'moment'
 import lodash from 'lodash'
 import VueRouter from 'vue-router'
+import VueCroppie from 'vue-croppie';
 
 // element-ui
 import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/display.css';
 import locale from 'element-ui/lib/locale/lang/en'
 
 // library
@@ -27,6 +29,7 @@ import UserNavMenu from './scaffold/UserNavMenu'
 Vue.use(Vuex)
 Vue.use(VueTour)
 Vue.use(VueRouter)
+Vue.use(VueCroppie)
 
 Vue.use(Element, { locale })
 
@@ -58,45 +61,13 @@ new Vue({
   },
   data() {
     return {
-      steps: [
-        {
-          target: '#step-1',
-          content: `A test tour object.`,
-        },
-        {
-          target: '#step-2',
-          content: 'Another test tour object with longer text for the DOM.',
-        },
-        {
-          target: '#step-3',
-          content: 'An even longer test tour object to prepare the vue tour for the longest text lorem ipsum see if it wraps around the eniter page DOM and see what the formatting is like on a super long string inside of a tour object.',
-          params: {
-            placement: 'bottom'
-          }
-        }
-      ],
-      myCallbacks: {
-         onStop: this.completeTour
-       }
+
     }
   },
   methods: {
-    startTour() {
-      this.$tours['pawsTour'].start()
-    },
 
-    completeTour() {
-      this.$http.put('users/'+this.user.uid, {
-          has_viewed_joyride: 1
-      })
-        .then(response => {
-            console.log(response)
-        })
-    }
   },
   watch: {
-    user(val) {
 
-    }
   }
 }).$mount('#app')

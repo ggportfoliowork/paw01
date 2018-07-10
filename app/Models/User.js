@@ -65,8 +65,20 @@ class User extends Model {
     return this.hasMany('App/Models/Pet')
   }
 
+  /**
+   * A user has a profile
+   * @returns {HasOne}
+   */
   profile() {
     return this.hasOne('App/Models/Profile')
+  }
+
+  /**
+   * 
+   * @returns {HasOne}
+   */
+  profile_photos() {
+    return this.hasOne('App/Models/ProfilePhoto')
   }
 
 }
