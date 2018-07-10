@@ -55,6 +55,14 @@ new Vue({
           message: data.message,
         })
     })
+
+    this.$bus.$on('display-server-error', (data) => {
+      this.$message({
+        type: 'exception',
+        title: 'Error',
+        message: 'There was an error processing your data'
+      })
+    })
   },
   components: {
     UserNavMenu

@@ -4311,6 +4311,9 @@ exports.default = {
       _this.submitProfileForm();
     });
   },
+  beforeDestroy: function beforeDestroy() {
+    this.$bus.$off('submit-profile');
+  },
 
   components: {
     CreateOrEditProfileForm: _CreateOrEditProfileForm2.default
@@ -4328,7 +4331,7 @@ exports.default = {
   data: function data() {
     return {
       submitting: false,
-      errors: {}
+      errors: []
     };
   },
 
@@ -4339,13 +4342,13 @@ exports.default = {
       this.submitting = true;
       this.$http.put('users/' + this.user.id + '/profile', this.userProfile).then(function (response) {
         if (response.data.success) {
+          _this2.errors = [];
           _this2.$bus.$emit('display-success', {
             title: response.data.title,
             message: response.data.message
           });
         } else if (!response.data.success) {
-          _this2.errors = response.data.errors.messages;
-          console.log(_this2.errors);
+          _this2.errors = response.data;
         }
 
         _this2.submitting = false;
@@ -10590,7 +10593,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -94699,8 +94702,9 @@ var render = function() {
                         "el-form-item",
                         {
                           class: {
-                            "is-error":
-                              _vm.errors.messages["field"]["name_first"]
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "name_first"
+                            })
                           },
                           attrs: { label: "First Name" }
                         },
@@ -94715,16 +94719,18 @@ var render = function() {
                             }
                           }),
                           _vm._v(" "),
-                          _vm.errors.messages["field"]["name_first"]
+                          _vm.errors.find(function(error) {
+                            return error.field === "name_first"
+                          })
                             ? _c(
                                 "span",
                                 { staticClass: "el-form-item__error" },
                                 [
                                   _vm._v(
                                     _vm._s(
-                                      _vm.errors.messages["field"][
-                                        "name_first"
-                                      ]["message"]
+                                      _vm.errors.find(function(error) {
+                                        return error.field === "name_first"
+                                      }).message
                                     )
                                   )
                                 ]
@@ -94744,7 +94750,11 @@ var render = function() {
                       _c(
                         "el-form-item",
                         {
-                          class: { "is-error": _vm.errors.name_last },
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "name_last"
+                            })
+                          },
                           attrs: { label: "Last Name" }
                         },
                         [
@@ -94758,11 +94768,21 @@ var render = function() {
                             }
                           }),
                           _vm._v(" "),
-                          _vm.errors.name_last
+                          _vm.errors.find(function(error) {
+                            return error.field === "name_last"
+                          })
                             ? _c(
                                 "span",
                                 { staticClass: "el-form-item__error" },
-                                [_vm._v(_vm._s(_vm.errors.name_last[0]))]
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.errors.find(function(error) {
+                                        return error.field === "name_last"
+                                      }).message
+                                    )
+                                  )
+                                ]
                               )
                             : _vm._e()
                         ],
@@ -94779,7 +94799,11 @@ var render = function() {
                       _c(
                         "el-form-item",
                         {
-                          class: { "is-error": _vm.errors.date_of_birth },
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "date_of_birth"
+                            })
+                          },
                           attrs: { label: "Birthday" }
                         },
                         [
@@ -94799,11 +94823,21 @@ var render = function() {
                             }
                           }),
                           _vm._v(" "),
-                          _vm.errors.date_of_birth
+                          _vm.errors.find(function(error) {
+                            return error.field === "date_of_birth"
+                          })
                             ? _c(
                                 "span",
                                 { staticClass: "el-form-item__error" },
-                                [_vm._v(_vm._s(_vm.errors.date_of_birth[0]))]
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.errors.find(function(error) {
+                                        return error.field === "date_of_birth"
+                                      }).message
+                                    )
+                                  )
+                                ]
                               )
                             : _vm._e()
                         ],
@@ -94843,8 +94877,14 @@ var render = function() {
                                         "el-form-item",
                                         {
                                           class: {
-                                            "is-error":
-                                              _vm.errors.address_street_1
+                                            "is-error": _vm.errors.find(
+                                              function(error) {
+                                                return (
+                                                  error.field ===
+                                                  "address_street_1"
+                                                )
+                                              }
+                                            )
                                           },
                                           attrs: { label: "Street Address" }
                                         },
@@ -94864,7 +94904,11 @@ var render = function() {
                                             }
                                           }),
                                           _vm._v(" "),
-                                          _vm.errors.address_street_1
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field === "address_street_1"
+                                            )
+                                          })
                                             ? _c(
                                                 "span",
                                                 {
@@ -94874,8 +94918,14 @@ var render = function() {
                                                 [
                                                   _vm._v(
                                                     _vm._s(
-                                                      _vm.errors
-                                                        .address_street_1[0]
+                                                      _vm.errors.find(function(
+                                                        error
+                                                      ) {
+                                                        return (
+                                                          error.field ===
+                                                          "address_street_1"
+                                                        )
+                                                      }).message
                                                     )
                                                   )
                                                 ]
@@ -94904,6 +94954,16 @@ var render = function() {
                                         { attrs: { label: "City" } },
                                         [
                                           _c("el-input", {
+                                            class: {
+                                              "is-error": _vm.errors.find(
+                                                function(error) {
+                                                  return (
+                                                    error.field ===
+                                                    "address_city"
+                                                  )
+                                                }
+                                              )
+                                            },
                                             model: {
                                               value: _vm.form.address_city,
                                               callback: function($$v) {
@@ -94931,7 +94991,14 @@ var render = function() {
                                         "el-form-item",
                                         {
                                           class: {
-                                            "is-error": _vm.errors.address_state
+                                            "is-error": _vm.errors.find(
+                                              function(error) {
+                                                return (
+                                                  error.field ===
+                                                  "address_state"
+                                                )
+                                              }
+                                            )
                                           },
                                           attrs: { label: "State" }
                                         },
@@ -94968,7 +95035,11 @@ var render = function() {
                                             )
                                           ),
                                           _vm._v(" "),
-                                          _vm.errors.address_state
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field === "address_state"
+                                            )
+                                          })
                                             ? _c(
                                                 "span",
                                                 {
@@ -94978,8 +95049,14 @@ var render = function() {
                                                 [
                                                   _vm._v(
                                                     _vm._s(
-                                                      _vm.errors
-                                                        .address_state[0]
+                                                      _vm.errors.find(function(
+                                                        error
+                                                      ) {
+                                                        return (
+                                                          error.field ===
+                                                          "address_state"
+                                                        )
+                                                      }).message
                                                     )
                                                   )
                                                 ]
@@ -95000,8 +95077,14 @@ var render = function() {
                                         "el-form-item",
                                         {
                                           class: {
-                                            "is-error":
-                                              _vm.errors.address_postal_code
+                                            "is-error": _vm.errors.find(
+                                              function(error) {
+                                                return (
+                                                  error.field ===
+                                                  "address_postal_code"
+                                                )
+                                              }
+                                            )
                                           },
                                           attrs: { label: "Postal Code" }
                                         },
@@ -95022,7 +95105,12 @@ var render = function() {
                                             }
                                           }),
                                           _vm._v(" "),
-                                          _vm.errors.address_postal_code
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field ===
+                                              "address_postal_code"
+                                            )
+                                          })
                                             ? _c(
                                                 "span",
                                                 {
@@ -95032,8 +95120,14 @@ var render = function() {
                                                 [
                                                   _vm._v(
                                                     _vm._s(
-                                                      _vm.errors
-                                                        .address_postal_code[0]
+                                                      _vm.errors.find(function(
+                                                        error
+                                                      ) {
+                                                        return (
+                                                          error.field ===
+                                                          "address_postal_code"
+                                                        )
+                                                      }).message
                                                     )
                                                   )
                                                 ]
@@ -114541,6 +114635,14 @@ new _vue2.default({
         message: data.message
       });
     });
+
+    this.$bus.$on('display-server-error', function (data) {
+      _this.$message({
+        type: 'exception',
+        title: 'Error',
+        message: 'There was an error processing your data'
+      });
+    });
   },
 
   components: {
@@ -115130,6 +115232,8 @@ exports.HttpClient = undefined;
 var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 var _axios2 = _interopRequireDefault(_axios);
+
+var _EventBus = __webpack_require__(/*! ./EventBus */ "./resources/js/lib/EventBus.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

@@ -24,26 +24,26 @@
       <el-col :sm="24" :md="16">
         <el-row :gutter="14">
             <el-col :sm="24" :md="8">
-              <el-form-item label="First Name" :class="{ 'is-error': errors.messages['field']['name_first'] }">
+              <el-form-item label="First Name" :class="{ 'is-error': errors.find(error => error.field === 'name_first') }">
                 <el-input v-model="form.name_first" />
-                <span class="el-form-item__error" v-if="errors.messages['field']['name_first']">{{ errors.messages['field']['name_first']['message'] }}</span>
+                <span class="el-form-item__error" v-if="errors.find(error => error.field === 'name_first')">{{ errors.find(error => error.field === 'name_first').message }}</span>
               </el-form-item>
             </el-col>
           <el-col :sm="24" :md="8">
-            <el-form-item label="Last Name" :class="{ 'is-error': errors.name_last }">
+            <el-form-item label="Last Name" :class="{ 'is-error': errors.find(error => error.field === 'name_last') }">
               <el-input v-model="form.name_last" />
-              <span class="el-form-item__error" v-if="errors.name_last">{{ errors.name_last[0] }}</span>
+              <span class="el-form-item__error" v-if="errors.find(error => error.field === 'name_last')">{{ errors.find(error => error.field === 'name_last').message }}</span>
             </el-form-item>
           </el-col>
           <el-col :sm="24" :md="8">
-            <el-form-item label="Birthday" :class="{ 'is-error': errors.date_of_birth }">
+            <el-form-item label="Birthday" :class="{ 'is-error': errors.find(error => error.field === 'date_of_birth') }">
               <el-date-picker v-model="form.date_of_birth"
                              type="date"
                              placeholder="Pick a date"
                              format="M/d/yyyy"
                              value-format="yyyy-M-d"
               />
-              <span class="el-form-item__error" v-if="errors.date_of_birth">{{ errors.date_of_birth[0] }}</span>
+              <span class="el-form-item__error" v-if="errors.find(error => error.field === 'date_of_birth')">{{ errors.find(error => error.field === 'date_of_birth').message }}</span>
             </el-form-item>
           </el-col>
         </el-row>
@@ -53,33 +53,33 @@
               <el-col :sm="24" :md="16">
                 <el-row>
                   <el-col :sm="24">
-                    <el-form-item label="Street Address" :class="{ 'is-error': errors.address_street_1 }">
+                    <el-form-item label="Street Address" :class="{ 'is-error': errors.find(error => error.field === 'address_street_1') }">
                       <el-input v-model="form.address_street_1"></el-input>
-                      <span class="el-form-item__error" v-if="errors.address_street_1">{{ errors.address_street_1[0] }}</span>
+                      <span class="el-form-item__error" v-if="errors.find(error => error.field === 'address_street_1')">{{ errors.find(error => error.field === 'address_street_1').message }}</span>
                     </el-form-item>
                   </el-col>
                 </el-row>
                 <el-row :gutter="14">
                   <el-col :sm="24" :md="8">
                     <el-form-item label="City">
-                      <el-input v-model="form.address_city"></el-input>
+                      <el-input v-model="form.address_city" :class="{ 'is-error': errors.find(error => error.field === 'address_city') }"></el-input>
                     </el-form-item>
                   </el-col>
                   <el-col :sm="24" :md="6">
-                    <el-form-item label="State" :class="{ 'is-error': errors.address_state }">
+                    <el-form-item label="State" :class="{ 'is-error': errors.find(error => error.field === 'address_state') }">
                       <el-select v-model="form.address_state" placeholder="Select state">
                         <el-option v-for="(value, key) in availableStates"
                                     :key="key"
                                     :value="value.key"
                                     :label="value.value"></el-option>
                       </el-select>
-                      <span class="el-form-item__error" v-if="errors.address_state">{{ errors.address_state[0] }}</span>
+                      <span class="el-form-item__error" v-if="errors.find(error => error.field === 'address_state')">{{ errors.find(error => error.field === 'address_state').message }}</span>
                     </el-form-item>
                   </el-col>
                   <el-col :sm="24" :md="10">
-                    <el-form-item label="Postal Code" :class="{ 'is-error': errors.address_postal_code }">
+                    <el-form-item label="Postal Code" :class="{ 'is-error': errors.find(error => error.field === 'address_postal_code') }">
                       <el-input v-model="form.address_postal_code"></el-input>
-                      <span class="el-form-item__error" v-if="errors.address_postal_code">{{ errors.address_postal_code[0] }}</span>
+                      <span class="el-form-item__error" v-if="errors.find(error => error.field === 'address_postal_code')">{{ errors.find(error => error.field === 'address_postal_code').message }}</span>
                     </el-form-item>
                   </el-col>
                 </el-row>

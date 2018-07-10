@@ -1,7 +1,6 @@
 'use strict'
 
 const User = use('App/Models/User')
-const { validateAll } = use('Validator')
 const UserUpdaterService = use('App/Services/UserServices/UserUpdaterService');
 const UserCreatorService = use('App/Services/UserServices/UserCreatorService');
 
@@ -62,7 +61,7 @@ class UsersController {
    * @returns {Promise<*>}
    */
   async updateUserProfile({request, response}) {
-      const userUpdater = new UserUpdater()
+      const userUpdater = new UserUpdaterService()
       const profile = await userUpdater.updateProfile(request.params.userId, request.all())
       return response.json({success: true, message: 'User profile has been updated', title: "Profile Updated", data: profile})
   }

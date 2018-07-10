@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {EventBus} from './EventBus'
 
 const APP_URL = process.env.APP_URL
 
@@ -13,7 +14,7 @@ export const HttpClient = axios.create({
     return status
   },
   transformResponse: [function (data, headers) {
-    return JSON.parse(data);
+      return JSON.parse(data);
   }],
 })
 

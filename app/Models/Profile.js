@@ -11,6 +11,11 @@ class Profile extends Model {
     super.boot()
   }
 
+  static get dates () {
+    return super.dates.concat(['date_of_birth'])
+  }
+
+
   /**
    * User Relation
    */

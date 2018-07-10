@@ -22,6 +22,9 @@
             this.submitProfileForm()
           })
         },
+        beforeDestroy() {
+          this.$bus.$off('submit-profile')
+        },
         components: {
           CreateOrEditProfileForm
         },
@@ -39,7 +42,7 @@
         data() {
             return {
               submitting: false,
-              errors: {}
+              errors: []
             }
         },
         methods: {
@@ -48,13 +51,13 @@
             this.$http.put('users/'+this.user.id+'/profile', this.userProfile)
               .then(response => {
                 if(response.data.success) {
+                  this.errors = []
                   this.$bus.$emit('display-success', {
                     title: response.data.title,
                     message: response.data.message
                   })
                 } else if(!response.data.success) {
-                  this.errors = response.data.errors.messages
-                  console.log(this.errors)
+                  this.errors = response.data
                 }
 
                 this.submitting = false
