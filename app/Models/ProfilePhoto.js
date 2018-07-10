@@ -1,0 +1,12 @@
+'use strict'
+
+const Model = use('Model')
+
+class ProfilePhoto extends Model {
+
+  user() {
+    return this.belongsTo('App/Models/User')
+  }
+}
+
+module.exports = ProfilePhoto
