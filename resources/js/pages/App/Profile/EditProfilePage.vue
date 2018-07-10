@@ -7,15 +7,15 @@
               <h1 class="title">Edit My Profile</h1>
             </el-col>
           </el-row>
-          <create-or-edit-profile-form :form="userProfile" :submitting="submitting"></create-or-edit-profile-form>
+          <create-or-edit-profile-form :form="userProfile" :submitting="submitting" :errors="errors"></create-or-edit-profile-form>
         </el-card>
     </el-col>
   </el-row>
 </template>
 
 <script>
-
     import CreateOrEditProfileForm from '../../../components/Forms/Profile/CreateOrEditProfileForm'
+
     export default {
         created() {
           this.$bus.$on('submit-profile', () => {
@@ -42,13 +42,21 @@
               errors: {}
             }
         },
-
         methods: {
           submitProfileForm() {
             this.submitting = true
             this.$http.put('users/'+this.user.id+'/profile', this.userProfile)
               .then(response => {
-                console.log(response)
+                if(response.data.success) {
+                  this.$bus.$emit('display-success', {
+                    title: response.data.title,
+                    message: response.data.message
+                  })
+                } else if(!response.data.success) {
+                  this.errors = response.data.errors.messages
+                  console.log(this.errors)
+                }
+
                 this.submitting = false
             })
           }

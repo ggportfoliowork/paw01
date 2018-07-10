@@ -1,8 +1,9 @@
 'use strict'
 
 const User = use('App/Models/User')
-const UserUpdater = use('App/Services/UserServices/UserUpdater');
-const UserCreator = use('App/Services/UserServices/UserCreator');
+const { validateAll } = use('Validator')
+const UserUpdaterService = use('App/Services/UserServices/UserUpdaterService');
+const UserCreatorService = use('App/Services/UserServices/UserCreatorService');
 
 /**
  * UserController
@@ -33,7 +34,7 @@ class UsersController {
    * @returns {Promise<*>}
    */
   async store({request, response}) {
-    const userCreator = new UserCreator()
+    const userCreator = new UserCreatorService()
     let user = userCreator.create(request.all())
     if(user) {
       return response.json({success: true, message: 'Registration has been completed.', data: user})
@@ -49,7 +50,7 @@ class UsersController {
    * @returns {Promise<*>}
    */
   async update({request, response}) {
-      const userUpdater = new UserUpdater()
+      const userUpdater = new UserUpdaterService()
       const user = await userUpdater.update(request.params.userId, request.all())
       return response.json({success: true, message: '', data: user})
   }

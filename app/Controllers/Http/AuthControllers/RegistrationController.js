@@ -1,7 +1,7 @@
 'use strict'
 
 const { validate } = use('Validator')
-const UserCreator = use('App/Services/UserServices/UserCreator');
+const UserCreatorService = use('App/Services/UserServices/UserCreatorService');
 
 /**
  * Registration Controller
@@ -37,7 +37,7 @@ class RegistrationController {
       let errorMessages = {messages: validation.messages()}
       return view.render('auth.register', errorMessages)
     } else {
-      const userCreator = new UserCreator()
+      const userCreator = new UserCreatorService()
       let user = userCreator.create(request.all())
       if(user) {
         return view.render('auth.login', {recentlyRegistered: 'Your account was created.  Please login.'})

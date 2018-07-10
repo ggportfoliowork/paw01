@@ -15,3 +15,6 @@ database/development.sqlite
 
 # Public Profile Images
 public/profile-pics
+
+# Temp Data
+tmp

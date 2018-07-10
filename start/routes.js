@@ -46,7 +46,7 @@ Route
       Route.post('users', 'ApiControllers/UsersController.store')
       Route.get('users/profile', 'ApiControllers/UsersController.show')
       Route.put('users/:userId', 'ApiControllers/UsersController.update')
-      Route.put('users/:userId/profile', 'ApiControllers/UsersController.updateUserProfile')
+      Route.put('users/:userId/profile', 'ApiControllers/UsersController.updateUserProfile').validator('StoreUserProfile')
       Route.delete('users/:userId', 'ApiControllers/UsersController.destroy')
 
       // Pet routes

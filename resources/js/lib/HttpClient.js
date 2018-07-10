@@ -13,7 +13,6 @@ export const HttpClient = axios.create({
     return status
   },
   transformResponse: [function (data, headers) {
-    console.log("RESPONSE DATA ", data)
     return JSON.parse(data);
   }],
 })

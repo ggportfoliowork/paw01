@@ -3756,6 +3756,12 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   name: 'CreateOrEditProfileForm',
@@ -4326,14 +4332,22 @@ exports.default = {
     };
   },
 
-
   methods: {
     submitProfileForm: function submitProfileForm() {
       var _this2 = this;
 
       this.submitting = true;
       this.$http.put('users/' + this.user.id + '/profile', this.userProfile).then(function (response) {
-        console.log(response);
+        if (response.data.success) {
+          _this2.$bus.$emit('display-success', {
+            title: response.data.title,
+            message: response.data.message
+          });
+        } else if (!response.data.success) {
+          _this2.errors = response.data.errors.messages;
+          console.log(_this2.errors);
+        }
+
         _this2.submitting = false;
       });
     }
@@ -10576,7 +10590,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -94683,7 +94697,13 @@ var render = function() {
                     [
                       _c(
                         "el-form-item",
-                        { attrs: { label: "First Name" } },
+                        {
+                          class: {
+                            "is-error":
+                              _vm.errors.messages["field"]["name_first"]
+                          },
+                          attrs: { label: "First Name" }
+                        },
                         [
                           _c("el-input", {
                             model: {
@@ -94693,7 +94713,23 @@ var render = function() {
                               },
                               expression: "form.name_first"
                             }
-                          })
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.messages["field"]["name_first"]
+                            ? _c(
+                                "span",
+                                { staticClass: "el-form-item__error" },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.errors.messages["field"][
+                                        "name_first"
+                                      ]["message"]
+                                    )
+                                  )
+                                ]
+                              )
+                            : _vm._e()
                         ],
                         1
                       )
@@ -94707,7 +94743,10 @@ var render = function() {
                     [
                       _c(
                         "el-form-item",
-                        { attrs: { label: "Last Name" } },
+                        {
+                          class: { "is-error": _vm.errors.name_last },
+                          attrs: { label: "Last Name" }
+                        },
                         [
                           _c("el-input", {
                             model: {
@@ -94717,7 +94756,15 @@ var render = function() {
                               },
                               expression: "form.name_last"
                             }
-                          })
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.name_last
+                            ? _c(
+                                "span",
+                                { staticClass: "el-form-item__error" },
+                                [_vm._v(_vm._s(_vm.errors.name_last[0]))]
+                              )
+                            : _vm._e()
                         ],
                         1
                       )
@@ -94731,7 +94778,10 @@ var render = function() {
                     [
                       _c(
                         "el-form-item",
-                        { attrs: { label: "Birthday" } },
+                        {
+                          class: { "is-error": _vm.errors.date_of_birth },
+                          attrs: { label: "Birthday" }
+                        },
                         [
                           _c("el-date-picker", {
                             attrs: {
@@ -94747,7 +94797,15 @@ var render = function() {
                               },
                               expression: "form.date_of_birth"
                             }
-                          })
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.date_of_birth
+                            ? _c(
+                                "span",
+                                { staticClass: "el-form-item__error" },
+                                [_vm._v(_vm._s(_vm.errors.date_of_birth[0]))]
+                              )
+                            : _vm._e()
                         ],
                         1
                       )
@@ -94783,7 +94841,13 @@ var render = function() {
                                     [
                                       _c(
                                         "el-form-item",
-                                        { attrs: { label: "Street Address" } },
+                                        {
+                                          class: {
+                                            "is-error":
+                                              _vm.errors.address_street_1
+                                          },
+                                          attrs: { label: "Street Address" }
+                                        },
                                         [
                                           _c("el-input", {
                                             model: {
@@ -94798,7 +94862,25 @@ var render = function() {
                                               expression:
                                                 "form.address_street_1"
                                             }
-                                          })
+                                          }),
+                                          _vm._v(" "),
+                                          _vm.errors.address_street_1
+                                            ? _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "el-form-item__error"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.errors
+                                                        .address_street_1[0]
+                                                    )
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
                                         ],
                                         1
                                       )
@@ -94847,7 +94929,12 @@ var render = function() {
                                     [
                                       _c(
                                         "el-form-item",
-                                        { attrs: { label: "State" } },
+                                        {
+                                          class: {
+                                            "is-error": _vm.errors.address_state
+                                          },
+                                          attrs: { label: "State" }
+                                        },
                                         [
                                           _c(
                                             "el-select",
@@ -94879,7 +94966,25 @@ var render = function() {
                                                 })
                                               }
                                             )
-                                          )
+                                          ),
+                                          _vm._v(" "),
+                                          _vm.errors.address_state
+                                            ? _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "el-form-item__error"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.errors
+                                                        .address_state[0]
+                                                    )
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
                                         ],
                                         1
                                       )
@@ -94893,7 +94998,13 @@ var render = function() {
                                     [
                                       _c(
                                         "el-form-item",
-                                        { attrs: { label: "Postal Code" } },
+                                        {
+                                          class: {
+                                            "is-error":
+                                              _vm.errors.address_postal_code
+                                          },
+                                          attrs: { label: "Postal Code" }
+                                        },
                                         [
                                           _c("el-input", {
                                             model: {
@@ -94909,7 +95020,25 @@ var render = function() {
                                               expression:
                                                 "form.address_postal_code"
                                             }
-                                          })
+                                          }),
+                                          _vm._v(" "),
+                                          _vm.errors.address_postal_code
+                                            ? _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "el-form-item__error"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.errors
+                                                        .address_postal_code[0]
+                                                    )
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
                                         ],
                                         1
                                       )
@@ -95463,7 +95592,11 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("create-or-edit-profile-form", {
-                attrs: { form: _vm.userProfile, submitting: _vm.submitting }
+                attrs: {
+                  form: _vm.userProfile,
+                  submitting: _vm.submitting,
+                  errors: _vm.errors
+                }
               })
             ],
             1
@@ -115013,7 +115146,6 @@ var HttpClient = exports.HttpClient = _axios2.default.create({
     return status;
   },
   transformResponse: [function (data, headers) {
-    console.log("RESPONSE DATA ", data);
     return JSON.parse(data);
   }]
 });
