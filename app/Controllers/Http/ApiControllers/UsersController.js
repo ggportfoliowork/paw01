@@ -17,13 +17,14 @@ class UsersController {
    * @returns {Promise<void>}
    */
   async show({request, auth, response}) {
-    const user = await User
-                          .query()
-                          .with('profile')
-                          .with('profile_photos')
-                          .where('id', auth.user.id)
-                          .firstOrFail()
-    return response.json({success: true, message: '', data: user})
+      const user = await User
+                            .query()
+                            .with('profile')
+                            .with('pets.tracks')
+                            .with('profile_photos')
+                            .where('id', auth.user.id)
+                            .firstOrFail()
+      return response.json({success: true, message: '', data: user})
   }
 
   /**
@@ -33,13 +34,13 @@ class UsersController {
    * @returns {Promise<*>}
    */
   async store({request, response}) {
-    const userCreator = new UserCreatorService()
-    let user = userCreator.create(request.all())
-    if(user) {
-      return response.json({success: true, message: 'Registration has been completed.', data: user})
-    } else {
-      return response.json({success: false, message: 'There was an error with your registration', data:[]})
-    }
+      const userCreator = new UserCreatorService()
+      let user = userCreator.create(request.all())
+      if(user) {
+        return response.json({success: true, message: 'Registration has been completed.', data: user})
+      } else {
+        return response.json({success: false, message: 'There was an error with your registration', data:[]})
+      }
   }
 
   /**
