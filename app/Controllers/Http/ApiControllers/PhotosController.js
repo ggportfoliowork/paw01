@@ -3,6 +3,7 @@
 const sharp = require('sharp')
 const Helpers = use('Helpers')
 const sha1 = require('js-sha1')
+const getStream = use('get-stream')
 const ProfilePhoto = use('App/Models/ProfilePhoto')
 
 /**
@@ -37,33 +38,31 @@ class PhotosController {
   }
 
   /**
-   *
+   * Store a cropped photo
    * @param request
    * @param auth
    * @param response
    * @returns {Promise<void>}
    */
     async storeCrop({request, auth, response}) {
-      const profilePic = request.file('file', {
-        types: ['image'],
-        size: '2mb'
-      })
+        const profilePic = request.file('file', {
+          types: ['image'],
+          size: '2mb'
+        })
 
-      let hash = sha1.create();
-      hash.update(Date.now().toString());
-      let fileName = hash.hex();
+        let hash = sha1.create();
+        hash.update(Date.now().toString());
+        let fileName = hash.hex();
 
-      const croppedImage = Buffer.from(profilePic);
-
-      const roundedCornerResizer = await sharp(croppedImage)
-                                                .resize(300, 100)
-                                                .toFile(fileName+'.jpg');
-
-      console.log(roundedCornerResizer)
-
-      await profilePic.move(Helpers.publicPath('profile-pics'), {
+        await profilePic.move(Helpers.tmpPath('profile-pics'), {
           name: fileName + '.jpg'
         })
+
+        let savePathAndFile = Helpers.publicPath('profile-pics') + '/' + fileName + '.jpg'
+
+        await sharp(Helpers.tmpPath('profile-pics/'+fileName+'.jpg'))
+                    .resize(300, 300)
+                    .toFile(savePathAndFile);
 
         let photo = await ProfilePhoto.create({
           'user_id': auth.user.id,
