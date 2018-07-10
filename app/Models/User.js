@@ -14,8 +14,6 @@ class User extends Model {
     return ['password']
   }
 
-
-
   /**
    * Model boot
    */
@@ -23,12 +21,18 @@ class User extends Model {
 
     super.boot()
 
+    /**
+     * Hash user password prior to saving
+     */
     this.addHook('beforeSave', async (userInstance) => {
       if (userInstance.dirty.password) {
         userInstance.password = await Hash.make(userInstance.password)
       }
     })
 
+    /**
+     * Create an empty profile for a user after registration
+     */
     this.addHook('afterCreate', async (userInstance) => {
         try {
           await Profile.create({
@@ -65,6 +69,10 @@ class User extends Model {
     return this.hasMany('App/Models/Pet')
   }
 
+  /**
+   * User Profile
+   * @returns {HasOne}
+   */
   profile() {
     return this.hasOne('App/Models/Profile')
   }

@@ -20,7 +20,7 @@
                 <span class="icon">
                   <i class="fal fa-home"></i>
                 </span>
-                      <span>
+                <span>
                   Dashboard
                 </span>
               </router-link>

@@ -1,20 +1,46 @@
 'use strict'
 
+/**
+ *
+ */
 class PetsController {
+  /**
+   *
+   * @param request
+   * @param auth
+   * @param response
+   */
   index({request, auth, response}) {
 
-      response.json([{"name": "Sassy", "breeds": "52", "species": "1", "weight": "14"}])
   }
 
-  store({request, response}) {
+  /**
+   *
+   * @param request
+   * @param response
+   * @returns {Promise<void>}
+   */
+  async store({request, response}) {
 
   }
 
-  update({request, response}) {
+  /**
+   *
+   * @param request
+   * @param response
+   * @returns {Promise<void>}
+   */
+  async update({request, response}) {
 
   }
 
-  destroy({request, response}) {
+  /**
+   *
+   * @param request
+   * @param response
+   * @returns {Promise<void>}
+   */
+  async destroy({request, response}) {
 
   }
 }

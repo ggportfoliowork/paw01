@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import _ from 'lodash'
 import Vuex from 'vuex'
-import moment from 'moment'
 import {HttpClient} from '../lib/HttpClient'
 
 Vue.use(Vuex);
@@ -225,7 +224,6 @@ const appStore = new Vuex.Store({
       SET_USER(context, user) {
         HttpClient.get('users/profile')
           .then(response => {
-
               context.commit('setCurrentUser', response.data.data)
           })
       },

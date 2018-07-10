@@ -109082,10 +109082,6 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
-var _moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-
-var _moment2 = _interopRequireDefault(_moment);
-
 var _HttpClient = __webpack_require__(/*! ../lib/HttpClient */ "./resources/js/lib/HttpClient.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -109260,7 +109256,6 @@ var appStore = new _vuex2.default.Store({
   actions: {
     SET_USER: function SET_USER(context, user) {
       _HttpClient.HttpClient.get('users/profile').then(function (response) {
-
         context.commit('setCurrentUser', response.data.data);
       });
     },
