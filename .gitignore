@@ -12,3 +12,6 @@ tmp
 
 # The development sqlite file
 database/development.sqlite
+
+# Public Profile Images
+public/profile-pics
