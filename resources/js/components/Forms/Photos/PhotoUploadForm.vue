@@ -24,7 +24,8 @@
         },
         methods: {
           handleAvatarSuccess(res, file) {
-            this.$bus.$emit('set-image', {imageUrl: res.data.fileName})
+            this.imageUrl = URL.createObjectURL(file.raw);
+            this.$bus.$emit('set-image', {imageUrl: this.imageUrl})
           },
           beforeAvatarUpload(file) {
             return

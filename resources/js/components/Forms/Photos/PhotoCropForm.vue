@@ -1,54 +1,62 @@
 <template>
-  <vue-croppie
-    ref=croppieRef
-    :enableOrientation="false"
-    :mouseWheelZoom="false"
-    :showZoomer="false"
-    :viewport="{ width: 180, height: 180, type: 'circle' }"
-    :boundary="{width: 300, height: 300}">
-  </vue-croppie>
+  <vue-cropper
+    ref="cropper"
+    :src="imageUrl"
+    alt="Source Image"
+    :cropmove="cropImage"
+    :guides="true"
+    :preserve-size="true"
+    :keep-aspect="true"
+    :view-mode="3"
+    drag-mode="crop"
+    :auto-crop-area="0.5"
+    :min-container-width="400"
+    :min-container-height="300"
+    :cropped-width="300"
+    :canvas-width="400"
+    :canvas-height="300"
+    :cropped-height="100"
+    :width="400"
+    :height="300"
+    :rounded="true"
+    :background="true"
+    :rotatable="false"
+  />
 </template>
 
 <script>
-    export default {
+  import VueCropper from 'vue-cropperjs';
+
+  export default {
         name: "photo-crop-form",
         mounted() {
           let vm = this
-
-          this.$refs.croppieRef.bind({
-            url: '/profile-pics/'+this.imageUrl.imageUrl
-          })
-
           this.$bus.$on('confirm-crop', function(){
-            vm.crop()
+            vm.confirmCrop()
           })
         },
         data() {
           return {
-
+            cropImg: null,
           }
         },
+        components: {
+          VueCropper
+        },
         methods: {
-          bindImage(url) {
-            this.$refs.croppieRef.bind({
-              url: '/profile-pics'+url,
-            });
+          cropImage() {
+            this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
           },
-          crop() {
-            let vm = this
-            this.$refs.croppieRef.result({
-              type : 'canvas',
-              format : 'jpeg',
-              quality: '0.9',
-              size: {
-                width: 300,
-                height: 300
-              }
-            }).then(image => {
-              console.log(image)
-              vm.$bus.$emit('submit-photos-form', {image: image})
-            });
-          },
+          confirmCrop() {
+            var byteString = atob(this.cropImg.split(',')[1]);
+            var ab = new ArrayBuffer(byteString.length);
+            var ia = new Uint8Array(ab);
+            for (var i = 0; i < byteString.length; i++) {
+              ia[i] = byteString.charCodeAt(i);
+            }
+            let image = new Blob([ab], { type: 'image/jpeg' });
+            this.$bus.$emit('submit-photos-form', {image: image})
+          }
         },
         watch: {
           imageUrl(val) {

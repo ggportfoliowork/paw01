@@ -47,6 +47,14 @@ new Vue({
   store,
   mounted() {
     this.$store.dispatch('SET_USER')
+
+    this.$bus.$on('display-success', (data) => {
+        this.$notify({
+          type: 'success',
+          title: data.title,
+          message: data.message,
+        })
+    })
   },
   components: {
     UserNavMenu

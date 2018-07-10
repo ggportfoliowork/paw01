@@ -24,13 +24,13 @@
     created() {
       let vm = this;
       let dialog = 'show-dialog-photo-upload';
-      this.$bus.$on(dialog, function(args) {
+      this.$bus.$on(dialog, function (args) {
         vm.dialogVisible = true
       });
-      this.$bus.$on('set-image', function(imageUrl){
-        vm.imageUrl = imageUrl
+      this.$bus.$on('set-image', function (data) {
+        vm.imageUrl = data.imageUrl
       })
-      this.$bus.$on('submit-photos-form', function(image){
+      this.$bus.$on('submit-photos-form', function (image) {
         vm.submitPhotosForm(image.image)
       })
     },
@@ -42,7 +42,7 @@
     },
     computed: {
       activeComponent() {
-        if(this.imageUrl == null) {
+        if (this.imageUrl == null) {
           return PhotoUploadForm
         } else {
           return PhotoCropForm
@@ -58,26 +58,36 @@
       }
     },
     methods: {
+
+      /**
+       * Confirm cropped photo event
+       */
       confirmCroppedPhoto() {
         this.$bus.$emit('confirm-crop')
       },
+
+      /**
+       * Submit the photos form
+       */
       submitPhotosForm(imageFile) {
         this.isSubmitting = true
-        this.$http.post('/photos/crop', {
-          file: imageFile
-        })
+        var fd = new FormData();
+        fd.append('file', imageFile);
+        this.$http.post('/photos/crop', fd)
           .then(response => {
-            console.log(response.data)
             this.isSubmitting = false
-          })
+            console.log(this.dialogVisible)
+            this.dialogVisible = false
+            console.log(this.dialogVisible)
+            this.$store.dispatch('SET_USER_PROFILE_PHOTO', response.data.data.fileName)
+        })
+      },
 
-        //this.$store.dispatch('SET_USER_PROFILE_PHOTO', res.data.fileName)
-      }
     },
     watch: {
-      dialogVisiable(val) {
+      dialogVisible(val) {
         if(!val) {
-          this.destroy()
+          Object.assign(this.$data, this.$options.data())
         }
       }
     },
