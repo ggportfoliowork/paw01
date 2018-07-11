@@ -16,6 +16,7 @@
   </head>
   <body class="has-navbar-fixed-top">
     <div id="app">
+        <loading :page-is-loading="pageIsLoading"></loading>
         <router-view></router-view>
     </div>
     {{ script('js/app.bundle') }}

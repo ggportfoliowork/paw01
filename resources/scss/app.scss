@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Paaji');
 @import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
 
-
 @import "bulma";
 @import "bulma_timeline";
+@import "../../node_modules/bourbon/app/assets/stylesheets/_bourbon";
 
 body {
   background-color: $body-bg;
@@ -63,4 +63,18 @@ img.rounded {
   padding: 10px 0px 10px 0px;
 }
 
+.beat-loader{
+  stroke: $primary;
+  stroke-dasharray: 175;
+  stroke-dashoffset: 350;
+  @include animation(draw 1.4s linear);
+  @include animation-iteration-count(infinite);
+}
+
+// The animation
+@include keyframes(draw) {
+  to{
+    stroke-dashoffset: 0;
+  }
+}
 

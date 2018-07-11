@@ -26,6 +26,9 @@ import '../pawtrackers-theme-2.3.6'
 
 import UserNavMenu from './scaffold/UserNavMenu'
 
+// Loading
+import Loading from './scaffold/Loading'
+
 Vue.use(Vuex)
 Vue.use(VueTour)
 Vue.use(VueRouter)
@@ -48,6 +51,18 @@ new Vue({
   mounted() {
     this.$store.dispatch('SET_USER')
 
+    this.$router.beforeEach((to, from, next) => {
+      next()
+    })
+
+    this.$bus.$on('page-load', (isLoading) => {
+      this.pageIsLoading =  isLoading.value
+    })
+
+    this.$bus.$on('page-offload', (isLoading) => {
+      this.pageIsLoading =  isLoading.value
+    })
+
     this.$bus.$on('display-success', (data) => {
         this.$notify({
           type: 'success',
@@ -65,6 +80,7 @@ new Vue({
     })
   },
   components: {
+    Loading,
     UserNavMenu
   },
   created() {
@@ -77,7 +93,7 @@ new Vue({
   },
   data() {
     return {
-
+      pageIsLoading: false
     }
   },
   methods: {
