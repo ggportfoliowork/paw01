@@ -14,7 +14,7 @@
           </el-tooltip>
           <el-tooltip class="item"
                       effect="dark"
-                      content="Species" placement="top">
+                      :content="species" placement="top">
             <i :class="speciesIcon"></i>
           </el-tooltip>
           <el-tooltip class="item"
@@ -47,27 +47,30 @@
       return {}
     },
     computed: {
-      gender: {
-        get() {
+      gender() {
           if(this.pet.gender == 'f')
             return 'Female'
           else if(this.pet.gender == 'm')
             return 'Male'
-        }
+
+      },
+      species() {
+        if(this.pet.species_id == 1)
+          return 'Dog'
+        else if(this.pet.species_id == 2)
+          return 'Cat'
       },
       speciesIcon() {
         if(this.pet.species_id == 1)
           return 'ss-dogface'
-        else if(thispet.species_id == 2)
+        else if(this.pet.species_id == 2)
           return 'ss-catface'
       },
-      genderIcon: {
-        get() {
+      genderIcon() {
           if(this.pet.gender == 'f')
             return 'fal fa-venus'
           else if(this.pet.gender == 'm')
             return 'fal fa-mars'
-        },
       }
     },
     methods: {
