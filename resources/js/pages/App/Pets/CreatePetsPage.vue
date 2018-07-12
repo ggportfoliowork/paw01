@@ -58,8 +58,9 @@
         methods: {
           submitPetsForm() {
             this.submitting = true
-            this.$http.put('pets', this.petForm)
+            this.$http.post('pets', this.petForm)
               .then(response => {
+                this.submitting = false
                 if(response.data.success) {
                   this.errors = []
                   this.$bus.$emit('display-success', {
@@ -68,8 +69,8 @@
                   })
                 } else if(!response.data.success) {
                   this.errors = response.data
+                  console.errror(response.data)
                 }
-                this.submitting = false
               })
           }
         },

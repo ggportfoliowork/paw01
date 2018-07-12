@@ -4306,7 +4306,8 @@ exports.default = {
       var _this2 = this;
 
       this.submitting = true;
-      this.$http.put('pets', this.petForm).then(function (response) {
+      this.$http.post('pets', this.petForm).then(function (response) {
+        _this2.submitting = false;
         if (response.data.success) {
           _this2.errors = [];
           _this2.$bus.$emit('display-success', {
@@ -4315,8 +4316,8 @@ exports.default = {
           });
         } else if (!response.data.success) {
           _this2.errors = response.data;
+          console.errror(response.data);
         }
-        _this2.submitting = false;
       });
     }
   },
@@ -10833,7 +10834,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95254,7 +95255,7 @@ var render = function() {
                               type: "date",
                               placeholder: "Pick a date",
                               format: "M/d/yyyy",
-                              "value-format": "yyyy-M-d"
+                              "value-format": "yyyy-MM-dd"
                             },
                             model: {
                               value: _vm.form.date_of_birth,
@@ -95338,72 +95339,6 @@ var render = function() {
                     "el-col",
                     { attrs: { sm: 24, md: 15 } },
                     [
-                      _c(
-                        "el-form-item",
-                        {
-                          class: {
-                            "is-error": _vm.errors.find(function(error) {
-                              return error.field === "behavior_animals"
-                            })
-                          },
-                          attrs: {
-                            label:
-                              "Does your pet get along with other animals (dogs, cats, etc)?"
-                          }
-                        },
-                        [
-                          _c(
-                            "el-radio-group",
-                            {
-                              staticStyle: { width: "100%" },
-                              attrs: { size: "mini" },
-                              model: {
-                                value: _vm.form.behavior_animals,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.form, "behavior_animals", $$v)
-                                },
-                                expression: "form.behavior_animals"
-                              }
-                            },
-                            [
-                              _c(
-                                "el-radio",
-                                { attrs: { border: "", label: 1 } },
-                                [_vm._v("Yes")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "el-radio",
-                                { attrs: { border: "", label: 0 } },
-                                [_vm._v("No")]
-                              ),
-                              _vm._v(" "),
-                              _vm.errors.find(function(error) {
-                                return error.field === "behavior_animals"
-                              })
-                                ? _c(
-                                    "span",
-                                    { staticClass: "el-form-item__error" },
-                                    [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.errors.find(function(error) {
-                                            return (
-                                              error.field === "behavior_animals"
-                                            )
-                                          }).message
-                                        )
-                                      )
-                                    ]
-                                  )
-                                : _vm._e()
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
                       _c(
                         "el-form-item",
                         {
@@ -95587,6 +95522,69 @@ var render = function() {
                                             return (
                                               error.field ===
                                               "behavior_children"
+                                            )
+                                          }).message
+                                        )
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "is_house_trained"
+                            })
+                          },
+                          attrs: { label: "Is your pet house trained?" }
+                        },
+                        [
+                          _c(
+                            "el-radio-group",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: { size: "mini" },
+                              model: {
+                                value: _vm.form.is_house_trained,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "is_house_trained", $$v)
+                                },
+                                expression: "form.is_house_trained"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 1 } },
+                                [_vm._v("Yes")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 0 } },
+                                [_vm._v("No")]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.find(function(error) {
+                                return error.field === "is_house_trained"
+                              })
+                                ? _c(
+                                    "span",
+                                    { staticClass: "el-form-item__error" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field === "is_house_trained"
                                             )
                                           }).message
                                         )

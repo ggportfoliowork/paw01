@@ -51,7 +51,7 @@ Route
 
       // Pet routes
       Route.get('pets', 'ApiControllers/PetsController.index')
-      Route.post('pets', 'ApiControllers/PetsController.store')
+      Route.post('pets', 'ApiControllers/PetsController.store').validator('StorePet')
       Route.put('pets/:petId', 'ApiControllers/PetsController.update')
       Route.delete('pets/:petId', 'ApiControllers/PetsController.destroy')
 

@@ -4,12 +4,9 @@ class StorePet {
   get rules () {
     return {
       name: 'required',
-      name_last: 'required',
-      date_of_birth: 'required',
-      address_street_1: 'required',
-      address_city: 'required',
-      address_state: 'required',
-      address_postal_code: 'required'
+      date_of_birth: 'date|dateFormat:YYYY-MM-DD',
+      species_id: 'required|integer',
+      breeds: 'required'
     }
   }
 

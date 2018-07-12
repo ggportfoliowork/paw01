@@ -20,7 +20,6 @@ class UsersController {
       const user = await User
                             .query()
                             .with('profile')
-                            .with('pets.tracks')
                             .with('profile_photos')
                             .where('id', auth.user.id)
                             .firstOrFail()
