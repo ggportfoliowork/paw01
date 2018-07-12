@@ -43,6 +43,7 @@
                 species_id: null,
                 gender: null,
                 breeds: null,
+                file: null,
                 date_of_birth: null,
                 behavior_animals: null,
                 behavior_humans: null,

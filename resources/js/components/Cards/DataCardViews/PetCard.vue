@@ -18,7 +18,7 @@
           <el-tooltip class="item"
                       effect="dark"
                       :content="dateOfBirth" placement="top">
-            <i class="fal fa-birthday-cake"></i>
+            <i class="fas fa-birthday-cake"></i>
           </el-tooltip>
     </div>
     <el-container>
@@ -75,9 +75,9 @@
       },
       genderIcon() {
           if(this.pet.gender == 'f')
-            return 'fal fa-venus'
+            return 'fas fa-venus'
           else if(this.pet.gender == 'm')
-            return 'fal fa-mars'
+            return 'fas fa-mars'
         else
           return null
       }

@@ -15,7 +15,7 @@
         </el-row>
         <el-row>
           <el-col :span="24" class="has-text-centered" style="margin-top:10px;">
-            <el-button type="primary" @click="displayUploadPhotoDialog">
+            <el-button type="primary" @click="displayUploadPetPhotoDialog()">
               <i class="el-icon-picture"></i> Upload a Photo
             </el-button>
           </el-col>
@@ -167,8 +167,8 @@
           submitPetsForm() {
             this.$bus.$emit('submit-pets-form')
           },
-          displayUploadPhotoDialog() {
-            this.$bus.$emit('show-dialog-photo-upload')
+          displayUploadPetPhotoDialog() {
+            this.$bus.$emit('show-dialog-pet-photo-upload')
           }
         },
         mounted() {

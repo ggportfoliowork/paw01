@@ -49,14 +49,21 @@ Route
       Route.put('users/:userId/profile', 'ApiControllers/UsersController.updateUserProfile').validator('StoreUserProfile')
       Route.delete('users/:userId', 'ApiControllers/UsersController.destroy')
 
+      // Profile Photo Routes
+      Route.post('photos', 'ApiControllers/ProfilePhotosController.storeProfilePhoto')
+      Route.post('photos/crop', 'ApiControllers/ProfilePhotosController.storeProfileCrop')
+
       // Pet routes
       Route.get('pets', 'ApiControllers/PetsController.index')
       Route.post('pets', 'ApiControllers/PetsController.store').validator('StorePet')
       Route.put('pets/:petId', 'ApiControllers/PetsController.update')
       Route.delete('pets/:petId', 'ApiControllers/PetsController.destroy')
 
-      Route.post('photos', 'ApiControllers/PhotosController.store')
-      Route.post('photos/crop', 'ApiControllers/PhotosController.storeCrop')
+      // Pet Photo Routes
+      Route.post('pet_photos', 'ApiControllers/PetPhotosController.storePetPhoto')
+      Route.post('pet_photos/crop', 'ApiControllers/PetPhotosController.storePetPhotoCrop')
+
+
 
   })
   .prefix('api/v1')
