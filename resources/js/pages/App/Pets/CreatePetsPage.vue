@@ -41,12 +41,16 @@
               petForm: {
                 name: null,
                 species_id: null,
+                gender: null,
                 breeds: null,
                 date_of_birth: null,
-                description: null,
                 behavior_animals: null,
                 behavior_humans: null,
                 behavior_children: null,
+                is_spayed_neutered: null,
+                is_microchipped: null,
+                is_house_trained: null,
+                details_description: null,
               }
             }
         },

@@ -3624,6 +3624,27 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 exports.default = {
@@ -4265,12 +4286,16 @@ exports.default = {
       petForm: {
         name: null,
         species_id: null,
+        gender: null,
         breeds: null,
         date_of_birth: null,
-        description: null,
         behavior_animals: null,
         behavior_humans: null,
-        behavior_children: null
+        behavior_children: null,
+        is_spayed_neutered: null,
+        is_microchipped: null,
+        is_house_trained: null,
+        details_description: null
       }
     };
   },
@@ -10732,7 +10757,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -10808,7 +10833,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95029,6 +95054,73 @@ var render = function() {
                         {
                           class: {
                             "is-error": _vm.errors.find(function(error) {
+                              return error.field === "gender"
+                            })
+                          },
+                          attrs: { label: "Gender" }
+                        },
+                        [
+                          _c(
+                            "el-radio-group",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: { size: "mini" },
+                              model: {
+                                value: _vm.form.gender,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "gender", $$v)
+                                },
+                                expression: "form.gender"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: "m" } },
+                                [
+                                  _c("i", { staticClass: "fal fa-mars" }),
+                                  _vm._v(" Male")
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: "f" } },
+                                [
+                                  _c("i", { staticClass: "fal fa-venus" }),
+                                  _vm._v(" Female")
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.find(function(error) {
+                                return error.field === "gender"
+                              })
+                                ? _c(
+                                    "span",
+                                    { staticClass: "el-form-item__error" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.errors.find(function(error) {
+                                            return error.field === "gender"
+                                          }).message
+                                        )
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
                               return error.field === "species_id"
                             })
                           },
@@ -95192,6 +95284,51 @@ var render = function() {
                             : _vm._e()
                         ],
                         1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "details_description"
+                            })
+                          },
+                          attrs: { label: "Description" }
+                        },
+                        [
+                          _c("el-input", {
+                            attrs: { type: "textarea", autosize: "" },
+                            model: {
+                              value: _vm.form.details_description,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "details_description", $$v)
+                              },
+                              expression: "form.details_description"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.find(function(error) {
+                            return error.field === "details_description"
+                          })
+                            ? _c(
+                                "span",
+                                { staticClass: "el-form-item__error" },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.errors.find(function(error) {
+                                        return (
+                                          error.field === "details_description"
+                                        )
+                                      }).message
+                                    )
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ],
+                        1
                       )
                     ],
                     1
@@ -95201,6 +95338,72 @@ var render = function() {
                     "el-col",
                     { attrs: { sm: 24, md: 15 } },
                     [
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "behavior_animals"
+                            })
+                          },
+                          attrs: {
+                            label:
+                              "Does your pet get along with other animals (dogs, cats, etc)?"
+                          }
+                        },
+                        [
+                          _c(
+                            "el-radio-group",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: { size: "mini" },
+                              model: {
+                                value: _vm.form.behavior_animals,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "behavior_animals", $$v)
+                                },
+                                expression: "form.behavior_animals"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 1 } },
+                                [_vm._v("Yes")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 0 } },
+                                [_vm._v("No")]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.find(function(error) {
+                                return error.field === "behavior_animals"
+                              })
+                                ? _c(
+                                    "span",
+                                    { staticClass: "el-form-item__error" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field === "behavior_animals"
+                                            )
+                                          }).message
+                                        )
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
                       _c(
                         "el-form-item",
                         {

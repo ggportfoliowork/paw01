@@ -28,6 +28,13 @@
               <el-input v-model="form.name" />
               <span class="el-form-item__error" v-if="errors.find(error => error.field === 'name')">{{ errors.find(error => error.field === 'name').message }}</span>
             </el-form-item>
+            <el-form-item label="Gender" :class="{ 'is-error': errors.find(error => error.field === 'gender') }">
+              <el-radio-group v-model="form.gender" size="mini" style="width:100%;">
+                <el-radio border label="m"><i class="fal fa-mars"></i> Male</el-radio>
+                <el-radio border label="f"><i class="fal fa-venus"></i> Female</el-radio>
+                <span class="el-form-item__error" v-if="errors.find(error => error.field === 'gender')">{{ errors.find(error => error.field === 'gender').message }}</span>
+              </el-radio-group>
+            </el-form-item>
             <el-form-item label="Species" :class="{ 'is-error': errors.find(error => error.field === 'species_id') }" style="width:100%;">
               <el-radio-group v-model="form.species_id" size="mini" style="width:100%;">
                 <el-radio border :label="1">Dog</el-radio>
@@ -63,8 +70,22 @@
               />
               <span class="el-form-item__error" v-if="errors.find(error => error.field === 'date_of_birth')">{{ errors.find(error => error.field === 'date_of_birth').message }}</span>
             </el-form-item>
+            <el-form-item label="Description" :class="{ 'is-error': errors.find(error => error.field === 'details_description') }">
+              <el-input
+                type="textarea"
+                autosize
+                v-model="form.details_description" />
+              <span class="el-form-item__error" v-if="errors.find(error => error.field === 'details_description')">{{ errors.find(error => error.field === 'details_description').message }}</span>
+            </el-form-item>
           </el-col>
           <el-col :sm="24" :md="15">
+              <el-form-item label="Does your pet get along with other animals (dogs, cats, etc)?" :class="{ 'is-error': errors.find(error => error.field === 'behavior_animals') }">
+                <el-radio-group v-model="form.behavior_animals" size="mini" style="width:100%;">
+                  <el-radio border :label="1">Yes</el-radio>
+                  <el-radio border :label="0">No</el-radio>
+                  <span class="el-form-item__error" v-if="errors.find(error => error.field === 'behavior_animals')">{{ errors.find(error => error.field === 'behavior_animals').message }}</span>
+                </el-radio-group>
+              </el-form-item>
               <el-form-item label="Does your pet get along with other animals (dogs, cats, etc)?" :class="{ 'is-error': errors.find(error => error.field === 'behavior_animals') }">
                 <el-radio-group v-model="form.behavior_animals" size="mini" style="width:100%;">
                   <el-radio border :label="1">Yes</el-radio>
