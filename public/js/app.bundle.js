@@ -3589,6 +3589,41 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 exports.default = {
@@ -10697,7 +10732,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -94941,11 +94976,11 @@ var render = function() {
             [
               _c(
                 "el-row",
-                { attrs: { gutter: 14 } },
+                { attrs: { gutter: 24 } },
                 [
                   _c(
                     "el-col",
-                    { attrs: { sm: 24, md: 8 } },
+                    { attrs: { sm: 24, md: 9 } },
                     [
                       _c(
                         "el-form-item",
@@ -95025,12 +95060,6 @@ var render = function() {
                                 "el-radio",
                                 { attrs: { border: "", label: 2 } },
                                 [_vm._v("Cat")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "el-radio",
-                                { attrs: { border: "", label: 3 } },
-                                [_vm._v("Other")]
                               ),
                               _vm._v(" "),
                               _vm.errors.find(function(error) {
@@ -95114,15 +95143,8 @@ var render = function() {
                             : _vm._e()
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-col",
-                    { attrs: { sm: 24, md: 8 } },
-                    [
+                      ),
+                      _vm._v(" "),
                       _c(
                         "el-form-item",
                         {
@@ -95135,6 +95157,7 @@ var render = function() {
                         },
                         [
                           _c("el-date-picker", {
+                            staticStyle: { width: "100%" },
                             attrs: {
                               type: "date",
                               placeholder: "Pick a date",
@@ -95167,6 +95190,337 @@ var render = function() {
                                 ]
                               )
                             : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-col",
+                    { attrs: { sm: 24, md: 15 } },
+                    [
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "behavior_animals"
+                            })
+                          },
+                          attrs: {
+                            label:
+                              "Does your pet get along with other animals (dogs, cats, etc)?"
+                          }
+                        },
+                        [
+                          _c(
+                            "el-radio-group",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: { size: "mini" },
+                              model: {
+                                value: _vm.form.behavior_animals,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "behavior_animals", $$v)
+                                },
+                                expression: "form.behavior_animals"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 1 } },
+                                [_vm._v("Yes")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 0 } },
+                                [_vm._v("No")]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.find(function(error) {
+                                return error.field === "behavior_animals"
+                              })
+                                ? _c(
+                                    "span",
+                                    { staticClass: "el-form-item__error" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field === "behavior_animals"
+                                            )
+                                          }).message
+                                        )
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "behavior_humans"
+                            })
+                          },
+                          attrs: {
+                            label: "Does your pet get along with other humans?"
+                          }
+                        },
+                        [
+                          _c(
+                            "el-radio-group",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: { size: "mini" },
+                              model: {
+                                value: _vm.form.behavior_humans,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "behavior_humans", $$v)
+                                },
+                                expression: "form.behavior_humans"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 1 } },
+                                [_vm._v("Yes")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 0 } },
+                                [_vm._v("No")]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.find(function(error) {
+                                return error.field === "behavior_humans"
+                              })
+                                ? _c(
+                                    "span",
+                                    { staticClass: "el-form-item__error" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field === "behavior_humans"
+                                            )
+                                          }).message
+                                        )
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "behavior_children"
+                            })
+                          },
+                          attrs: {
+                            label: "Does your pet get along with children?"
+                          }
+                        },
+                        [
+                          _c(
+                            "el-radio-group",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: { size: "mini" },
+                              model: {
+                                value: _vm.form.behavior_children,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "behavior_children", $$v)
+                                },
+                                expression: "form.behavior_children"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 1 } },
+                                [_vm._v("Yes")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 0 } },
+                                [_vm._v("No")]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.find(function(error) {
+                                return error.field === "behavior_children"
+                              })
+                                ? _c(
+                                    "span",
+                                    { staticClass: "el-form-item__error" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field ===
+                                              "behavior_children"
+                                            )
+                                          }).message
+                                        )
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "is_spayed_neutered"
+                            })
+                          },
+                          attrs: { label: "Is your pet spayed / neutered?" }
+                        },
+                        [
+                          _c(
+                            "el-radio-group",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: { size: "mini" },
+                              model: {
+                                value: _vm.form.is_spayed_neutered,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "is_spayed_neutered", $$v)
+                                },
+                                expression: "form.is_spayed_neutered"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 1 } },
+                                [_vm._v("Yes")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 0 } },
+                                [_vm._v("No")]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.find(function(error) {
+                                return error.field === "is_spayed_neutered"
+                              })
+                                ? _c(
+                                    "span",
+                                    { staticClass: "el-form-item__error" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field ===
+                                              "is_spayed_neutered"
+                                            )
+                                          }).message
+                                        )
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "is_microchipped"
+                            })
+                          },
+                          attrs: { label: "Is your pet microchipped?" }
+                        },
+                        [
+                          _c(
+                            "el-radio-group",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: { size: "mini" },
+                              model: {
+                                value: _vm.form.is_microchipped,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "is_microchipped", $$v)
+                                },
+                                expression: "form.is_microchipped"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 1 } },
+                                [_vm._v("Yes")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 0 } },
+                                [_vm._v("No")]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.find(function(error) {
+                                return error.field === "is_microchipped"
+                              })
+                                ? _c(
+                                    "span",
+                                    { staticClass: "el-form-item__error" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.errors.find(function(error) {
+                                            return (
+                                              error.field === "is_microchipped"
+                                            )
+                                          }).message
+                                        )
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
