@@ -30,9 +30,8 @@ class PetsController {
    * @returns {Promise<void>}
    */
   async store({request, auth, response}) {
-    request.user_id = auth.user.id
     const petCreatorService = new PetCreatorService()
-    const pet = await petCreatorService.create(request.all())
+    const pet = await petCreatorService.create(request.all(), auth.user.id)
     if(pet) {
       return response.json({success: true, data: pet, message: 'Your pet has been added', title: 'Success'})
     } else {

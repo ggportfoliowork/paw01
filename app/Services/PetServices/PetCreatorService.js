@@ -12,9 +12,10 @@ class PetCreatorService {
    * @param data
    * @returns {Promise<void>}
    */
-  async create(data) {
+  async create(data, user_id) {
     let pet = await Pet.create({
       name: data.name,
+      user_id: user_id,
       species_id: data.species_id,
       breeds: data.breeds,
       date_of_birth: data.date_of_birth,
@@ -27,10 +28,6 @@ class PetCreatorService {
       behavior_children: data.behavior_children,
       details_description: data.details_description
     })
-
-    pet.user_id = data.user_id
-    await pet.save()
-
     return pet
   }
 

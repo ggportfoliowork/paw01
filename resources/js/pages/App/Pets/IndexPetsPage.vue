@@ -4,18 +4,30 @@
       <el-card type="box">
         <el-row style="margin-bottom:10px;">
           <el-col :span="24">
-            <h1 class="title">My Pets</h1>
+            <div class="clearfix">
+              <div class="is-pulled-left">
+                <h1 class="title">My Pets</h1>
+              </div>
+              <div class="is-pulled-right" v-show="pets.length > 0">
+                <el-button type="default" size="huge">
+                  <i class="fal fa-plus-circle"></i> Add A Pet
+                </el-button>
+              </div>
+            </div>
           </el-col>
         </el-row>
         <el-row :gutter="14" v-show="pets.length > 0">
-          <el-card v-for="(value, key) in userPets" :key="key">
-            {{ value.name }}
-          </el-card>
+          <data-cards
+            :data="pets"
+            :type="cardOptions"
+            baseUrl="pets"
+          ></data-cards>
         </el-row>
         <el-row :gutter="14" v-show="pets.length < 1">
-          <el-col :sm="24">
+          <el-col :sm="24" class="has-text-centered">
+            <h5 class="subtitle is-5">You do not have any pets...</h5>
             <router-link :to="{name: 'pets.create'}">
-              <el-button type="primary" size="large">
+              <el-button type="default" size="large">
                 <i class="fal fa-plus-circle"></i> Add A Pet
               </el-button>
             </router-link>
@@ -27,12 +39,15 @@
 </template>
 
 <script>
+    import DataCards from '../../../components/Cards/Datacards'
 
     export default {
         created() {
 
         },
-        components: {},
+        components: {
+          DataCards
+        },
         beforeRouteEnter(to, from, next) {
             next(vm => {
               vm.getPets()
@@ -43,10 +58,10 @@
         },
         data() {
             return {
-              pets: false
+              pets: false,
+              cardOptions: {name: 'pets', sm: 24,  md: 6, chunk: 4}
             }
         },
-        directives: {},
         methods: {
           getPets() {
             this.$http.get('pets')
