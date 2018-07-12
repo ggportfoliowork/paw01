@@ -4,7 +4,7 @@
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           <h3 class="title">
-            PawTrackers
+            <!-- PawTrackers -->
           </h3>
         </a>
         <div class="navbar-burger burger" data-target="pawNav">

@@ -1,5 +1,7 @@
 'use strict'
 
+const Pet = use('App/Models/Pet')
+
 /**
  *
  */
@@ -10,8 +12,14 @@ class PetsController {
    * @param auth
    * @param response
    */
-  index({request, auth, response}) {
-
+  async index({request, auth, response}) {
+    let pets = await Pet
+                    .query()
+                    .whereHas('user', (builder) => {
+                      builder.where('users.id', auth.user.id)
+                    })
+                    .fetch()
+    return response.json({success: true, message: null, data: pets })
   }
 
   /**

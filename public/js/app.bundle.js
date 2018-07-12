@@ -3495,6 +3495,143 @@ exports.default = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=script&lang=js":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=script&lang=js ***!
+  \***************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+  created: function created() {},
+
+  components: {},
+  computed: {
+    speciesIsSelected: function speciesIsSelected() {
+      if (this.form.species_id == null || this.form.species_id == false || typeof this.form.species_id == 'undefined') return true;
+
+      return false;
+    },
+    availableBreeds: function availableBreeds() {
+      var _this = this;
+
+      if (this.form.species_id !== null) {
+        return _.filter(this.$store.state.available_breeds, function (breed) {
+          return breed.species_id === _this.form.species_id;
+        });
+      }
+      return [];
+    }
+  },
+  data: function data() {
+    return {};
+  },
+
+  methods: {
+    submitPetsForm: function submitPetsForm() {
+      this.$bus.$emit('submit-pets-form');
+    },
+    displayUploadPhotoDialog: function displayUploadPhotoDialog() {
+      this.$bus.$emit('show-dialog-photo-upload');
+    }
+  },
+  mounted: function mounted() {},
+
+  props: ['submitting', 'errors', 'form'],
+  watch: {}
+};
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Photos/PhotoCropForm.vue?vue&type=script&lang=js":
 /*!**********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Photos/PhotoCropForm.vue?vue&type=script&lang=js ***!
@@ -4057,32 +4194,91 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-//
-//
-//
-//
-//
-//
 
+var _CreateOrEditPetsForm = __webpack_require__(/*! ../../../components/Forms/Pets/CreateOrEditPetsForm */ "./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue");
+
+var _CreateOrEditPetsForm2 = _interopRequireDefault(_CreateOrEditPetsForm);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    created: function created() {},
+  created: function created() {
+    var _this = this;
 
-    components: {},
-    computed: {},
-    data: function data() {
-        return {};
-    },
+    this.$bus.$on('submit-pets-form', function () {
+      _this.submitPetsForm();
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.$bus.$off('submit-pets-form');
+  },
+
+  components: {
+    CreateOrEditPetsForm: _CreateOrEditPetsForm2.default
+  },
+  computed: {
+    user: function user() {
+      return this.$store.state.user;
+    }
+  },
+  data: function data() {
+    return {
+      submitting: false,
+      errors: [],
+      petForm: {
+        name: null,
+        species_id: null,
+        breeds: null,
+        date_of_birth: null,
+        description: null,
+        behavior_animals: null,
+        behavior_humans: null,
+        behavior_children: null
+      }
+    };
+  },
 
 
-    methods: {},
-    mounted: function mounted() {},
+  methods: {
+    submitPetsForm: function submitPetsForm() {
+      var _this2 = this;
 
-    props: [],
-    watch: {}
-};
+      this.submitting = true;
+      this.$http.put('pets', this.petForm).then(function (response) {
+        if (response.data.success) {
+          _this2.errors = [];
+          _this2.$bus.$emit('display-success', {
+            title: response.data.title,
+            message: response.data.message
+          });
+        } else if (!response.data.success) {
+          _this2.errors = response.data;
+        }
+        _this2.submitting = false;
+      });
+    }
+  },
+  mounted: function mounted() {},
+
+  props: [],
+  watch: {}
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -4137,8 +4333,30 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4148,20 +4366,36 @@ Object.defineProperty(exports, "__esModule", {
 
 
 exports.default = {
-    created: function created() {},
+  created: function created() {},
 
-    components: {},
-    computed: {},
-    data: function data() {
-        return {};
-    },
+  components: {},
+  beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+    next(function (vm) {
+      vm.getPets();
+    });
+  },
 
-    directives: {},
-    methods: {},
-    mounted: function mounted() {},
+  computed: {},
+  data: function data() {
+    return {
+      pets: false
+    };
+  },
 
-    props: [],
-    watch: {}
+  directives: {},
+  methods: {
+    getPets: function getPets() {
+      var _this = this;
+
+      this.$http.get('pets').then(function (response) {
+        _this.pets = response.data.data;
+      });
+    }
+  },
+  mounted: function mounted() {},
+
+  props: [],
+  watch: {}
 };
 
 /***/ }),
@@ -10451,6 +10685,25 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Photos/PhotoCropForm.vue?vue&type=style&index=0&id=57fca343&scoped=true&lang=css":
 /*!*************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Photos/PhotoCropForm.vue?vue&type=style&index=0&id=57fca343&scoped=true&lang=css ***!
@@ -10520,7 +10773,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -10558,7 +10811,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -90096,6 +90349,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css":
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Photos/PhotoCropForm.vue?vue&type=style&index=0&id=57fca343&scoped=true&lang=css":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Photos/PhotoCropForm.vue?vue&type=style&index=0&id=57fca343&scoped=true&lang=css ***!
@@ -94561,6 +94844,386 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=template&id=63fb5e61":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=template&id=63fb5e61 ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "el-form",
+    {
+      attrs: { "label-position": "top" },
+      model: {
+        value: _vm.form,
+        callback: function($$v) {
+          _vm.form = $$v
+        },
+        expression: "form"
+      }
+    },
+    [
+      _c(
+        "el-row",
+        [
+          _c(
+            "el-col",
+            { attrs: { sm: 24, md: 8 } },
+            [
+              _c(
+                "el-row",
+                [
+                  _c("el-col", { attrs: { span: 24 } }, [
+                    _c("nav", { staticClass: "level" }, [
+                      _c(
+                        "div",
+                        { staticClass: "level-item has-text-centered" },
+                        [
+                          _c("div", { staticClass: "photo-container" }, [
+                            _c("img", {
+                              staticClass: "rounded",
+                              staticStyle: { height: "180px", width: "180px" },
+                              attrs: { src: "http://placehold.it/300x300" }
+                            })
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-row",
+                [
+                  _c(
+                    "el-col",
+                    {
+                      staticClass: "has-text-centered",
+                      staticStyle: { "margin-top": "10px" },
+                      attrs: { span: 24 }
+                    },
+                    [
+                      _c(
+                        "el-button",
+                        {
+                          attrs: { type: "primary" },
+                          on: { click: _vm.displayUploadPhotoDialog }
+                        },
+                        [
+                          _c("i", { staticClass: "el-icon-picture" }),
+                          _vm._v(" Upload a Photo\n          ")
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-col",
+            { attrs: { sm: 24, md: 16 } },
+            [
+              _c(
+                "el-row",
+                { attrs: { gutter: 14 } },
+                [
+                  _c(
+                    "el-col",
+                    { attrs: { sm: 24, md: 8 } },
+                    [
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "name"
+                            })
+                          },
+                          attrs: { label: "Name" }
+                        },
+                        [
+                          _c("el-input", {
+                            model: {
+                              value: _vm.form.name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "name", $$v)
+                              },
+                              expression: "form.name"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.find(function(error) {
+                            return error.field === "name"
+                          })
+                            ? _c(
+                                "span",
+                                { staticClass: "el-form-item__error" },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.errors.find(function(error) {
+                                        return error.field === "name"
+                                      }).message
+                                    )
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "species_id"
+                            })
+                          },
+                          staticStyle: { width: "100%" },
+                          attrs: { label: "Species" }
+                        },
+                        [
+                          _c(
+                            "el-radio-group",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: { size: "mini" },
+                              model: {
+                                value: _vm.form.species_id,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "species_id", $$v)
+                                },
+                                expression: "form.species_id"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 1 } },
+                                [_vm._v("Dog")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 2 } },
+                                [_vm._v("Cat")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-radio",
+                                { attrs: { border: "", label: 3 } },
+                                [_vm._v("Other")]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.find(function(error) {
+                                return error.field === "species_id"
+                              })
+                                ? _c(
+                                    "span",
+                                    { staticClass: "el-form-item__error" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.errors.find(function(error) {
+                                            return error.field === "species_id"
+                                          }).message
+                                        )
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "breeds"
+                            })
+                          },
+                          attrs: { label: "Breeds" }
+                        },
+                        [
+                          _c(
+                            "el-select",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: {
+                                placeholder: "Select breeds",
+                                disabled: _vm.speciesIsSelected,
+                                filterable: "",
+                                multiple: "",
+                                "collapse-tags": ""
+                              },
+                              model: {
+                                value: _vm.form.breeds,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "breeds", $$v)
+                                },
+                                expression: "form.breeds"
+                              }
+                            },
+                            _vm._l(_vm.availableBreeds, function(item, key) {
+                              return _c("el-option", {
+                                key: key,
+                                attrs: { label: item.name, value: item.id }
+                              })
+                            })
+                          ),
+                          _vm._v(" "),
+                          _vm.errors.find(function(error) {
+                            return error.field === "breeds"
+                          })
+                            ? _c(
+                                "span",
+                                { staticClass: "el-form-item__error" },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.errors.find(function(error) {
+                                        return error.field === "breeds"
+                                      }).message
+                                    )
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-col",
+                    { attrs: { sm: 24, md: 8 } },
+                    [
+                      _c(
+                        "el-form-item",
+                        {
+                          class: {
+                            "is-error": _vm.errors.find(function(error) {
+                              return error.field === "date_of_birth"
+                            })
+                          },
+                          attrs: { label: "Birthday" }
+                        },
+                        [
+                          _c("el-date-picker", {
+                            attrs: {
+                              type: "date",
+                              placeholder: "Pick a date",
+                              format: "M/d/yyyy",
+                              "value-format": "yyyy-M-d"
+                            },
+                            model: {
+                              value: _vm.form.date_of_birth,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "date_of_birth", $$v)
+                              },
+                              expression: "form.date_of_birth"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.find(function(error) {
+                            return error.field === "date_of_birth"
+                          })
+                            ? _c(
+                                "span",
+                                { staticClass: "el-form-item__error" },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.errors.find(function(error) {
+                                        return error.field === "date_of_birth"
+                                      }).message
+                                    )
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-row",
+                [
+                  _c(
+                    "el-col",
+                    { attrs: { sm: 24 } },
+                    [
+                      _c(
+                        "el-form-item",
+                        [
+                          _c(
+                            "el-button",
+                            {
+                              attrs: {
+                                type: "primary",
+                                loading: _vm.submitting
+                              },
+                              on: { click: _vm.submitPetsForm }
+                            },
+                            [_vm._v("Save")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Photos/PhotoCropForm.vue?vue&type=template&id=57fca343&scoped=true":
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Forms/Photos/PhotoCropForm.vue?vue&type=template&id=57fca343&scoped=true ***!
@@ -95540,16 +96203,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "el-row",
+    { attrs: { gutter: 24 } },
+    [
+      _c(
+        "el-col",
+        { attrs: { sm: 24, id: "step-2" } },
+        [
+          _c(
+            "el-card",
+            { attrs: { type: "box" } },
+            [
+              _c(
+                "el-row",
+                { staticStyle: { "margin-bottom": "10px" } },
+                [
+                  _c("el-col", { attrs: { span: 24 } }, [
+                    _c("h1", { staticClass: "title" }, [_vm._v("Add A Pet")])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("create-or-edit-pets-form", {
+                attrs: {
+                  form: _vm.petForm,
+                  submitting: _vm.submitting,
+                  errors: _vm.errors
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Add a Pet")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -95602,16 +96296,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "el-row",
+    {
+      directives: [
+        {
+          name: "loading",
+          rawName: "v-loading",
+          value: !_vm.pets,
+          expression: "!pets"
+        }
+      ],
+      attrs: { gutter: 24 }
+    },
+    [
+      _c(
+        "el-col",
+        { attrs: { sm: 24, id: "step-2" } },
+        [
+          _c(
+            "el-card",
+            { attrs: { type: "box" } },
+            [
+              _c(
+                "el-row",
+                { staticStyle: { "margin-bottom": "10px" } },
+                [
+                  _c("el-col", { attrs: { span: 24 } }, [
+                    _c("h1", { staticClass: "title" }, [_vm._v("My Pets")])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-row",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.pets.length > 0,
+                      expression: "pets.length > 0"
+                    }
+                  ],
+                  attrs: { gutter: 14 }
+                },
+                _vm._l(_vm.userPets, function(value, key) {
+                  return _c("el-card", { key: key }, [
+                    _vm._v("\n          " + _vm._s(value.name) + "\n        ")
+                  ])
+                })
+              ),
+              _vm._v(" "),
+              _c(
+                "el-row",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.pets.length < 1,
+                      expression: "pets.length < 1"
+                    }
+                  ],
+                  attrs: { gutter: 14 }
+                },
+                [
+                  _c(
+                    "el-col",
+                    { attrs: { sm: 24 } },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "pets.create" } } },
+                        [
+                          _c(
+                            "el-button",
+                            { attrs: { type: "primary", size: "large" } },
+                            [
+                              _c("i", { staticClass: "fal fa-plus-circle" }),
+                              _vm._v(" Add A Pet\n            ")
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("My Pets")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -96163,9 +96950,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "navbar-brand" }, [
       _c("a", { staticClass: "navbar-item", attrs: { href: "/" } }, [
-        _c("h3", { staticClass: "title" }, [
-          _vm._v("\n          PawTrackers\n        ")
-        ])
+        _c("h3", { staticClass: "title" })
       ]),
       _vm._v(" "),
       _c(
@@ -115006,6 +115791,96 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateOrEditPetsForm_vue_vue_type_template_id_63fb5e61__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateOrEditPetsForm.vue?vue&type=template&id=63fb5e61 */ "./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=template&id=63fb5e61");
+/* harmony import */ var _CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateOrEditPetsForm.vue?vue&type=script&lang=js */ "./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=script&lang=js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _CreateOrEditPetsForm_vue_vue_type_style_index_0_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css */ "./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateOrEditPetsForm_vue_vue_type_template_id_63fb5e61__WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateOrEditPetsForm_vue_vue_type_template_id_63fb5e61__WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateOrEditPetsForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_style_index_0_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=style&index=0&lang=css");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_style_index_0_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_style_index_0_lang_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_style_index_0_lang_css__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_style_index_0_lang_css__WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_style_index_0_lang_css__WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=template&id=63fb5e61":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=template&id=63fb5e61 ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_template_id_63fb5e61__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateOrEditPetsForm.vue?vue&type=template&id=63fb5e61 */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Forms/Pets/CreateOrEditPetsForm.vue?vue&type=template&id=63fb5e61");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_template_id_63fb5e61__WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateOrEditPetsForm_vue_vue_type_template_id_63fb5e61__WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Forms/Photos/PhotoCropForm.vue":
 /*!****************************************************************!*\
   !*** ./resources/js/components/Forms/Photos/PhotoCropForm.vue ***!
@@ -117342,6 +118217,1251 @@ var appStore = new _vuex2.default.Store({
       key: 'WY',
       value: 'Wyoming'
     }],
+    available_breeds: [{
+      "id": 1,
+      "species_id": 1,
+      "name": "Affenpinscher"
+
+    }, {
+      "id": 2,
+      "species_id": 1,
+      "name": "Afghan Hound"
+
+    }, {
+      "id": 3,
+      "species_id": 1,
+      "name": "Airedale Terrier"
+
+    }, {
+      "id": 4,
+      "species_id": 1,
+      "name": "Akita"
+
+    }, {
+      "id": 5,
+      "species_id": 1,
+      "name": "Alaskan Malamute"
+
+    }, {
+      "id": 6,
+      "species_id": 1,
+      "name": "American Bulldog"
+
+    }, {
+      "id": 7,
+      "species_id": 1,
+      "name": "American Eskimo Dog"
+
+    }, {
+      "id": 8,
+      "species_id": 1,
+      "name": "American Foxhound"
+
+    }, {
+      "id": 9,
+      "species_id": 1,
+      "name": "American Staffordshire Terrier"
+
+    }, {
+      "id": 10,
+      "species_id": 1,
+      "name": "American Water Spaniel"
+
+    }, {
+      "id": 11,
+      "species_id": 1,
+      "name": "Anatolian Shepherd Dog"
+
+    }, {
+      "id": 12,
+      "species_id": 1,
+      "name": "Australian Cattle Dog"
+
+    }, {
+      "id": 13,
+      "species_id": 1,
+      "name": "Australian Kelpie"
+
+    }, {
+      "id": 14,
+      "species_id": 1,
+      "name": "Australian Shepherd"
+
+    }, {
+      "id": 15,
+      "species_id": 1,
+      "name": "Australian Terrier"
+
+    }, {
+      "id": 16,
+      "species_id": 1,
+      "name": "Basenji"
+
+    }, {
+      "id": 17,
+      "species_id": 1,
+      "name": "Basset Hound"
+
+    }, {
+      "id": 18,
+      "species_id": 1,
+      "name": "Beagle"
+
+    }, {
+      "id": 19,
+      "species_id": 1,
+      "name": "Bearded Collie"
+
+    }, {
+      "id": 20,
+      "species_id": 1,
+      "name": "Beauceron"
+
+    }, {
+      "id": 21,
+      "species_id": 1,
+      "name": "Bedlington Terrier"
+
+    }, {
+      "id": 22,
+      "species_id": 1,
+      "name": "Belgian Malinois"
+
+    }, {
+      "id": 23,
+      "species_id": 1,
+      "name": "Belgian Sheepdog"
+
+    }, {
+      "id": 24,
+      "species_id": 1,
+      "name": "Belgian Tervuren"
+
+    }, {
+      "id": 25,
+      "species_id": 1,
+      "name": "Bernese Mountain Dog"
+
+    }, {
+      "id": 26,
+      "species_id": 1,
+      "name": "Bichon Frise"
+
+    }, {
+      "id": 27,
+      "species_id": 1,
+      "name": "Black and Tan Coonhound"
+
+    }, {
+      "id": 28,
+      "species_id": 1,
+      "name": "Black Mouth Cur"
+
+    }, {
+      "id": 29,
+      "species_id": 1,
+      "name": "Black Russian Terrier"
+
+    }, {
+      "id": 30,
+      "species_id": 1,
+      "name": "Bloodhound"
+
+    }, {
+      "id": 31,
+      "species_id": 1,
+      "name": "Bluetick Coonhound"
+
+    }, {
+      "id": 32,
+      "species_id": 1,
+      "name": "Border Collie"
+
+    }, {
+      "id": 33,
+      "species_id": 1,
+      "name": "Border Terrier"
+
+    }, {
+      "id": 34,
+      "species_id": 1,
+      "name": "Borzoi"
+
+    }, {
+      "id": 35,
+      "species_id": 1,
+      "name": "Boston Terrier"
+
+    }, {
+      "id": 36,
+      "species_id": 1,
+      "name": "Bouvier des Flandres"
+
+    }, {
+      "id": 37,
+      "species_id": 1,
+      "name": "Boxer"
+
+    }, {
+      "id": 38,
+      "species_id": 1,
+      "name": "Boykin Spaniel"
+
+    }, {
+      "id": 39,
+      "species_id": 1,
+      "name": "Briard"
+
+    }, {
+      "id": 40,
+      "species_id": 1,
+      "name": "Brittany"
+
+    }, {
+      "id": 41,
+      "species_id": 1,
+      "name": "Brussels Griffon"
+
+    }, {
+      "id": 42,
+      "species_id": 1,
+      "name": "Bull Terrier"
+
+    }, {
+      "id": 43,
+      "species_id": 1,
+      "name": "Bullmastiff"
+
+    }, {
+      "id": 44,
+      "species_id": 1,
+      "name": "Cairn Terrier"
+
+    }, {
+      "id": 45,
+      "species_id": 1,
+      "name": "Canaan Dog"
+
+    }, {
+      "id": 46,
+      "species_id": 1,
+      "name": "Cardigan Welsh Corgi"
+
+    }, {
+      "id": 47,
+      "species_id": 1,
+      "name": "Catahoula Leopard"
+
+    }, {
+      "id": 48,
+      "species_id": 1,
+      "name": "Cavalier King Charles Spaniel"
+
+    }, {
+      "id": 49,
+      "species_id": 1,
+      "name": "Chesapeake Bay Retriever"
+
+    }, {
+      "id": 50,
+      "species_id": 1,
+      "name": "Chihuahua"
+
+    }, {
+      "id": 51,
+      "species_id": 1,
+      "name": "Chinese Crested"
+
+    }, {
+      "id": 52,
+      "species_id": 1,
+      "name": "Chinese SharPei"
+
+    }, {
+      "id": 53,
+      "species_id": 1,
+      "name": "Chow Chow"
+
+    }, {
+      "id": 54,
+      "species_id": 1,
+      "name": "Clumber Spaniel"
+
+    }, {
+      "id": 55,
+      "species_id": 1,
+      "name": "Cocker Spaniel"
+
+    }, {
+      "id": 56,
+      "species_id": 1,
+      "name": "Collie"
+
+    }, {
+      "id": 57,
+      "species_id": 1,
+      "name": "Coton de Tulear"
+
+    }, {
+      "id": 58,
+      "species_id": 1,
+      "name": "CurlyCoated Retriever"
+
+    }, {
+      "id": 59,
+      "species_id": 1,
+      "name": "Dachshund"
+
+    }, {
+      "id": 60,
+      "species_id": 1,
+      "name": "Dalmatian"
+
+    }, {
+      "id": 61,
+      "species_id": 1,
+      "name": "Dandie Dinmont Terrier"
+
+    }, {
+      "id": 62,
+      "species_id": 1,
+      "name": "Doberman Pinscher"
+
+    }, {
+      "id": 63,
+      "species_id": 1,
+      "name": "Dogue de Bordeaux"
+
+    }, {
+      "id": 64,
+      "species_id": 1,
+      "name": "English Bulldog"
+
+    }, {
+      "id": 65,
+      "species_id": 1,
+      "name": "English Cocker Spaniel"
+
+    }, {
+      "id": 66,
+      "species_id": 1,
+      "name": "English Foxhound"
+
+    }, {
+      "id": 67,
+      "species_id": 1,
+      "name": "English Setter"
+
+    }, {
+      "id": 68,
+      "species_id": 1,
+      "name": "English Springer Spaniel"
+
+    }, {
+      "id": 69,
+      "species_id": 1,
+      "name": "English Toy Spaniel"
+
+    }, {
+      "id": 70,
+      "species_id": 1,
+      "name": "Field Spaniel"
+
+    }, {
+      "id": 71,
+      "species_id": 1,
+      "name": "Finnish Spitz"
+
+    }, {
+      "id": 72,
+      "species_id": 1,
+      "name": "FlatCoated Retriever"
+
+    }, {
+      "id": 73,
+      "species_id": 1,
+      "name": "French Bulldog"
+
+    }, {
+      "id": 74,
+      "species_id": 1,
+      "name": "German Pinscher"
+
+    }, {
+      "id": 75,
+      "species_id": 1,
+      "name": "German Shepherd Dog"
+
+    }, {
+      "id": 76,
+      "species_id": 1,
+      "name": "German Shorthaired Pointer"
+
+    }, {
+      "id": 77,
+      "species_id": 1,
+      "name": "German Spitz"
+
+    }, {
+      "id": 78,
+      "species_id": 1,
+      "name": "German Wirehaired Pointer"
+
+    }, {
+      "id": 79,
+      "species_id": 1,
+      "name": "Giant Schnauzer"
+
+    }, {
+      "id": 80,
+      "species_id": 1,
+      "name": "Glen of Imaal Terrier"
+
+    }, {
+      "id": 81,
+      "species_id": 1,
+      "name": "Golden Retriever"
+
+    }, {
+      "id": 82,
+      "species_id": 1,
+      "name": "Gordon Setter"
+
+    }, {
+      "id": 83,
+      "species_id": 1,
+      "name": "Great Dane"
+
+    }, {
+      "id": 84,
+      "species_id": 1,
+      "name": "Great Pyrenees"
+
+    }, {
+      "id": 85,
+      "species_id": 1,
+      "name": "Greater Swiss Mountain Dog"
+
+    }, {
+      "id": 86,
+      "species_id": 1,
+      "name": "Greyhound"
+
+    }, {
+      "id": 87,
+      "species_id": 1,
+      "name": "Harrier"
+
+    }, {
+      "id": 88,
+      "species_id": 1,
+      "name": "Havanese"
+
+    }, {
+      "id": 89,
+      "species_id": 1,
+      "name": "Hovawart"
+
+    }, {
+      "id": 90,
+      "species_id": 1,
+      "name": "Ibizan Hound"
+
+    }, {
+      "id": 91,
+      "species_id": 1,
+      "name": "Irish Setter"
+
+    }, {
+      "id": 92,
+      "species_id": 1,
+      "name": "Irish Terrier"
+
+    }, {
+      "id": 93,
+      "species_id": 1,
+      "name": "Irish Water Spaniel"
+
+    }, {
+      "id": 94,
+      "species_id": 1,
+      "name": "Irish Wolfhound"
+
+    }, {
+      "id": 95,
+      "species_id": 1,
+      "name": "Italian Greyhound"
+
+    }, {
+      "id": 96,
+      "species_id": 1,
+      "name": "Jack Russell Terrier"
+
+    }, {
+      "id": 97,
+      "species_id": 1,
+      "name": "Japanese Chin"
+
+    }, {
+      "id": 98,
+      "species_id": 1,
+      "name": "Karelian Bear Dog"
+
+    }, {
+      "id": 99,
+      "species_id": 1,
+      "name": "Keeshond"
+
+    }, {
+      "id": 100,
+      "species_id": 1,
+      "name": "Kerry Blue Terrier"
+
+    }, {
+      "id": 101,
+      "species_id": 1,
+      "name": "Komondor"
+
+    }, {
+      "id": 102,
+      "species_id": 1,
+      "name": "Kuvasz"
+
+    }, {
+      "id": 103,
+      "species_id": 1,
+      "name": "Labrador Retriever"
+
+    }, {
+      "id": 104,
+      "species_id": 1,
+      "name": "Lakeland Terrier"
+
+    }, {
+      "id": 105,
+      "species_id": 1,
+      "name": "Lhasa Apso"
+
+    }, {
+      "id": 106,
+      "species_id": 1,
+      "name": "Lowchen"
+
+    }, {
+      "id": 107,
+      "species_id": 1,
+      "name": "Maltese"
+
+    }, {
+      "id": 108,
+      "species_id": 1,
+      "name": "Manchester Terrier"
+
+    }, {
+      "id": 109,
+      "species_id": 1,
+      "name": "Mastiff"
+
+    }, {
+      "id": 110,
+      "species_id": 1,
+      "name": "Miniature Bull Terrier"
+
+    }, {
+      "id": 111,
+      "species_id": 1,
+      "name": "Miniature Pinscher"
+
+    }, {
+      "id": 112,
+      "species_id": 1,
+      "name": "Miniature Schnauzer"
+
+    }, {
+      "id": 113,
+      "species_id": 1,
+      "name": "Mutt"
+
+    }, {
+      "id": 114,
+      "species_id": 1,
+      "name": "Neapolitan Mastiff"
+
+    }, {
+      "id": 115,
+      "species_id": 1,
+      "name": "Newfoundland"
+
+    }, {
+      "id": 116,
+      "species_id": 1,
+      "name": "Norfolk Terrier"
+
+    }, {
+      "id": 117,
+      "species_id": 1,
+      "name": "Norwegian Elkhound"
+
+    }, {
+      "id": 118,
+      "species_id": 1,
+      "name": "Norwich Terrier"
+
+    }, {
+      "id": 119,
+      "species_id": 1,
+      "name": "Nova Scotia Retriever"
+
+    }, {
+      "id": 120,
+      "species_id": 1,
+      "name": "Old English Sheepdog"
+
+    }, {
+      "id": 121,
+      "species_id": 1,
+      "name": "Other"
+
+    }, {
+      "id": 122,
+      "species_id": 1,
+      "name": "Otterhound"
+
+    }, {
+      "id": 123,
+      "species_id": 1,
+      "name": "Papillon"
+
+    }, {
+      "id": 124,
+      "species_id": 1,
+      "name": "Patterdale Terrier"
+
+    }, {
+      "id": 125,
+      "species_id": 1,
+      "name": "Pekingese"
+
+    }, {
+      "id": 126,
+      "species_id": 1,
+      "name": "Pembroke Welsh Corgi"
+
+    }, {
+      "id": 127,
+      "species_id": 1,
+      "name": "Petit Basset Griffon Vendeen"
+
+    }, {
+      "id": 128,
+      "species_id": 1,
+      "name": "Pharaoh Hound"
+
+    }, {
+      "id": 129,
+      "species_id": 1,
+      "name": "Pit Bull"
+
+    }, {
+      "id": 130,
+      "species_id": 1,
+      "name": "Plott"
+
+    }, {
+      "id": 131,
+      "species_id": 1,
+      "name": "Pointer"
+
+    }, {
+      "id": 132,
+      "species_id": 1,
+      "name": "Polish Lowland Sheepdog"
+
+    }, {
+      "id": 133,
+      "species_id": 1,
+      "name": "Pomeranian"
+
+    }, {
+      "id": 134,
+      "species_id": 1,
+      "name": "Poodle"
+
+    }, {
+      "id": 135,
+      "species_id": 1,
+      "name": "Portuguese Water Dog"
+
+    }, {
+      "id": 136,
+      "species_id": 1,
+      "name": "Pug"
+
+    }, {
+      "id": 137,
+      "species_id": 1,
+      "name": "Puli"
+
+    }, {
+      "id": 138,
+      "species_id": 1,
+      "name": "Rat Terrier"
+
+    }, {
+      "id": 139,
+      "species_id": 1,
+      "name": "Redbone Coonhound"
+
+    }, {
+      "id": 140,
+      "species_id": 1,
+      "name": "Rhodesian Rspecies_idgeback"
+
+    }, {
+      "id": 141,
+      "species_id": 1,
+      "name": "Rottweiler"
+
+    }, {
+      "id": 142,
+      "species_id": 1,
+      "name": "Saluki"
+
+    }, {
+      "id": 143,
+      "species_id": 1,
+      "name": "Samoyed"
+
+    }, {
+      "id": 144,
+      "species_id": 1,
+      "name": "Schipperke"
+
+    }, {
+      "id": 145,
+      "species_id": 1,
+      "name": "Scottish Deerhound"
+
+    }, {
+      "id": 146,
+      "species_id": 1,
+      "name": "Scottish Terrier"
+
+    }, {
+      "id": 147,
+      "species_id": 1,
+      "name": "Sealyham Terrier"
+
+    }, {
+      "id": 148,
+      "species_id": 1,
+      "name": "Shetland Sheepdog"
+
+    }, {
+      "id": 149,
+      "species_id": 1,
+      "name": "Shiba Inu"
+
+    }, {
+      "id": 150,
+      "species_id": 1,
+      "name": "Shih Tzu"
+
+    }, {
+      "id": 151,
+      "species_id": 1,
+      "name": "Siberian Husky"
+
+    }, {
+      "id": 152,
+      "species_id": 1,
+      "name": "Silky Terrier"
+
+    }, {
+      "id": 153,
+      "species_id": 1,
+      "name": "Skye Terrier"
+
+    }, {
+      "id": 154,
+      "species_id": 1,
+      "name": "Smooth Fox Terrier"
+
+    }, {
+      "id": 155,
+      "species_id": 1,
+      "name": "Soft Coated Wheaten Terrier"
+
+    }, {
+      "id": 156,
+      "species_id": 1,
+      "name": "Spinone Italiano"
+
+    }, {
+      "id": 157,
+      "species_id": 1,
+      "name": "St. Bernard"
+
+    }, {
+      "id": 158,
+      "species_id": 1,
+      "name": "Staffordshire Bull Terrier"
+
+    }, {
+      "id": 159,
+      "species_id": 1,
+      "name": "Standard Schnauzer"
+
+    }, {
+      "id": 160,
+      "species_id": 1,
+      "name": "Sussex Spaniel"
+
+    }, {
+      "id": 161,
+      "species_id": 1,
+      "name": "Tibetan Spaniel"
+
+    }, {
+      "id": 162,
+      "species_id": 1,
+      "name": "Tibetan Terrier"
+
+    }, {
+      "id": 163,
+      "species_id": 1,
+      "name": "Toy Fox Terrier"
+
+    }, {
+      "id": 164,
+      "species_id": 1,
+      "name": "Treeing Walker Coonhound"
+
+    }, {
+      "id": 165,
+      "species_id": 1,
+      "name": "Vizsla"
+
+    }, {
+      "id": 166,
+      "species_id": 1,
+      "name": "Weimaraner"
+
+    }, {
+      "id": 167,
+      "species_id": 1,
+      "name": "Welsh Springer Spaniel"
+
+    }, {
+      "id": 168,
+      "species_id": 1,
+      "name": "Welsh Terrier"
+
+    }, {
+      "id": 169,
+      "species_id": 1,
+      "name": "West Highland White Terrier"
+
+    }, {
+      "id": 170,
+      "species_id": 1,
+      "name": "Whippet"
+
+    }, {
+      "id": 171,
+      "species_id": 1,
+      "name": "Wire Fox Terrier"
+
+    }, {
+      "id": 172,
+      "species_id": 1,
+      "name": "Wirehaired Pointing Griffon"
+
+    }, {
+      "id": 173,
+      "species_id": 1,
+      "name": "Yorkshire Terrier"
+
+    }, {
+      "id": 174,
+      "species_id": 1,
+      "name": "Mutt"
+
+    }, {
+      "id": 175,
+      "species_id": 2,
+      "name": "Abyssyian"
+
+    }, {
+      "id": 176,
+      "species_id": 2,
+      "name": "American Bobtail"
+
+    }, {
+      "id": 177,
+      "species_id": 2,
+      "name": "American Curl"
+
+    }, {
+      "id": 178,
+      "species_id": 2,
+      "name": "American Shorthair"
+
+    }, {
+      "id": 179,
+      "species_id": 2,
+      "name": "American Wirehair"
+
+    }, {
+      "id": 180,
+      "species_id": 2,
+      "name": "Angora"
+
+    }, {
+      "id": 181,
+      "species_id": 2,
+      "name": "Asian Semi-longhair"
+
+    }, {
+      "id": 182,
+      "species_id": 2,
+      "name": "Asian Shorthair"
+
+    }, {
+      "id": 183,
+      "species_id": 2,
+      "name": "Australian Mist"
+
+    }, {
+      "id": 184,
+      "species_id": 2,
+      "name": "Balinese"
+
+    }, {
+      "id": 185,
+      "species_id": 2,
+      "name": "Bengal cat"
+
+    }, {
+      "id": 186,
+      "species_id": 2,
+      "name": "Birman"
+
+    }, {
+      "id": 187,
+      "species_id": 2,
+      "name": "Bombay"
+
+    }, {
+      "id": 188,
+      "species_id": 2,
+      "name": "Brazilian Shorthair"
+
+    }, {
+      "id": 189,
+      "species_id": 2,
+      "name": "British Shorthair"
+
+    }, {
+      "id": 190,
+      "species_id": 2,
+      "name": "Burmese"
+
+    }, {
+      "id": 191,
+      "species_id": 2,
+      "name": "Burmilla"
+
+    }, {
+      "id": 192,
+      "species_id": 2,
+      "name": "California Spangled Cat"
+
+    }, {
+      "id": 193,
+      "species_id": 2,
+      "name": "Chantilly/Tiffany cat"
+
+    }, {
+      "id": 194,
+      "species_id": 2,
+      "name": "Chartreux"
+
+    }, {
+      "id": 195,
+      "species_id": 2,
+      "name": "Chausie"
+
+    }, {
+      "id": 196,
+      "species_id": 2,
+      "name": "Cherubim"
+
+    }, {
+      "id": 197,
+      "species_id": 2,
+      "name": "Colorpoint Shorthair"
+
+    }, {
+      "id": 198,
+      "species_id": 2,
+      "name": "Colourpoint Longhair"
+
+    }, {
+      "id": 199,
+      "species_id": 2,
+      "name": "Cornish Rex"
+
+    }, {
+      "id": 200,
+      "species_id": 2,
+      "name": "Cymric"
+
+    }, {
+      "id": 201,
+      "species_id": 2,
+      "name": "Devon Rex"
+
+    }, {
+      "id": 202,
+      "species_id": 2,
+      "name": "Domestic Long Hair"
+
+    }, {
+      "id": 203,
+      "species_id": 2,
+      "name": "Domestic Short Hair"
+
+    }, {
+      "id": 204,
+      "species_id": 2,
+      "name": "Don Sphynx"
+
+    }, {
+      "id": 205,
+      "species_id": 2,
+      "name": "Egyptian Mau"
+
+    }, {
+      "id": 206,
+      "species_id": 2,
+      "name": "European Shorthair"
+
+    }, {
+      "id": 207,
+      "species_id": 2,
+      "name": "Exotic Shorthair"
+
+    }, {
+      "id": 208,
+      "species_id": 2,
+      "name": "German Rex"
+
+    }, {
+      "id": 209,
+      "species_id": 2,
+      "name": "Havana Brown"
+
+    }, {
+      "id": 210,
+      "species_id": 2,
+      "name": "Himalayan"
+
+    }, {
+      "id": 211,
+      "species_id": 2,
+      "name": "Japanese Bobtail"
+
+    }, {
+      "id": 212,
+      "species_id": 2,
+      "name": "Javanese"
+
+    }, {
+      "id": 213,
+      "species_id": 2,
+      "name": "Korat"
+
+    }, {
+      "id": 214,
+      "species_id": 2,
+      "name": "Kurilean Bobtail Longhair"
+
+    }, {
+      "id": 215,
+      "species_id": 2,
+      "name": "Kurilean Bobtail Shorthair"
+
+    }, {
+      "id": 216,
+      "species_id": 2,
+      "name": "LaPerm"
+
+    }, {
+      "id": 217,
+      "species_id": 2,
+      "name": "Maine Coon"
+
+    }, {
+      "id": 218,
+      "species_id": 2,
+      "name": "Malayan"
+
+    }, {
+      "id": 219,
+      "species_id": 2,
+      "name": "Manx"
+
+    }, {
+      "id": 220,
+      "species_id": 2,
+      "name": "Mix"
+
+    }, {
+      "id": 221,
+      "species_id": 2,
+      "name": "Munchkin"
+
+    }, {
+      "id": 222,
+      "species_id": 2,
+      "name": "Nebelung"
+
+    }, {
+      "id": 223,
+      "species_id": 2,
+      "name": "Norwegian Forest Cat"
+
+    }, {
+      "id": 224,
+      "species_id": 2,
+      "name": "Ocicat"
+
+    }, {
+      "id": 225,
+      "species_id": 2,
+      "name": "Ojos Azules"
+
+    }, {
+      "id": 226,
+      "species_id": 2,
+      "name": "Oriental Longhair"
+
+    }, {
+      "id": 227,
+      "species_id": 2,
+      "name": "Oriental Shorthair"
+
+    }, {
+      "id": 228,
+      "species_id": 2,
+      "name": "Other"
+
+    }, {
+      "id": 229,
+      "species_id": 2,
+      "name": "Persian"
+
+    }, {
+      "id": 230,
+      "species_id": 2,
+      "name": "Peterbald"
+
+    }, {
+      "id": 231,
+      "species_id": 2,
+      "name": "Pixie-bob"
+
+    }, {
+      "id": 232,
+      "species_id": 2,
+      "name": "Ragdoll"
+
+    }, {
+      "id": 233,
+      "species_id": 2,
+      "name": "Russian Blue"
+
+    }, {
+      "id": 234,
+      "species_id": 2,
+      "name": "Savannah"
+
+    }, {
+      "id": 235,
+      "species_id": 2,
+      "name": "Scottish Fold"
+
+    }, {
+      "id": 236,
+      "species_id": 2,
+      "name": "Selkirk Rex"
+
+    }, {
+      "id": 237,
+      "species_id": 2,
+      "name": "Siamese"
+
+    }, {
+      "id": 238,
+      "species_id": 2,
+      "name": "Siberian"
+
+    }, {
+      "id": 239,
+      "species_id": 2,
+      "name": "Singapura"
+
+    }, {
+      "id": 240,
+      "species_id": 2,
+      "name": "Snowshoe"
+
+    }, {
+      "id": 241,
+      "species_id": 2,
+      "name": "Sokoke"
+
+    }, {
+      "id": 242,
+      "species_id": 2,
+      "name": "Somali"
+
+    }, {
+      "id": 243,
+      "species_id": 2,
+      "name": "Sphynx"
+
+    }, {
+      "id": 244,
+      "species_id": 2,
+      "name": "Sterling"
+
+    }, {
+      "id": 245,
+      "species_id": 2,
+      "name": "Tonkinese"
+
+    }, {
+      "id": 246,
+      "species_id": 2,
+      "name": "Toyger"
+
+    }, {
+      "id": 247,
+      "species_id": 2,
+      "name": "Turkish Angora"
+
+    }, {
+      "id": 248,
+      "species_id": 2,
+      "name": "Turkish Van"
+
+    }, {
+      "id": 249,
+      "species_id": 2,
+      "name": "York Chocolate"
+    }],
     profilePhoto: '/profile-pics/default.jpg'
   },
   getters: {
@@ -117350,6 +119470,9 @@ var appStore = new _vuex2.default.Store({
     },
     available_states: function available_states(state) {
       return state.available_states;
+    },
+    available_breeds: function available_breeds(state) {
+      return state.available_breeds;
     },
     profilePhoto: function profilePhoto(state) {
       return state.profilePhoto;
@@ -117366,6 +119489,9 @@ var appStore = new _vuex2.default.Store({
     },
     setProfilePhoto: function setProfilePhoto(state, profilePhoto) {
       state.profilePhoto = profilePhoto;
+    },
+    setAvailableBreeds: function setAvailableBreeds(state, breeds) {
+      state.available_breeds = breeds;
     }
   },
   actions: {
@@ -117377,7 +119503,12 @@ var appStore = new _vuex2.default.Store({
     SET_USER_PROFILE_PHOTO: function SET_USER_PROFILE_PHOTO(context, profilePhoto) {
       context.commit('setProfilePhoto', '/profile-pics/' + profilePhoto);
     },
-    REFRESH_USER_TOKEN: function REFRESH_USER_TOKEN(state, user) {}
+    REFRESH_USER_TOKEN: function REFRESH_USER_TOKEN(state, user) {},
+    SET_AVAILABLE_BREEDS: function SET_AVAILABLE_BREEDS(context) {
+      _HttpClient.HttpClient.get('breeds').then(function (response) {
+        context.commit('setAvailableBreeds', response.data.data);
+      });
+    }
   }
 });
 
