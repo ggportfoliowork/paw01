@@ -56,7 +56,10 @@
 
     },
     beforeDestroy() {
+      this.$bus.$off('handle-preview')
+      this.$bus.$off('set-photo-thumbnail')
       this.$bus.$off('show-dialog-pet-photo-upload')
+
     },
     computed: {
       activeComponent() {
@@ -85,11 +88,13 @@
         return "data:"+mimetype+";base64,"+b64encoded
       },
 
+      confirmCroppedPhoto() {
+        this.$bus.$emit('set-pet-photo')
+      },
+
       addThumb(data) {
         this.form = {photo_thumb: data.base64}
       }
-
-
 
     },
     watch: {

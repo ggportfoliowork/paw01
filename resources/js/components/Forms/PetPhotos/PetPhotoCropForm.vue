@@ -22,7 +22,12 @@
 
     export default {
         created() {
-
+          this.$bus.$on('set-pet-photo', () => {
+            this.$bus.$emit('set-photo-thumbnail', {base64: this.cropImg})
+          })
+        },
+        beforeDestroy() {
+          this.$bus.$off('set-pet-photo')
         },
         components: {
           VueCropper
@@ -41,12 +46,7 @@
         mounted() {
 
         },
-        props: ['imgSrc'],
-        watch: {
-          cropImg: function(val) {
-            this.$bus.$emit('set-photo-thumbnail', {base64: val})
-          }
-        },
+        props: ['imgSrc']
     }
 
 
