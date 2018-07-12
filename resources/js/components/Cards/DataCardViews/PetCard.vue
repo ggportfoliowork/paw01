@@ -2,11 +2,9 @@
   <el-card
     :style="{backgroundImage: 'http://placehold.it/300x300', backgroundSize: 'cover', backgroundPosition: 'center'}"
   >
-    <div class="clearfix text-center">
-      <img :src="'http://placehold.it/300x300'" class="thumb">
-      <div style="text-align:center;">
-        <h3 style="color:#fff;">{{ pet.name }}</h3>
-        <p>
+      <div class="clearfix is-center is-centered" style="text-align:center;">
+          <img :src="'http://placehold.it/300x300'" class="thumb">
+          <h2 class="subtitle is-2-desktop">{{ pet.name }}</h2>
           <el-tooltip class="item"
                       effect="dark"
                       :content="gender" placement="top">
@@ -19,11 +17,9 @@
           </el-tooltip>
           <el-tooltip class="item"
                       effect="dark"
-                      :content="pet.date_of_birth" placement="top">
+                      :content="dateOfBirth" placement="top">
             <i class="fal fa-birthday-cake"></i>
           </el-tooltip>
-        </p>
-      </div>
     </div>
     <el-container>
       <el-main>
@@ -52,25 +48,38 @@
             return 'Female'
           else if(this.pet.gender == 'm')
             return 'Male'
-
+          else
+            return null
+      },
+      dateOfBirth() {
+        if(this.pet.date_of_birth !== null) {
+          return this.$moment(this.pet.date_of_birth).format('MM/DD/YYYY')
+        }
+        return 'N/A'
       },
       species() {
         if(this.pet.species_id == 1)
           return 'Dog'
         else if(this.pet.species_id == 2)
           return 'Cat'
+        else
+          return null
       },
       speciesIcon() {
         if(this.pet.species_id == 1)
           return 'ss-dogface'
         else if(this.pet.species_id == 2)
           return 'ss-catface'
+        else
+          return null
       },
       genderIcon() {
           if(this.pet.gender == 'f')
             return 'fal fa-venus'
           else if(this.pet.gender == 'm')
             return 'fal fa-mars'
+        else
+          return null
       }
     },
     methods: {
