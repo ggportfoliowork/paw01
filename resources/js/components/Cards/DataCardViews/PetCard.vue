@@ -10,12 +10,12 @@
           <el-tooltip class="item"
                       effect="dark"
                       :content="gender" placement="top">
-            <i :class="genderIcon" aria-hidden="true" style="color:#fff;"></i>
+            <i :class="genderIcon" aria-hidden="true"></i>
           </el-tooltip>
           <el-tooltip class="item"
                       effect="dark"
                       content="Species" placement="top">
-            {{ pet.species_id }}
+            <i :class="speciesIcon"></i>
           </el-tooltip>
           <el-tooltip class="item"
                       effect="dark"
@@ -54,6 +54,12 @@
           else if(this.pet.gender == 'm')
             return 'Male'
         }
+      },
+      speciesIcon() {
+        if(this.pet.species_id == 1)
+          return 'ss-dogface'
+        else if(thispet.species_id == 2)
+          return 'ss-catface'
       },
       genderIcon: {
         get() {
