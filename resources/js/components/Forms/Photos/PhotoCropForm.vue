@@ -7,7 +7,7 @@
     :guides="true"
     :preserve-size="true"
     :keep-aspect="true"
-    :view-mode="3"
+    :view-mode="2"
     drag-mode="crop"
     :auto-crop-area="0.5"
     :min-container-width="400"

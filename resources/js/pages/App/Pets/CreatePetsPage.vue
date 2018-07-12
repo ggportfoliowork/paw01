@@ -22,6 +22,10 @@
           this.$bus.$on('submit-pets-form', () => {
             this.submitPetsForm()
           })
+
+          this.$bus.$on('set-photo-thumbnail', (img) => {
+            this.petForm.image = img
+          })
         },
         beforeDestroy() {
           this.$bus.$off('submit-pets-form')
@@ -43,7 +47,7 @@
                 species_id: null,
                 gender: null,
                 breeds: null,
-                file: null,
+                image: null,
                 date_of_birth: null,
                 behavior_animals: null,
                 behavior_humans: null,

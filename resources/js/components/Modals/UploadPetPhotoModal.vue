@@ -17,13 +17,14 @@
 
 <script type="text/babel">
 
+  // Use default axios to pull B64 image from root URL blob
   import axios from 'axios'
+
   import PetPhotoCropForm from '../Forms/PetPhotos/PetPhotoCropForm'
   import PetPhotoUploadForm from '../Forms/PetPhotos/PetPhotoUploadForm'
 
   export default {
     created() {
-      let vm = this;
       let dialog = 'show-dialog-pet-photo-upload';
 
       this.$bus.$on(dialog, (args) => {
@@ -43,10 +44,10 @@
               'Content-Type-Encoding': 'base64'
             }
           })
-          .then(function(response){
-            vm.imgSrc = vm.imageEncode(response.data)
+          .then((response) => {
+            this.imgSrc = this.imageEncode(response.data)
           })
-          .catch(function(error){
+          .catch((error) => {
             console.error(error)
           })
       })
@@ -81,7 +82,6 @@
         let b64encoded = btoa([].reduce.call(new Uint8Array(arrayBuffer),function(p,c){return p+String.fromCharCode(c)},''))
         let mimetype="image/jpeg"
         this.form = {photo: "data:"+mimetype+";base64,"+b64encoded}
-        console.log("data:"+mimetype+";base64,"+b64encoded)
         return "data:"+mimetype+";base64,"+b64encoded
       },
 

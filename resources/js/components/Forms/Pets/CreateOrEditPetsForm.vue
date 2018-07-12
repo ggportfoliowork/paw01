@@ -7,7 +7,7 @@
             <nav class="level">
               <div class="level-item has-text-centered">
                 <div class="photo-container">
-                  <img src="http://placehold.it/300x300" class="rounded" style="height:180px;width:180px;"  />
+                  <img :src="petPhotoImage" class="rounded" style="height:180px;width:180px;"  />
                 </div>
               </div>
             </nav>
@@ -158,6 +158,13 @@
               })
             }
             return []
+          },
+          petPhotoImage() {
+            if(this.form.image !== null) {
+              return this.form.image.base64
+            }
+
+            return this.$store.state.defaultPetPhoto
           }
         },
         data() {
