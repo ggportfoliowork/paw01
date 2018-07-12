@@ -9,9 +9,11 @@
                 <h1 class="title">My Pets</h1>
               </div>
               <div class="is-pulled-right" v-show="pets.length > 0">
-                <el-button type="default" size="huge">
-                  <i class="fal fa-plus-circle"></i> Add A Pet
-                </el-button>
+                <router-link :to="{name: 'pets.create'}">
+                  <el-button type="default">
+                    <i class="fal fa-plus-circle"></i> Add A Pet
+                  </el-button>
+                </router-link>
               </div>
             </div>
           </el-col>
@@ -27,7 +29,7 @@
           <el-col :sm="24" class="has-text-centered">
             <h5 class="subtitle is-5">You do not have any pets...</h5>
             <router-link :to="{name: 'pets.create'}">
-              <el-button type="default" size="large">
+              <el-button type="default">
                 <i class="fal fa-plus-circle"></i> Add A Pet
               </el-button>
             </router-link>

@@ -14,7 +14,7 @@
           </el-tooltip>
           <el-tooltip class="item"
                       effect="dark"
-                      :content="Species" placement="top">
+                      content="Species" placement="top">
             {{ pet.species_id }}
           </el-tooltip>
           <el-tooltip class="item"
@@ -53,21 +53,15 @@
             return 'Female'
           else if(this.pet.gender == 'm')
             return 'Male'
-        },
-        set(value) {
-          return value
         }
       },
       genderIcon: {
         get() {
           if(this.pet.gender == 'f')
-            return 'fa fa-venus'
+            return 'fal fa-venus'
           else if(this.pet.gender == 'm')
-            return 'fa fa-mars'
+            return 'fal fa-mars'
         },
-        set(value) {
-          return value
-        }
       }
     },
     methods: {
@@ -82,6 +76,13 @@
   }
 </script>
 
-<style lang="sass">
-
+<style lang="scss" scoped>
+  .thumb {
+    border-radius: 50% !important;
+    border-top: 1px solid #fff;
+    padding: 5px;
+    background: #f0f0f0;
+    height: 90px;
+    width: 90px;
+  }
 </style>
