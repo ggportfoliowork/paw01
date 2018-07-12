@@ -1,6 +1,6 @@
 <template>
   <el-card
-    :style="{backgroundImage: 'http://placehold.it/300x300', backgroundSize: 'cover', backgroundPosition: 'center'}"
+    :style="{backgroundImage: returnPhotoCover(), backgroundSize: 'cover', backgroundPosition: 'center'}"
   >
       <div class="clearfix is-center is-centered" style="text-align:center;">
           <img :src="'http://placehold.it/300x300'" class="thumb">
@@ -83,7 +83,9 @@
       }
     },
     methods: {
-
+      returnPhotoCover() {
+        return 'url(http://placehold.it/300x300)'
+      }
     },
     watch: {
 

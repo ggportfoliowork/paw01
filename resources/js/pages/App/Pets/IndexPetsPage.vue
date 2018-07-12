@@ -1,5 +1,5 @@
 <template>
-  <el-row :gutter="24" v-loading="!pets">
+  <el-row :gutter="24" v-loading="!pets" class="content-container">
     <el-col :sm="24" id="step-2">
       <el-card type="box">
         <el-row style="margin-bottom:10px;">

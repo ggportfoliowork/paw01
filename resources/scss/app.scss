@@ -44,7 +44,7 @@ input:-webkit-autofill {
 }
 
 .navbar-item > .button.is-text,
-.navbar-item > form > button.is-text, {
+.navbar-item > form > button.is-text {
   text-decoration: none !important;
 }
 
@@ -60,6 +60,10 @@ img.rounded {
 .el-card__body > .el-row > .el-col > h1.title {
   border-bottom: 1px solid #e6e6e6;
   padding: 10px 0px 10px 0px;
+}
+
+.content-container {
+  min-height: 300px;
 }
 
 .beat-loader{
