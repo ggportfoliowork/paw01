@@ -24,12 +24,17 @@
     computed: {
 
     },
+    data() {
+      return {
+        fileList: []
+      }
+    },
     methods: {
       handlePreview(file) {
-        this.bus.$emit('handle-preview', file)
+        this.$bus.$emit('handle-preview', file)
       },
       handleRemove(file) {
-        this.bus.$emit('handle-remove', file)
+        this.$bus.$emit('handle-remove', file)
       }
     }
   }

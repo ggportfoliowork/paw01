@@ -6,7 +6,7 @@
     :title="title"
     top="4%">
     <span>
-      <component :is="activeComponent" :imageUrl="imageUrl" />
+      <component :is="activeComponent" :imgSrc="imgSrc" />
     </span>
     <span slot="footer" class="dialog-footer">
       <el-button @click="dialogVisible = false">Cancel</el-button>
@@ -17,6 +17,7 @@
 
 <script type="text/babel">
 
+  import axios from 'axios'
   import PetPhotoCropForm from '../Forms/PetPhotos/PetPhotoCropForm'
   import PetPhotoUploadForm from '../Forms/PetPhotos/PetPhotoUploadForm'
 
@@ -24,16 +25,17 @@
     created() {
       let vm = this;
       let dialog = 'show-dialog-pet-photo-upload';
-      this.$bus.$on(dialog, function (args) {
-        vm.dialogVisible = true
+
+      this.$bus.$on(dialog, (args) => {
+        this.dialogVisible = true
       });
 
-      this.$bus.$on('set-photo-thumbnail', function(data){
-        vm.addThumb(data)
+      this.$bus.$on('set-photo-thumbnail', (data) => {
+        this.addThumb(data)
       })
 
-      this.$bus.$on('handle-preview', function(file){
-        vm.$http.get(file.url,
+      this.$bus.$on('handle-preview', (file) =>{
+        axios.get(file.url,
           {
             responseType: 'arraybuffer',
             headers: {
@@ -79,6 +81,7 @@
         let b64encoded = btoa([].reduce.call(new Uint8Array(arrayBuffer),function(p,c){return p+String.fromCharCode(c)},''))
         let mimetype="image/jpeg"
         this.form = {photo: "data:"+mimetype+";base64,"+b64encoded}
+        console.log("data:"+mimetype+";base64,"+b64encoded)
         return "data:"+mimetype+";base64,"+b64encoded
       },
 
