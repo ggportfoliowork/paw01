@@ -26,7 +26,7 @@
         <router-link
           :to="{name: 'pets.view', params: { petId: pet.id }}">
           <el-button type="default" style="width:100%;">
-            View Details
+            <i class="fa fa-eye"></i> View Details
           </el-button>
         </router-link>
       </el-main>
