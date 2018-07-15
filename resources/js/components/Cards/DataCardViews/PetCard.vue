@@ -35,6 +35,7 @@
 </template>
 
 <script type="text/babel">
+
   export default {
     mounted() {
 
@@ -91,7 +92,9 @@
 
     },
     props: ['pet', 'value', 'chunk'],
-    components: {},
+    components: {
+      
+    },
 
   }
 </script>
