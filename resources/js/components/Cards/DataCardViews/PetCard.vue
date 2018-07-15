@@ -93,7 +93,7 @@
     },
     props: ['pet', 'value', 'chunk'],
     components: {
-      
+
     },
 
   }

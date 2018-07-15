@@ -98,7 +98,7 @@
       },
 
       completeTour() {
-        this.$http.put('users/'+this.user.uid, {
+        this.$http.put('users/'+this.user.id, {
           has_viewed_joyride: 1
         })
           .then(response => {
