@@ -3,7 +3,7 @@
     :style="{backgroundImage: returnPhotoCover(), backgroundSize: 'cover', backgroundPosition: 'center'}"
   >
       <div class="clearfix is-center is-centered" style="text-align:center;">
-          <img :src="'http://placehold.it/300x300'" class="thumb">
+          <img :src="'http://placehold.it/500x500'" class="thumb">
           <h2 class="subtitle is-2-desktop">{{ pet.name }}</h2>
           <el-tooltip class="item"
                       effect="light"
