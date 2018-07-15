@@ -6,17 +6,17 @@
           <img :src="'http://placehold.it/300x300'" class="thumb">
           <h2 class="subtitle is-2-desktop">{{ pet.name }}</h2>
           <el-tooltip class="item"
-                      effect="dark"
+                      effect="light"
                       :content="gender" placement="top">
             <i :class="genderIcon" aria-hidden="true"></i>
           </el-tooltip>
           <el-tooltip class="item"
-                      effect="dark"
+                      effect="light"
                       :content="species" placement="top">
             <i :class="speciesIcon"></i>
           </el-tooltip>
           <el-tooltip class="item"
-                      effect="dark"
+                      effect="light"
                       :content="dateOfBirth" placement="top">
             <i class="fas fa-birthday-cake"></i>
           </el-tooltip>
@@ -25,7 +25,7 @@
       <el-main>
         <router-link
           :to="{name: 'pets.view', params: { petId: pet.id }}">
-          <el-button type="primary" style="width:100%;">
+          <el-button type="default" style="width:100%;">
             View Details
           </el-button>
         </router-link>

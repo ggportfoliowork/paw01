@@ -15,7 +15,7 @@
         </el-row>
         <el-row>
           <el-col :span="24" class="has-text-centered" style="margin-top:10px;">
-            <el-button type="primary" @click="displayUploadPetPhotoDialog()">
+            <el-button type="default" @click="displayUploadPetPhotoDialog()">
               <i class="el-icon-picture"></i> Upload a Photo
             </el-button>
           </el-col>

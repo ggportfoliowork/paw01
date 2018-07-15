@@ -26,6 +26,10 @@ class ExceptionHandler extends BaseExceptionHandler {
         return response.redirect('back')
       }
 
+      if(error.code === 'EBADCSRFTOKEN') {
+        return response.redirect('/')
+      }
+
       return super.handle(...arguments)
 
   }
